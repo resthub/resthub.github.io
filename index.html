@@ -1,1 +1,8 @@
-Hello World
+---
+layout: default
+title: RESThub, your Spring + Backbone.js stack
+home: true
+---
+
+{% capture index %}{% include index.md %}{% endcapture %}
+{{ index | markdownify }}

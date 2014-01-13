@@ -1,0 +1,21 @@
+{
+  "name": "resthub-documentation",
+  "version": "2.1.4",
+  "authors": [
+    "Baptiste Meurant <baptiste.meurant@atos.net>"
+  ],
+  "main": "index.html",
+  "license": "LGPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+	"font-awesome": "~4.0.3"
+  }
+}

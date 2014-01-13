@@ -1,0 +1,54 @@
+<header>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="banner">
+        <div class="container navbar-inner">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header hide-on-xs-mobiles">
+                <a class="navbar-brand resthub-logo" href="/">
+                    <span></span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <nav role="navigation">
+                <ul class="nav navbar-nav">
+                    <li class="{% if page.blog %}active{% endif %}">
+                        <a href="/blog">News</a>
+                    </li>
+                    <li class="{% if page.url contains '/docs/' %}active{% endif %}">
+                        <a href="{{ site.url }}/docs/home/">
+                            <span class="visible-xs">Docs</span>
+                            <span class="hidden-xs">Documentation</span>
+                        </a>
+                    </li>
+                    <!--li class="{% if page.contact %}active{% endif %}"><a href="#">Contact</a></li-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-search visible-xs">
+                    <li class="search-toggle"><button class="enabled-xs"><i class="fa fa-search icon-white"></i></button></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-contacts">
+                    <li><a href="https://github.com/resthub"><i class="fa fa-github"></i></a></li>
+                    <li><a href="https://twitter.com/search?q=resthub&src=typd"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/u/0/communities/110339194060166960646"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-search hidden-xs">
+                    <li class="search-toggle"><button class="enabled-xs"><i class="fa fa-search icon-white"></i></button></li>
+                    <li class="form-search">
+                        <form class="navbar-form" role="search">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="search-dropdown-container visible-xs hidden">
+        <div class="container">
+            <div class="search-form-container">
+                <form class="form-inline form-search" role="search">
+                    <input type="text" placeholder="Search">
+                    <button class="search-form-submit" type="submit"><i class="fa fa-search icon-colored"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

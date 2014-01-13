@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<section>
+    <div class="row">
+
+        <article class="col-lg-9 col-md-9 col-sm-9">
+            <h1>{{ page.title }}</h1>
+            {{ content }}
+        </article>
+
+        <aside class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
+            {% include docs_menu.html %}
+        </aside>
+
+        <div class="clear"></div>
+
+    </div>
+</section>
