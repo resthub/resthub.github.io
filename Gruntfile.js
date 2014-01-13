@@ -26,11 +26,6 @@ grunt.initConfig({
       files: [
         {expand: true, cwd: 'bower_components/bootstrap/dist/js/', src: ['bootstrap.min.js'], dest: 'assets/javascript/'}
       ]
-    },
-	fontAwesome: {
-      files: [
-        {expand: true, cwd: 'bower_components/font-awesome/css/', src: ['font-awesome.min.css'], dest: 'assets/stylesheets/css/'}
-      ]
     }
   },
   watch: {
