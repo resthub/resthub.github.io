@@ -216,6 +216,37 @@ article {
   p {
     margin: 20px 0;
   }
+
+  #toc-container {
+    .toc {
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #A09A98;
+      border: none;
+      min-width: 250px;
+
+      td {
+        padding: 15px;
+      }
+
+      h3 {
+        border: none;
+        margin-top: 0;
+      }
+
+      .tocnumber {
+        padding-right: 5px;
+      }
+
+      a {
+        color: @resthub-brown-color;
+
+        &:hover {
+          border-color: @resthub-brown-color;
+        }
+      }
+    }
+  }
 }
 
 .highlight, p > pre, p > code, p > nobr > code, li > code, h5 > code, .note > code {

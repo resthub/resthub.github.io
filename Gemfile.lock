@@ -37,6 +37,9 @@ GEM
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
     maruku (0.7.0)
+    mini_portile (0.5.2)
+    nokogiri (1.6.1-x86-mingw32)
+      mini_portile (~> 0.5.0)
     parslet (1.5.0)
       blankslate (~> 2.0)
     posix-spawn (0.3.8)
@@ -53,6 +56,7 @@ GEM
     safe_yaml (0.9.7)
     toml (0.1.0)
       parslet (~> 1.5.0)
+    yajl-ruby (1.1.0)
     yajl-ruby (1.1.0-x86-mingw32)
 
 PLATFORMS
@@ -60,3 +64,4 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  nokogiri

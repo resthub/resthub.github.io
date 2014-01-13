@@ -6108,6 +6108,29 @@ article h3 {
 article p {
   margin: 20px 0;
 }
+article #toc-container .toc {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #A09A98;
+  border: none;
+  min-width: 250px;
+}
+article #toc-container .toc td {
+  padding: 15px;
+}
+article #toc-container .toc h3 {
+  border: none;
+  margin-top: 0;
+}
+article #toc-container .toc .tocnumber {
+  padding-right: 5px;
+}
+article #toc-container .toc a {
+  color: #34302d;
+}
+article #toc-container .toc a:hover {
+  border-color: #34302d;
+}
 .highlight,
 p > pre,
 p > code,
