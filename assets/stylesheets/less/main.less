@@ -18,6 +18,10 @@
 @navbar-inverse-link-active-bg: @resthub-orange-color;
 @navbar-inverse-link-hover-bg: @resthub-orange-color;
 
+@navbar-padding-vertical: 17px;
+@navbar-padding-vertical-xs: 5px;
+@navbar-line-height: 40px;
+
 @grid-float-breakpoint: 0px;
 @font-family-sans-serif: 'Lato', Arial, sans-serif;
 
@@ -79,15 +83,17 @@ header {
 
 .navbar-brand {
   padding-right: 50px;
+  padding-top: @navbar-padding-vertical;
+  padding-bottom: @navbar-padding-vertical;
 }
 
 .navbar-nav > li > a {
-  line-height: 40px;
+  line-height: @navbar-line-height;
   font-weight: bold;
   font-size: 16px;
   text-transform: uppercase;
-  padding-bottom: 17px;
-  padding-top: 17px;
+  padding-bottom: @navbar-padding-vertical;
+  padding-top: @navbar-padding-vertical;
 }
 
 .navbar-inverse .navbar-nav > .active > a {
@@ -103,19 +109,11 @@ header {
   }
 }
 
-/*.navbar-inverse .navbar-nav > .open > a {
-  color: @resthub-brown-color;
-
-  &:hover, &:focus {
-    color: @resthub-brown-color;
-  }
-}*/
-
 .navbar-form {
   // Undo 100% width for pull classes
   @media (min-width: @grid-float-breakpoint) {
     padding-top: 11px;
-    padding-bottom: 12px;
+    padding-bottom: 11px;
   }
 }
 
@@ -123,9 +121,10 @@ header {
   width: 50%;
 
   .search-toggle {
-    padding-top: 20px;
-    padding-bottom: 19px;
     i {
+      padding-top: @navbar-padding-vertical;
+      padding-bottom: @navbar-padding-vertical;
+      line-height: @navbar-line-height;
       padding-right: 10px;
     }
   }
@@ -159,10 +158,10 @@ header {
 }
 
 a.resthub-logo {
-  background: url("/assets/img/resthub-logo-small.png") 15px 15px no-repeat;
+  background: url("/assets/img/resthub-logo-small.png") 15px @navbar-padding-vertical no-repeat;
 
   &:hover {
-    background: url("/assets/img/resthub-logo-small-orange.png") 15px 15px no-repeat;
+    background: url("/assets/img/resthub-logo-small-orange.png") 15px @navbar-padding-vertical no-repeat;
   }
 
   span {
@@ -179,32 +178,6 @@ a.resthub-logo {
 .navbar-toggle {
   padding: 19px 10px;
 }
-
-/*.navbar-inverse .navbar-nav > li > .dropdown-menu {
-  width: 120%;
-  background-color: @navbar-inverse-bg;
-  border: none;
-  border-radius: 2px;
-  font-size: 16px;
-  padding: 0;
-  text-transform: uppercase;
-
-  & > li > a {
-    color: @resthub-orange-color;
-    font-weight: bold;
-    line-height: 40px;
-
-    &:hover {
-      color: @resthub-brown-color;
-      background-color: @resthub-orange-color;
-    }
-  }
-
-  .divider {
-    background-color: @resthub-orange-color;
-    margin: 0;
-  }
-}*/
 
 section {
   margin-top: 30px;
@@ -375,7 +348,7 @@ button.enabled-xs {
       border: none;
       outline-width: 0;
       float: right;
-      margin-right: 30px;
+      margin-right: 20px;
       margin-top: 10px;
       position: absolute;
       right: 0;
@@ -392,12 +365,6 @@ button.enabled-xs {
   display: none !important;
 }
 
-@media (min-width: @screen-lg-min) {
-  body .container {
-    //width: 970px;
-  }
-}
-
 @media (max-width: @screen-md-min) {
   .navbar-brand {
     padding-right: 15px;
@@ -409,43 +376,64 @@ button.enabled-xs {
     width: 45%;
 
     .form-search {
-      width: 80%;
+      width: 85%;
     }
   }
 }
 
 @media (max-width: @screen-sm-max) {
   .navbar-search {
-    width: 35%;
+    width: 33%;
+
+    .form-search {
+      width: 80%;
+    }
   }
 }
 
 @media (max-width: @screen-xs-max) {
 
+  a.resthub-logo {
+    background-position: 15px @navbar-padding-vertical-xs;
+
+    &:hover {
+      background-position: 15px @navbar-padding-vertical-xs;
+    }
+  }
+
+  .navbar-brand {
+    padding-top: @navbar-padding-vertical-xs;
+    padding-bottom: @navbar-padding-vertical-xs;
+  }
+
+  .navbar-nav > li > a {
+    padding-bottom: @navbar-padding-vertical-xs;
+    padding-top: @navbar-padding-vertical-xs;
+  }
+
   .navbar-search {
     width: auto;
 
-    .search-toggle {
-      i {
-        margin-left: 30px;
-        padding-left: 20px;
-        padding-right: 20px;
+    li.search-toggle {
+      margin-left: 20px;
+      padding-left: 20px;
 
-        &:hover {
-          color: @resthub-orange-color;
-        }
+      i {
+        padding-top: @navbar-padding-vertical-xs;
+        padding-bottom: @navbar-padding-vertical-xs;
       }
 
-      &.active {
+      &:hover {
+        color: @resthub-orange-color;
+      }
+    }
 
-        i {
-          color: #ffffff;
-          background-color: @resthub-orange-color;
+    &.active {
+      color: #ffffff;
+      background-color: @resthub-orange-color;
 
-          &:hover {
-            color: @resthub-brown-color;
-          }
-        }
+      &:hover {
+        color: @resthub-brown-color;
       }
     }
   }
@@ -461,13 +449,3 @@ button.enabled-xs {
   }
 
 }
-
-@media (max-width: 535px) {
-  .navbar .navbar-nav > li > a {
-    padding: 15px 10px;
-  }
-}
-
-
-
-

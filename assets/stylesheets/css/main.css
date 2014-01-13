@@ -3708,7 +3708,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 15px 15px;
+  padding: 17px 15px;
   font-size: 18px;
   line-height: 20px;
 }
@@ -3748,7 +3748,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 7.5px -15px;
+  margin: 8.5px -15px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -3786,8 +3786,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 17px;
+    padding-bottom: 17px;
   }
   .navbar-nav.navbar-right:last-child {
     margin-right: -15px;
@@ -5998,6 +5998,8 @@ header {
 }
 .navbar-brand {
   padding-right: 50px;
+  padding-top: 17px;
+  padding-bottom: 17px;
 }
 .navbar-nav > li > a {
   line-height: 40px;
@@ -6018,27 +6020,19 @@ header {
 .navbar-inverse .navbar-nav > li > a:focus {
   color: #34302d;
 }
-/*.navbar-inverse .navbar-nav > .open > a {
-  color: @resthub-brown-color;
-
-  &:hover, &:focus {
-    color: @resthub-brown-color;
-  }
-}*/
 @media (min-width: 0px) {
   .navbar-form {
     padding-top: 11px;
-    padding-bottom: 12px;
+    padding-bottom: 11px;
   }
 }
 .navbar-search {
   width: 50%;
 }
-.navbar-search .search-toggle {
-  padding-top: 20px;
-  padding-bottom: 19px;
-}
 .navbar-search .search-toggle i {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  line-height: 40px;
   padding-right: 10px;
 }
 .navbar-search .form-search {
@@ -6063,10 +6057,10 @@ header {
   color: #d4571e;
 }
 a.resthub-logo {
-  background: url("/assets/img/resthub-logo-small.png") 15px 15px no-repeat;
+  background: url("/assets/img/resthub-logo-small.png") 15px 17px no-repeat;
 }
 a.resthub-logo:hover {
-  background: url("/assets/img/resthub-logo-small-orange.png") 15px 15px no-repeat;
+  background: url("/assets/img/resthub-logo-small-orange.png") 15px 17px no-repeat;
 }
 a.resthub-logo span {
   display: block;
@@ -6080,31 +6074,6 @@ a.resthub-logo span {
 .navbar-toggle {
   padding: 19px 10px;
 }
-/*.navbar-inverse .navbar-nav > li > .dropdown-menu {
-  width: 120%;
-  background-color: @navbar-inverse-bg;
-  border: none;
-  border-radius: 2px;
-  font-size: 16px;
-  padding: 0;
-  text-transform: uppercase;
-
-  & > li > a {
-    color: @resthub-orange-color;
-    font-weight: bold;
-    line-height: 40px;
-
-    &:hover {
-      color: @resthub-brown-color;
-      background-color: @resthub-orange-color;
-    }
-  }
-
-  .divider {
-    background-color: @resthub-orange-color;
-    margin: 0;
-  }
-}*/
 section {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -6259,7 +6228,7 @@ button.enabled-xs {
   border: none;
   outline-width: 0;
   float: right;
-  margin-right: 30px;
+  margin-right: 20px;
   margin-top: 10px;
   position: absolute;
   right: 0;
@@ -6281,31 +6250,51 @@ button.enabled-xs {
     width: 45%;
   }
   .navbar-search .form-search {
-    width: 80%;
+    width: 85%;
   }
 }
 @media (max-width: 991px) {
   .navbar-search {
-    width: 35%;
+    width: 33%;
+  }
+  .navbar-search .form-search {
+    width: 80%;
   }
 }
 @media (max-width: 767px) {
+  a.resthub-logo {
+    background-position: 15px 5px;
+  }
+  a.resthub-logo:hover {
+    background-position: 15px 5px;
+  }
+  .navbar-brand {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .navbar-nav > li > a {
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
   .navbar-search {
     width: auto;
   }
-  .navbar-search .search-toggle i {
-    margin-left: 30px;
+  .navbar-search li.search-toggle {
+    margin-left: 20px;
     padding-left: 20px;
-    padding-right: 20px;
   }
-  .navbar-search .search-toggle i:hover {
+  .navbar-search li.search-toggle i {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .navbar-search li.search-toggle:hover {
     color: #d4571e;
   }
-  .navbar-search .search-toggle.active i {
+  .navbar-search.active {
     color: #ffffff;
     background-color: #d4571e;
   }
-  .navbar-search .search-toggle.active i:hover {
+  .navbar-search.active:hover {
     color: #34302d;
   }
   button.enabled-xs {
@@ -6315,10 +6304,5 @@ button.enabled-xs {
   section {
     margin-right: 20px;
     margin-left: 20px;
-  }
-}
-@media (max-width: 535px) {
-  .navbar .navbar-nav > li > a {
-    padding: 15px 10px;
   }
 }
