@@ -1,7 +1,8 @@
 <ul>
-    <li><a href="/docs/spring/home">Overview</a></li>
-    <li><a href="/docs/spring/changelog">Changelog</a></li>
-    <li><a href="/docs/spring/bootstrap">Bootstrap</a></li>
-    <li><a href="/docs/spring/tutorial">Tutorial</a></li>
-    <li><a href="/docs/spring/layout">Project layout</a></li>
+    <li class="{% if page.url contains '/spring/home/' %}active{% endif %}"><a href="/docs/spring/home">Overview</a></li>
+    <li class="{% if page.url contains '/spring/changelog/' %}active{% endif %}"><a href="/docs/spring/changelog">Changelog</a></li>
+    <li class="{% if page.url contains '/spring/bootstrap/' %}active{% endif %}"><a href="/docs/spring/bootstrap">Bootstrap</a></li>
+    <li class="{% if page.url contains '/spring/tutorial/' %}active{% endif %}"><a href="/docs/spring/tutorial">Tutorial</a></li>
+    <li class="{% if page.url contains '/spring/layout/' %}active{% endif %}"><a href="/docs/spring/layout">Project layout</a></li>
+    <li class="{% if page.url contains '/spring/jpa/' %}active{% endif %}"><a href="/docs/spring/jpa">JPA support</a></li>
 </ul>
