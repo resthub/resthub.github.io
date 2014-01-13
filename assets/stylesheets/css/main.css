@@ -6004,8 +6004,8 @@ header {
   font-weight: bold;
   font-size: 16px;
   text-transform: uppercase;
-  padding-bottom: 16px;
-  padding-top: 16px;
+  padding-bottom: 17px;
+  padding-top: 17px;
 }
 .navbar-inverse .navbar-nav > .active > a {
   color: #34302d;
@@ -6294,7 +6294,7 @@ button.enabled-xs {
     width: auto;
   }
   .navbar-search .search-toggle i {
-    margin-left: 40px;
+    margin-left: 30px;
     padding-left: 20px;
     padding-right: 20px;
   }

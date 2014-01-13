@@ -37,22 +37,22 @@ grunt.initConfig({
       files: ['partials/*.html', '_layouts/*.html', '_includes/**/*.html', '*.html'],
       tasks: ['create-site'],
       options: {
-        interrupt: true,
-      },
+        interrupt: true
+      }
     },
 	md: {
       files: ['partials/*.md', '_includes/**/*.md', 'docs/**/*.md'],
       tasks: ['create-site'],
       options: {
-        interrupt: true,
-      },
+        interrupt: true
+      }
     },
 	javascript: {
       files: ['assets/javascript/main.js'],
       tasks: ['create-site'],
       options: {
-        interrupt: true,
-      },
+        interrupt: true
+      }
     }
   },
   jekyll: {
