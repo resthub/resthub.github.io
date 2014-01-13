@@ -5972,8 +5972,8 @@ header {
   margin-bottom: 20px;
 }
 #main.container {
-  overflow: auto;
   padding-bottom: 80px;
+  height: 96.5%;
 }
 #main.container .justified {
   text-align: center;
