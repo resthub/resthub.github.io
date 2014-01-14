@@ -6206,7 +6206,7 @@ aside.col-lg-3 ul li.active > a {
   background-color: #494543;
   border-color: #d4571e;
 }
-.footer {
+footer {
   background-color: #34302d;
   color: #f5f5f5;
   padding: 30px 20px;
@@ -6334,7 +6334,7 @@ button.enabled-xs {
     margin-right: 20px;
     margin-left: 20px;
   }
-  .footer {
+  footer {
     padding: 10px 15px;
     margin-top: -50px;
     height: 50px;
@@ -6372,5 +6372,8 @@ button.enabled-xs {
   .navbar .fa,
   .search-dropdown-container .fa {
     font-size: 25px;
+  }
+  footer {
+    font-size: 15px;
   }
 }
