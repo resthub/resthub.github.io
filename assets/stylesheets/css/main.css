@@ -5957,7 +5957,7 @@ td.visible-print {
 html,
 body {
   height: 100%;
-  min-width: 480px;
+  min-width: 306px;
   min-height: 100%;
 }
 body {
@@ -5974,8 +5974,6 @@ header {
 #main.container {
   padding-bottom: 80px;
   min-height: 96.5%;
-}
-#main.container .justified {
   text-align: center;
 }
 .navbar {
@@ -5984,19 +5982,13 @@ header {
   border-left: none;
   border-right: none;
   margin-bottom: 0px;
-  min-width: 480px;
+  min-width: 306px;
 }
 .navbar .fa {
   font-size: 30px;
 }
-.overview.visible-lg > img {
-  width: 100%;
-  max-width: 798px;
-}
-.navbar-brand {
-  padding-right: 50px;
-  padding-top: 17px;
-  padding-bottom: 17px;
+.overview img {
+  max-width: 100%;
 }
 .navbar-nav > li > a {
   line-height: 40px;
@@ -6038,13 +6030,14 @@ header {
 .navbar-search .form-search .navbar-form {
   padding-left: 0px;
 }
-.navbar-contacts {
-  padding-left: 20px;
+.navbar-nav i {
+  line-height: 40px;
 }
 .navbar-contacts > li > a {
   padding-left: 10px;
   padding-right: 10px;
   font-size: 30px;
+  line-height: initial;
 }
 .navbar-inverse .navbar-nav.navbar-contacts > li > a {
   color: #f5f5f5;
@@ -6053,11 +6046,18 @@ header {
   background-color: inherit;
   color: #d4571e;
 }
+.navbar-brand {
+  padding-right: 50px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  background-position: 15px 17px;
+  background-repeat: no-repeat;
+}
 a.resthub-logo {
-  background: url("/assets/img/resthub-logo-small.png") 15px 17px no-repeat;
+  background-image: url("/assets/img/resthub-logo-small.png");
 }
 a.resthub-logo:hover {
-  background: url("/assets/img/resthub-logo-small-orange.png") 15px 17px no-repeat;
+  background-image: url("/assets/img/resthub-logo-small-orange.png");
 }
 a.resthub-logo span {
   display: block;
@@ -6074,6 +6074,7 @@ a.resthub-logo span {
 section {
   margin-top: 30px;
   margin-bottom: 30px;
+  text-align: left;
 }
 article {
   background: #cbc4c1;
@@ -6208,7 +6209,7 @@ aside.col-lg-3 ul li.active > a {
 .footer {
   background-color: #34302d;
   color: #f5f5f5;
-  padding: 30px 0;
+  padding: 30px 20px;
   position: relative;
   margin-top: -80px;
   /* negative value of footer height */
@@ -6234,9 +6235,9 @@ button.enabled-xs {
 }
 .search-dropdown-container {
   width: 100%;
-  min-width: 480px;
-  margin-top: -15px;
-  position: relative;
+  min-width: 306px;
+  margin-top: -26px;
+  position: fixed;
 }
 .search-dropdown-container .container {
   padding-right: 0;
@@ -6265,7 +6266,7 @@ button.enabled-xs {
   right: 0;
   top: 0;
 }
-.search-dropdown-container .form-search button.search-form-submit i {
+.search-dropdown-container .fa {
   font-size: 29px;
 }
 .visible-xs.hidden {
@@ -6293,25 +6294,22 @@ button.enabled-xs {
   }
 }
 @media (max-width: 767px) {
-  a.resthub-logo {
-    background-position: 15px 5px;
-  }
-  a.resthub-logo:hover {
-    background-position: 15px 5px;
-  }
   .navbar-brand {
     padding-top: 5px;
     padding-bottom: 5px;
+    background-position: 15px 5px;
   }
   .navbar-nav > li > a {
     padding-bottom: 5px;
     padding-top: 5px;
   }
+  .navbar-contacts {
+    padding-right: 4%;
+  }
   .navbar-search {
     width: auto;
   }
   .navbar-search li.search-toggle {
-    margin-left: 20px;
     padding-left: 20px;
   }
   .navbar-search li.search-toggle i {
@@ -6335,5 +6333,44 @@ button.enabled-xs {
   section {
     margin-right: 20px;
     margin-left: 20px;
+  }
+  .footer {
+    padding: 10px 15px;
+    margin-top: -50px;
+    height: 50px;
+  }
+}
+@media (max-width: 480px) {
+  .nav > li > a {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .navbar-contacts {
+    padding-right: 0;
+  }
+  .navbar-contacts > li > a {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .navbar-brand {
+    background-position: 5px 5px;
+    padding-left: 0;
+    padding-right: 5px;
+  }
+  .navbar-search .search-toggle i {
+    padding-right: 0;
+  }
+  .search-dropdown-container .form-search button.search-form-submit {
+    margin-right: 10px;
+  }
+  .navbar-search li.search-toggle {
+    padding-left: 10px;
+  }
+  .navbar-search li.search-toggle button {
+    height: 52px;
+  }
+  .navbar .fa,
+  .search-dropdown-container .fa {
+    font-size: 25px;
   }
 }

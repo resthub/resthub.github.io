@@ -7,7 +7,7 @@
 @resthub-light-brown-color: #e0dcd9;
 @resthub-white-color: #f5f5f5;
 
-@min-width: 480px;
+@min-width: 306px;
 @min-height: 100%;
 
 @link-color: @resthub-orange-color;
@@ -20,6 +20,7 @@
 
 @navbar-padding-vertical: 17px;
 @navbar-padding-vertical-xs: 5px;
+@navbar-padding-horizontal-xxs: 7px;
 @navbar-line-height: 40px;
 
 @grid-float-breakpoint: 0px;
@@ -51,10 +52,7 @@ header {
 #main.container {
   padding-bottom: 80px;
   min-height: 96.5%;
-
-  .justified {
-    text-align: center;
-  }
+  text-align: center;
 }
 
 .navbar {
@@ -71,16 +69,9 @@ header {
 }
 
 .overview {
-  &.visible-lg > img {
-    width: 100%;
-    max-width: 798px;
+  img {
+    max-width: 100%;
   }
-}
-
-.navbar-brand {
-  padding-right: 50px;
-  padding-top: @navbar-padding-vertical;
-  padding-bottom: @navbar-padding-vertical;
 }
 
 .navbar-nav > li > a {
@@ -134,13 +125,17 @@ header {
   }
 }
 
+.navbar-nav i {
+  line-height: 40px;
+}
+
 .navbar-contacts {
-  padding-left: 20px;
 
   & > li > a {
     padding-left: 10px;
     padding-right: 10px;
     font-size: 30px;
+    line-height: initial;
   }
 }
 
@@ -153,11 +148,19 @@ header {
   }
 }
 
+.navbar-brand {
+  padding-right: 50px;
+  padding-top: @navbar-padding-vertical;
+  padding-bottom: @navbar-padding-vertical;
+  background-position: 15px @navbar-padding-vertical;
+  background-repeat: no-repeat;
+}
+
 a.resthub-logo {
-  background: url("/assets/img/resthub-logo-small.png") 15px @navbar-padding-vertical no-repeat;
+  background-image: url("/assets/img/resthub-logo-small.png");
 
   &:hover {
-    background: url("/assets/img/resthub-logo-small-orange.png") 15px @navbar-padding-vertical no-repeat;
+    background-image: url("/assets/img/resthub-logo-small-orange.png");
   }
 
   span {
@@ -178,6 +181,7 @@ a.resthub-logo {
 section {
   margin-top: 30px;
   margin-bottom: 30px;
+  text-align: left;
 }
 
 article {
@@ -330,7 +334,7 @@ aside.col-lg-3 {
 .footer {
   background-color: @navbar-inverse-bg;
   color: @resthub-white-color;
-  padding: 30px 0;
+  padding: 30px 20px;
   position: relative;
   margin-top: -80px; /* negative value of footer height */
   height: 80px;
@@ -361,8 +365,8 @@ button.enabled-xs {
 .search-dropdown-container {
   width: 100%;
   min-width: @min-width;
-  margin-top: -15px;
-  position: relative;
+  margin-top: -26px;
+  position: fixed;
 
   .container {
     padding-right: 0;
@@ -393,11 +397,11 @@ button.enabled-xs {
       position: absolute;
       right: 0;
       top: 0;
-
-      i {
-        font-size: 29px;
-      }
     }
+  }
+
+  .fa {
+    font-size: 29px;
   }
 }
 
@@ -433,17 +437,10 @@ button.enabled-xs {
 
 @media (max-width: @screen-xs-max) {
 
-  a.resthub-logo {
-    background-position: 15px @navbar-padding-vertical-xs;
-
-    &:hover {
-      background-position: 15px @navbar-padding-vertical-xs;
-    }
-  }
-
   .navbar-brand {
     padding-top: @navbar-padding-vertical-xs;
     padding-bottom: @navbar-padding-vertical-xs;
+    background-position: 15px @navbar-padding-vertical-xs;
   }
 
   .navbar-nav > li > a {
@@ -451,11 +448,14 @@ button.enabled-xs {
     padding-top: @navbar-padding-vertical-xs;
   }
 
+  .navbar-contacts {
+    padding-right: 4%;
+  }
+
   .navbar-search {
     width: auto;
 
     li.search-toggle {
-      margin-left: 20px;
       padding-left: 20px;
 
       i {
@@ -486,6 +486,55 @@ button.enabled-xs {
   section {
     margin-right: 20px;
     margin-left: 20px;
+  }
+
+  .footer {
+    padding: 10px 15px;
+    margin-top: -50px;
+    height: 50px;
+  }
+
+}
+
+@media (max-width: @screen-xs-min) {
+  .nav > li > a {
+    padding-left: @navbar-padding-horizontal-xxs;
+    padding-right: @navbar-padding-horizontal-xxs;
+  }
+
+  .navbar-contacts {
+    padding-right: 0;
+
+    & > li > a {
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+
+  .navbar-brand {
+    background-position: 5px 5px;
+    padding-left: 0;
+    padding-right: 5px;
+  }
+
+  .navbar-search .search-toggle i {
+    padding-right: 0;
+  }
+
+  .search-dropdown-container .form-search button.search-form-submit {
+    margin-right: 10px;
+  }
+
+  .navbar-search li.search-toggle {
+    padding-left: 10px;
+
+    button {
+      height: 52px;
+    }
+  }
+
+  .navbar .fa, .search-dropdown-container .fa {
+    font-size: 25px;
   }
 
 }
