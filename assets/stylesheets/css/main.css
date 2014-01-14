@@ -6114,7 +6114,6 @@ article .toc {
   margin-right: auto;
   background-color: #A09A98;
   border: none;
-  min-width: 250px;
   padding: 10px;
   padding-bottom: 0;
   border-radius: 5px;
@@ -6353,8 +6352,7 @@ button.enabled-xs {
     padding-right: 0;
   }
   .navbar-contacts > li > a {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding: 4px;
   }
   .navbar-brand {
     background-position: 5px 5px;
@@ -6379,5 +6377,12 @@ button.enabled-xs {
   }
   footer {
     font-size: 15px;
+  }
+  article {
+    font-size: 14px;
+    padding: 20px;
+  }
+  article ul {
+    padding: 15px;
   }
 }
