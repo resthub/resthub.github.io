@@ -6109,27 +6109,31 @@ article h3 {
 article p {
   margin: 20px 0;
 }
-article #toc-container .toc {
+article .toc {
   margin-left: auto;
   margin-right: auto;
   background-color: #A09A98;
   border: none;
   min-width: 250px;
+  padding: 10px;
+  padding-bottom: 0;
+  border-radius: 5px;
 }
-article #toc-container .toc td {
-  padding: 15px;
+article .toc i {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-style: normal;
+  padding-bottom: 10px;
+  display: inline-block;
 }
-article #toc-container .toc h3 {
-  border: none;
-  margin-top: 0;
+article .toc ol {
+  padding-bottom: 15px;
+  padding-left: 35px;
 }
-article #toc-container .toc .tocnumber {
-  padding-right: 5px;
-}
-article #toc-container .toc a {
+article .toc a {
   color: #34302d;
 }
-article #toc-container .toc a:hover {
+article .toc a:hover {
   border-color: #34302d;
 }
 .highlight,
@@ -6367,7 +6371,7 @@ button.enabled-xs {
     padding-left: 10px;
   }
   .navbar-search li.search-toggle button {
-    height: 52px;
+    height: 50px;
   }
   .navbar .fa,
   .search-dropdown-container .fa {

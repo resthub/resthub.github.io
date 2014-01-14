@@ -4,6 +4,8 @@ title: Project layout
 permalink:  layout/
 ---
 
+<div class="toc"></div>
+
 Let's take a look at a typical RESThub based application...
 
 RESThub stack based projects follow the "Maven standard" project layout:
@@ -315,7 +317,9 @@ public void setSampleProperty(...) {
 }
 ```
 
-## CRUD services
+.
+
+### CRUD services
 
 RESThub is designed to give you the choice between a 2 layers (Controller -> Repository) or a
 3 layers (Controller -> Service -> Repository) software architecture. If you choose the 3 layers one,

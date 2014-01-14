@@ -4,6 +4,8 @@ title: JPA support
 permalink:  jpa/
 ---
 
+<div class="toc"></div>
+
 JPA support is based on Spring Data JPA and includes by default the H2 in memory database. It includes the following dependencies:
 
 * Spring Data JPA ([reference manual](http://static.springsource.org/spring-data/data-jpa/docs/current/reference/html/)

@@ -221,33 +221,34 @@ article {
     margin: 20px 0;
   }
 
-  #toc-container {
-    .toc {
-      margin-left: auto;
-      margin-right: auto;
-      background-color: #A09A98;
-      border: none;
-      min-width: 250px;
+  .toc {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #A09A98;
+    border: none;
+    min-width: 250px;
+    padding: 10px;
+    padding-bottom: 0;
+    border-radius: 5px;
 
-      td {
-        padding: 15px;
-      }
+    i {
+      font-weight: 900;
+      text-transform: uppercase;
+      font-style: normal;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
 
-      h3 {
-        border: none;
-        margin-top: 0;
-      }
+    ol {
+      padding-bottom: 15px;
+      padding-left: 35px;
+    }
 
-      .tocnumber {
-        padding-right: 5px;
-      }
+    a {
+      color: @resthub-brown-color;
 
-      a {
-        color: @resthub-brown-color;
-
-        &:hover {
-          border-color: @resthub-brown-color;
-        }
+      &:hover {
+        border-color: @resthub-brown-color;
       }
     }
   }
@@ -529,7 +530,7 @@ button.enabled-xs {
     padding-left: 10px;
 
     button {
-      height: 52px;
+      height: 50px;
     }
   }
 
