@@ -11,36 +11,46 @@
 @min-height: 100%;
 @screen-xxs-max: (@screen-xs - 1px);
 
+@screen-sm-min: 568px;
+@screen-md-min: 768px;
+
 @link-color: @resthub-orange-color;
 @navbar-border-radius: none;
 @navbar-inverse-bg: @resthub-brown-color;
 @navbar-inverse-color: @resthub-white-color;
-@navbar-inverse-link-color: @resthub-white-color;
+@navbar-inverse-link-color: @resthub-orange-color;
+@navbar-inverse-link-active-color: @resthub-brown-color;
 @navbar-inverse-link-active-bg: @resthub-orange-color;
+@navbar-inverse-link-active-hover-color: @resthub-white-color;
 @navbar-inverse-link-hover-bg: @resthub-orange-color;
+@navbar-inverse-link-hover-color: @resthub-brown-color;
 
-@navbar-padding-vertical: 17px;
-@navbar-padding-vertical-xs: 5px;
-@navbar-padding-horizontal-xxs: 7px;
-@navbar-line-height: 40px;
+//@navbar-padding-vertical: 17px;
+@navbar-height: 74px;
+@navbar-height-sm: 50px;
+@navbar-padding-vertical-sm: ((@navbar-height-sm - @line-height-computed) / 2);
+@navbar-padding-vertical-xs: 8px;
+@navbar-padding-horizontal-xs: 8px;
+//@navbar-line-height: 40px;
 
 @grid-float-breakpoint: 0px;
 @font-family-sans-serif: 'Lato', Arial, sans-serif;
 
-@body-font-size: 21px;
+@font-size-base: 21px;
+@font-size-small: 16px;
 @aside-font-size: 16px;
 @menu-font-weight: 900;
 
 html, body {
   height: 100%;
-  min-width: @min-width;
+  //min-width: @min-width;
   min-height: @min-height;
 }
 
 body {
   background: @resthub-intermediate-brown-color;
   color: @resthub-white-color;
-  font-size: @body-font-size;
+  //font-size: @body-font-size;
   font-weight: 300;
   position: relative;
   padding-top: 80px;
@@ -61,30 +71,78 @@ header {
   border-bottom: none;
   border-left: none;
   border-right: none;
-  margin-bottom: 0px;
-  min-width: @min-width;
+
+  font-size: @font-size-small;
+
+  .navbar-brand {
+    width: 40px;
+    margin-right: 20px;
+    background-image: url("/assets/img/resthub-logo-small.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+      background-image: url("/assets/img/resthub-logo-small-orange.png");
+    }
+  }
+
+  .navbar-nav {
+    font-weight: 900;
+    text-transform: uppercase;
+
+    > .active > a:hover {
+      color: @navbar-inverse-link-active-hover-color;
+    }
+  }
+
+  .navbar-form {
+    .btn {
+      border: none;
+      background: inherit;
+
+      &:hover {
+        color: @resthub-orange-color;
+      }
+    }
+  }
+
+  .navbar-contacts, .navbar-text {
+    font-size: @font-size-large;
+
+    > li > a {
+      padding-left: 8px;
+      padding-right: 8px;
+      color: @resthub-white-color;
+
+      &:hover {
+        color: @resthub-orange-color;
+        background-color: inherit;
+      }
+    }
+  }
+
+
+
+
+//  margin-bottom: 0px;
+  //min-width: @min-width;
 
   .fa {
-    font-size: 30px;
+    //font-size: 30px;
   }
 }
 
-.overview {
-  img {
-    max-width: 100%;
-  }
-}
 
-.navbar-nav > li > a {
-  line-height: @navbar-line-height;
+/*.navbar-nav > li > a {
+  //line-height: @navbar-line-height;
   font-weight: bold;
-  font-size: 16px;
+  //font-size: 16px;
   text-transform: uppercase;
-  padding-bottom: @navbar-padding-vertical;
-  padding-top: @navbar-padding-vertical;
-}
+  //padding-bottom: @navbar-padding-vertical;
+  //padding-top: @navbar-padding-vertical;
+}*/
 
-.navbar-inverse .navbar-nav > .active > a {
+/*.navbar-inverse .navbar-nav > .active > a {
   color: @resthub-brown-color;
 }
 
@@ -95,27 +153,18 @@ header {
   &:hover, &:focus {
     color: @resthub-brown-color;
   }
-}
+}*/
 
-.navbar-form {
+/*.navbar-form {
   // Undo 100% width for pull classes
   @media (min-width: @grid-float-breakpoint) {
     padding-top: 11px;
     padding-bottom: 11px;
   }
-}
+}*/
 
-.navbar-search {
+/*.navbar-search {
   width: 50%;
-
-  li.search-toggle {
-    i {
-      padding-top: @navbar-padding-vertical;
-      padding-bottom: @navbar-padding-vertical;
-      line-height: @navbar-line-height;
-      padding-right: 10px;
-    }
-  }
 
   .form-search {
     width: 90%;
@@ -124,59 +173,55 @@ header {
       padding-left: 0px;
     }
   }
-}
+}*/
 
-.navbar-nav i {
+/*.navbar-nav i {
   line-height: 40px;
-}
+}*/
 
-.navbar-contacts {
+/*.navbar-contacts {
 
   & > li > a {
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 30px;
+    //font-size: 30px;
     line-height: initial;
   }
-}
+}*/
 
-.navbar-inverse .navbar-nav.navbar-contacts > li > a {
+/*.navbar-inverse .navbar-nav.navbar-contacts > li > a {
   color: @resthub-white-color;
 
   &:hover {
     background-color: inherit;
     color: @resthub-orange-color;
   }
-}
+}*/
 
-.navbar-brand {
+/*.navbar-brand {
   padding-right: 50px;
-  padding-top: @navbar-padding-vertical;
-  padding-bottom: @navbar-padding-vertical;
-  background-position: 15px @navbar-padding-vertical;
+  //padding-top: @navbar-padding-vertical;
+  //padding-bottom: @navbar-padding-vertical;
+  //background-position: 15px @navbar-padding-vertical;
   background-repeat: no-repeat;
-}
+  width: 40px;
+  height: 74px;
 
-a.resthub-logo {
   background-image: url("/assets/img/resthub-logo-small.png");
 
   &:hover {
     background-image: url("/assets/img/resthub-logo-small-orange.png");
   }
-
-  span {
-    display: block;
-    width: 40px;
-    height: 40px;
-    opacity: 0;
-    -moz-transition: opacity .12s ease-in-out;
-    -webkit-transition: opacity .12s ease-in-out;
-    -o-transition: opacity .12s ease-in-out;
-  }
-}
+}*/
 
 .navbar-toggle {
   padding: 19px 10px;
+}
+
+.overview {
+  img {
+    max-width: 100%;
+  }
 }
 
 section {
@@ -193,10 +238,9 @@ article {
   position: relative;
   font-weight: 500;
   font-size: 16px;
-  z-index: -1;
   min-height: 700px;
 
-  &.col-lg-9 {
+  &.col-md-9 {
     padding: 40px 40px 30px;
   }
 
@@ -276,7 +320,7 @@ pre, code {
   color: @resthub-white-color;
 }
 
-aside.col-lg-3 {
+aside {
   padding: 30px;
 
   h4 {
@@ -351,17 +395,17 @@ footer {
   color: @resthub-orange-color;
 }
 
-.navbar-nav button {
+/*.navbar-nav button {
   border: none;
   color: transparent;
   background-color: transparent;
   padding: 0;
   outline-width: 0;
-}
+}*/
 
 .search-dropdown-container {
   width: 100%;
-  min-width: @min-width;
+  //min-width: @min-width;
   margin-top: -3px;
   position: fixed;
 
@@ -378,7 +422,7 @@ footer {
       box-shadow: none;
       height: 30px;
       line-height: 29px;
-      font-size: @body-font-size;
+      //font-size: @body-font-size;
       width: 100%;
       outline-width: 0;
       background-color: transparent;
@@ -402,7 +446,7 @@ footer {
   }
 }
 
-@media only screen and (min-width: @grid-float-breakpoint) {
+/*@media only screen and (min-width: @grid-float-breakpoint) {
   .navbar-nav.navbar-right:last-child {
     margin-right: 0;
   }
@@ -432,20 +476,38 @@ footer {
       width: 80%;
     }
   }
-}
+}*/
 
-@media only screen and (max-width: @screen-xs-max) {
+@media only screen and (max-width: @screen-sm-max) {
 
-  button.enabled-xs {
+  /*button.enabled-xs {
     pointer-events: auto;
     cursor: pointer;
   }
 
+  .navbar-nav > li > a {
+    padding: @navbar-padding-vertical-xs @navbar-padding-horizontal-xs;
+    font-size: 12px;
+  }
+
+  .navbar .fa {
+    font-size: 15px;
+  }
+
+  .navbar-brand {
+    padding: @navbar-padding-vertical-xs @navbar-padding-horizontal-xs;
+    background-position: @navbar-padding-horizontal-xs @navbar-padding-horizontal-xs;
+  }
+
   .navbar-search {
     width: auto;
-    padding-left: 40px;
+    padding-left: 8px;
 
     li.search-toggle {
+
+      i {
+        line-height: 15px;
+      }
 
       &:hover {
         color: @resthub-orange-color;
@@ -460,11 +522,29 @@ footer {
         color: @resthub-brown-color;
       }
     }
+  }*/
+
+  .navbar {
+    min-height: @navbar-height-sm;
+
+    .container .navbar-brand {
+      margin-left: 0;
+      margin-right: @navbar-padding-horizontal;
+      padding-top: @navbar-padding-vertical-sm;
+      padding-bottom: @navbar-padding-vertical-sm;
+    }
+
+    .navbar-nav {
+      > li > a {
+        padding-top: @navbar-padding-vertical-sm;
+        padding-bottom: @navbar-padding-vertical-sm;
+      }
+    }
   }
 
-  article.col-lg-9 {
-    margin-left: 20px;
-    margin-right: 20px;
+  section {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
 }
@@ -482,7 +562,7 @@ footer {
   article {
     font-size: 14px;
 
-    &.col-sm-9 {
+    &.col-md-9 {
       padding: 10px;
     }
 
@@ -494,7 +574,7 @@ footer {
 
 }
 
-@media only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (min-device-pixel-ratio: 2),
+/*@media only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (min-device-pixel-ratio: 2),
 only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2),
 only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (min--moz-device-pixel-ratio: 2),
 only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-o-min-device-pixel-ratio: 2)
@@ -502,9 +582,17 @@ only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-o
   body {
     min-width: @screen-md;
   }
-}
 
-.visible-xxs {
+  .visible-xs {
+    .responsive-invisibility();
+  }
+
+  .hidden-xs {
+    .responsive-visibility();
+  }
+}*/
+
+/*.visible-xxs {
   .responsive-invisibility();
   @media (max-width: @screen-xxs-max) {
     .responsive-visibility();
@@ -525,7 +613,7 @@ only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-o
     }
   }
   &.visible-lg {
-    @media (min-width: @screen-lg-min) {
+    @media (min-width: @screen-sm-min) {
       .responsive-visibility();
     }
   }
@@ -552,8 +640,8 @@ only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-o
     }
   }
   &.hidden-lg {
-    @media (min-width: @screen-lg-min) {
+    @media (min-width: @screen-sm-min) {
       .responsive-invisibility();
     }
   }
-}
+}*/
