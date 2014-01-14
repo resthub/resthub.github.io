@@ -7,8 +7,9 @@
 @resthub-light-brown-color: #e0dcd9;
 @resthub-white-color: #f5f5f5;
 
-@min-width: 306px;
+@min-width: 466px;
 @min-height: 100%;
+@screen-xxs-max: (@screen-xs - 1px);
 
 @link-color: @resthub-orange-color;
 @navbar-border-radius: none;
@@ -107,7 +108,7 @@ header {
 .navbar-search {
   width: 50%;
 
-  .search-toggle {
+  li.search-toggle {
     i {
       padding-top: @navbar-padding-vertical;
       padding-bottom: @navbar-padding-vertical;
@@ -192,10 +193,10 @@ article {
   position: relative;
   font-weight: 500;
   font-size: 16px;
-  z-index:0;
+  z-index: -1;
+  min-height: 700px;
 
   &.col-lg-9 {
-    min-height: 700px;
     padding: 40px 40px 30px;
   }
 
@@ -350,11 +351,6 @@ footer {
   color: @resthub-orange-color;
 }
 
-button.enabled-xs {
-  pointer-events: none;
-  cursor: default;
-}
-
 .navbar-nav button {
   border: none;
   color: transparent;
@@ -366,7 +362,7 @@ button.enabled-xs {
 .search-dropdown-container {
   width: 100%;
   min-width: @min-width;
-  margin-top: -26px;
+  margin-top: -3px;
   position: fixed;
 
   .container {
@@ -406,17 +402,19 @@ button.enabled-xs {
   }
 }
 
-.visible-xs.hidden {
-  display: none !important;
+@media only screen and (min-width: @grid-float-breakpoint) {
+  .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+  }
 }
 
-@media (max-width: @screen-md-min) {
+@media only screen and (max-width: @screen-md-min) {
   .navbar-brand {
     padding-right: 15px;
   }
 }
 
-@media (max-width: @screen-md-max) {
+@media only screen and (max-width: @screen-md-max) {
   .navbar-search {
     width: 45%;
 
@@ -426,7 +424,7 @@ button.enabled-xs {
   }
 }
 
-@media (max-width: @screen-sm-max) {
+@media only screen and (max-width: @screen-sm-max) {
   .navbar-search {
     width: 33%;
 
@@ -436,33 +434,18 @@ button.enabled-xs {
   }
 }
 
-@media (max-width: @screen-xs-max) {
+@media only screen and (max-width: @screen-xs-max) {
 
-  .navbar-brand {
-    padding-top: @navbar-padding-vertical-xs;
-    padding-bottom: @navbar-padding-vertical-xs;
-    background-position: 15px @navbar-padding-vertical-xs;
-  }
-
-  .navbar-nav > li > a {
-    padding-bottom: @navbar-padding-vertical-xs;
-    padding-top: @navbar-padding-vertical-xs;
-  }
-
-  .navbar-contacts {
-    padding-right: 4%;
+  button.enabled-xs {
+    pointer-events: auto;
+    cursor: pointer;
   }
 
   .navbar-search {
     width: auto;
+    padding-left: 40px;
 
     li.search-toggle {
-      padding-left: 20px;
-
-      i {
-        padding-top: @navbar-padding-vertical-xs;
-        padding-bottom: @navbar-padding-vertical-xs;
-      }
 
       &:hover {
         color: @resthub-orange-color;
@@ -479,62 +462,17 @@ button.enabled-xs {
     }
   }
 
-  button.enabled-xs {
-    pointer-events: auto;
-    cursor: pointer;
-  }
-
-  section {
-    margin-right: 20px;
+  article.col-lg-9 {
     margin-left: 20px;
-  }
-
-  footer {
-    padding: 10px 15px;
-    margin-top: -50px;
-    height: 50px;
+    margin-right: 20px;
   }
 
 }
 
-@media (max-width: @screen-xs-min) {
-  .nav > li > a {
-    padding-left: @navbar-padding-horizontal-xxs;
-    padding-right: @navbar-padding-horizontal-xxs;
-  }
+@media only screen and (max-width: @screen-xs-min) and (orientation: portrait) {
 
-  .navbar-contacts {
-    padding-right: 0;
-
-    & > li > a {
-      padding: 4px;
-    }
-  }
-
-  .navbar-brand {
-    background-position: 5px 5px;
-    padding-left: 0;
-    padding-right: 5px;
-  }
-
-  .navbar-search .search-toggle i {
-    padding-right: 0;
-  }
-
-  .search-dropdown-container .form-search button.search-form-submit {
-    margin-right: 10px;
-  }
-
-  .navbar-search li.search-toggle {
-    padding-left: 10px;
-
-    button {
-      height: 50px;
-    }
-  }
-
-  .navbar .fa, .search-dropdown-container .fa {
-    font-size: 25px;
+  pre code {
+    font-size: 10px;
   }
 
   footer {
@@ -543,12 +481,79 @@ button.enabled-xs {
 
   article {
     font-size: 14px;
-    padding: 20px;
+
+    &.col-sm-9 {
+      padding: 10px;
+    }
 
     ul {
-      padding: 15px;
+      padding-left: 30px;
     }
 
   }
 
+}
+
+@media only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (min-device-pixel-ratio: 2),
+only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (min--moz-device-pixel-ratio: 2),
+only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-o-min-device-pixel-ratio: 2)
+{
+  body {
+    min-width: @screen-md;
+  }
+}
+
+.visible-xxs {
+  .responsive-invisibility();
+  @media (max-width: @screen-xxs-max) {
+    .responsive-visibility();
+  }
+  &.visible-xs {
+    @media (min-width: @screen-xs-min) and (max-width: @screen-xs-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-visibility();
+    }
+  }
+}
+
+.hidden-xxs {
+  .responsive-visibility();
+  @media (max-width: @screen-xxs-max) {
+    .responsive-invisibility();
+  }
+  &.visible-xs {
+    @media (min-width: @screen-xs-min) and (max-width: @screen-xs-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-invisibility();
+    }
+  }
 }
