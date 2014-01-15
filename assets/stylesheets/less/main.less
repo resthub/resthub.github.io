@@ -36,8 +36,8 @@
 
 @font-size-xl: 27px;
 @font-size-l: 21px;
-@font-size-base: 21px;
-@font-size-small: 16px;
+@font-size-base: 16px;
+@font-size-small: 14px;
 @font-size-code: (@font-size-base - 2px);
 @aside-font-size: @font-size-small;
 @menu-font-weight: 900;
@@ -113,14 +113,36 @@ header {
 
     &.navbar-contacts {
       margin-left: 15px;
+
+      > li > a {
+        &:hover {
+          color: @resthub-orange-color;
+          background-color: inherit;
+        }
+      }
     }
 
     &.navbar-search {
       margin-left: 30px;
     }
+
+    &.navbar-contacts, &.navbar-search {
+      font-size: @font-size-xl;
+
+      > li > a {
+        padding-left: 8px;
+        padding-right: 8px;
+        color: @resthub-white-color;
+        padding-top: (@navbar-padding-vertical - 3px);
+        padding-bottom: (@navbar-padding-vertical - 3px);
+      }
+    }
   }
 
   .navbar-form {
+
+    margin-top: 23px;
+    margin-bottom: 23px;
 
     .btn {
       border: none;
@@ -135,22 +157,6 @@ header {
       }
     }
   }
-
-  .navbar-contacts, .navbar-search {
-    font-size: @font-size-xl;
-
-    > li > a {
-      padding-left: 8px;
-      padding-right: 8px;
-      color: @resthub-white-color;
-
-      &:hover {
-        color: @resthub-orange-color;
-        background-color: inherit;
-      }
-    }
-  }
-
 }
 
 .search-form {
@@ -179,7 +185,7 @@ header {
 
     button {
       border: none;
-      margin-top: 10px;
+      margin-top: 6px;
       float: right;
       color: @resthub-orange-color;
       background-color: transparent;
@@ -282,8 +288,8 @@ pre {
   box-shadow: inset 0 1px 10px rgba(0, 0, 0, .3), 0 1px 0 rgba(255, 255, 255, .1),0 -1px 0 rgba(0, 0, 0, .5);
   background: @resthub-brown-color;
   color: @resthub-white-color;
-  padding-top: 0;
-  padding-bottom: .3em;
+  padding-top: .5em;
+  padding-bottom: .5em;
   border-radius: 5px;
   border: none;
   line-height: 1;
@@ -413,6 +419,14 @@ footer {
       &.navbar-search {
         margin-left: 20px;
       }
+
+      &.navbar-contacts, &.navbar-search {
+
+        > li > a {
+          padding-top: (@navbar-padding-vertical-xs - 2px);
+          padding-bottom: (@navbar-padding-vertical-xs - 2px);
+        }
+      }
     }
 
     .fa {
@@ -473,7 +487,7 @@ footer {
       > li > a {
         padding-left: @navbar-padding-horizontal-xxs;
         padding-right: @navbar-padding-horizontal-xxs;
-        font-size: (@font-size-base-xxs + 1px);
+        font-size: @font-size-base-xxs;
       }
 
       &.navbar-contacts {
@@ -492,6 +506,14 @@ footer {
           padding-right: 7px;
         }
       }
+
+      &.navbar-contacts, &.navbar-search {
+        > li > a {
+          padding-top: (@navbar-padding-vertical-xs - 1px);
+          padding-bottom: @navbar-padding-vertical-xs;
+        }
+      }
+
     }
 
     .fa {
