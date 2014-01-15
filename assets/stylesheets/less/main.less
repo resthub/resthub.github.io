@@ -36,8 +36,8 @@
 
 @font-size-xl: 27px;
 @font-size-l: 21px;
-@font-size-base: 16px;
-@font-size-small: 14px;
+@font-size-base: 21px;
+@font-size-small: 16px;
 @font-size-code: (@font-size-base - 2px);
 @aside-font-size: @font-size-small;
 @menu-font-weight: 900;
@@ -51,7 +51,7 @@
 @font-size-h5-xs: @font-size-base-xs;
 @font-size-h6-xs: ceil(@font-size-base-xs * 0.85);
 
-@font-size-base-xxs: 12px;
+@font-size-base-xxs: 13px;
 @font-size-code-xxs: (@font-size-base-xxs - 2px);
 @font-size-h1-xxs: floor(@font-size-base-xxs * 2.6);
 @font-size-h2-xxs: floor(@font-size-base-xxs * 2.15);
@@ -62,7 +62,6 @@
 
 html, body {
   height: 100%;
-  //min-width: @min-width;
   min-height: @min-height;
 }
 
@@ -414,7 +413,7 @@ footer {
     }
 
     .fa {
-      font-size: 22px;
+      font-size: 26px;
     }
 
   }
@@ -427,12 +426,24 @@ footer {
     article {
       font-size: @font-size-base-xs;
 
-      h1, .h1 { font-size: @font-size-h1-xs; }
-      h2, .h2 { font-size: @font-size-h2-xs; }
-      h3, .h3 { font-size: @font-size-h3-xs; }
-      h4, .h4 { font-size: @font-size-h4-xs; }
-      h5, .h5 { font-size: @font-size-h5-xs; }
-      h6, .h6 { font-size: @font-size-h6-xs; }
+      h1, .h1 {
+        font-size: @font-size-h1-xs;
+      }
+      h2, .h2 {
+        font-size: @font-size-h2-xs;
+      }
+      h3, .h3 {
+        font-size: @font-size-h3-xs;
+      }
+      h4, .h4 {
+        font-size: @font-size-h4-xs;
+      }
+      h5, .h5 {
+        font-size: @font-size-h5-xs;
+      }
+      h6, .h6 {
+        font-size: @font-size-h6-xs;
+      }
     }
   }
 
@@ -459,24 +470,30 @@ footer {
       > li > a {
         padding-left: @navbar-padding-horizontal-xxs;
         padding-right: @navbar-padding-horizontal-xxs;
-        font-size: 12px;
+        font-size: (@font-size-base-xxs + 1px);
       }
 
-      &.navbar-contacts > li > a {
-        padding-left: 4px;
-        padding-right: 4px;
+      &.navbar-contacts {
+        margin-left: 10px;
+
+        > li > a {
+          padding-left: 4px;
+          padding-right: 4px;
+        }
       }
 
       &.navbar-search {
         margin-left: 13px;
-      }
 
-      &.navbar-search, &.navbar-contacts {
         > li > a {
-          padding-top: (@navbar-padding-vertical-xs - 2px);
-          padding-bottom: (@navbar-padding-vertical-xs - 2px);
+          padding-right: 7px;
         }
       }
+    }
+
+    .fa {
+      font-size: 20px;
+      vertical-align: middle;
     }
 
   }
@@ -486,12 +503,24 @@ footer {
     padding-right: 5px;
 
     article {
-      h1, .h1 { font-size: @font-size-h1-xxs; }
-      h2, .h2 { font-size: @font-size-h2-xxs; }
-      h3, .h3 { font-size: @font-size-h3-xxs; }
-      h4, .h4 { font-size: @font-size-h4-xxs; }
-      h5, .h5 { font-size: @font-size-h5-xxs; }
-      h6, .h6 { font-size: @font-size-h6-xxs; }
+      h1, .h1 {
+        font-size: @font-size-h1-xxs;
+      }
+      h2, .h2 {
+        font-size: @font-size-h2-xxs;
+      }
+      h3, .h3 {
+        font-size: @font-size-h3-xxs;
+      }
+      h4, .h4 {
+        font-size: @font-size-h4-xxs;
+      }
+      h5, .h5 {
+        font-size: @font-size-h5-xxs;
+      }
+      h6, .h6 {
+        font-size: @font-size-h6-xxs;
+      }
 
       ul {
         padding-left: (@grid-gutter-width / 2);
@@ -505,6 +534,7 @@ footer {
   }
 
 }
+
 .visible-xxs {
   .responsive-invisibility();
   @media (max-width: @screen-xxs-max) {
