@@ -38,6 +38,7 @@
 @font-size-l: 21px;
 @font-size-base: 16px;
 @font-size-small: 14px;
+@font-size-small-xxs: 12px;
 @font-size-code: (@font-size-base - 2px);
 @menu-font-size: @font-size-small;
 @menu-font-weight: 900;
@@ -413,12 +414,34 @@ pre code {
 
 footer {
   background-color: @navbar-inverse-bg;
+  font-size: @font-size-small;
   color: @resthub-white-color;
-  padding: 30px 20px;
+  padding: 10px 0;
   position: relative;
   margin-top: -80px; /* negative value of footer height */
-  height: 80px;
+  height: 110px;
   clear: both;
+
+  .credentials {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .justified {
+    text-align: center;
+  }
+
+  .components {
+    margin-bottom: 10px;
+  }
+
+  .component {
+    margin-right: 8px;
+
+    .build-status {
+      width: 10%;
+    }
+  }
 }
 
 @media only screen and (min-width: @screen-lg-min) {
@@ -607,6 +630,14 @@ footer {
     font-size: @font-size-code-xxs;
   }
 
+  footer {
+    font-size: @font-size-small-xxs;
+    height: 90px;
+
+    .credentials, .engine, .team {
+      font-size: @font-size-small-xxs - 2px;
+    }
+  }
 }
 
 .visible-xxs {
