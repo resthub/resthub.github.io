@@ -3,15 +3,18 @@ layout: default
 title: RESThub, your Spring + Backbone.js stack
 home: true
 ---
-<p class="overview justified visible-md visible-lg">
-    <img src="/assets/img/spring-backbone-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
-</p>
-<p class="overview justified visible-sm">
-    <img src="/assets/img/spring-backbone-sm-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
-</p>
-<p class="overview justified visible-xs">
-    <img src="/assets/img/spring-backbone-xs-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
-</p>
+<div class="overview">
+    <p class="justified visible-md visible-lg">
+        <img src="/assets/img/spring-backbone-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
+    </p>
+    <p class="justified visible-sm">
+        <img src="/assets/img/spring-backbone-sm-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
+    </p>
+    <p class="justified visible-xs">
+        <img src="/assets/img/spring-backbone-xs-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
+    </p>
 
-{% capture index %}{% include index.md %}{% endcapture %}
-{{ index | markdownify }}
+    {% capture index %}{% include index.md %}{% endcapture %}
+    {{ index | markdownify }}
+
+</div>
