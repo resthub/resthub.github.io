@@ -5,7 +5,7 @@ layout: default
 <section class="row">
 
     <nav class="collapsible-menu visible-xs">
-        <button type="button" class="btn btn-default toggle-menu">
+        <button type="button" class="btn btn-nav toggle-menu">
             Navigate <span class="caret"></span>
         </button>
         <div class="menu hidden">
@@ -15,7 +15,8 @@ layout: default
 
     <article class="col-xs-12 col-sm-9">
         <h1>{{ page.title }}</h1>
-        {{ content | toc_generate }}
+        {{ content}}
+        {% include pagination.html %}
     </article>
 
     <nav class="menu aside hidden-xs hidden-xs col-sm-3">

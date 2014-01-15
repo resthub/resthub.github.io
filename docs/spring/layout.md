@@ -2,6 +2,8 @@
 layout: docs
 title: Project layout
 permalink:  layout/
+prev: spring/home
+next: spring/jpa
 ---
 
 <div class="toc"></div>

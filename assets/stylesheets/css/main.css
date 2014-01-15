@@ -1728,15 +1728,15 @@ textarea.input-sm {
   height: auto;
 }
 .input-lg {
-  height: 49px;
+  height: 46px;
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
 select.input-lg {
-  height: 49px;
-  line-height: 49px;
+  height: 46px;
+  line-height: 46px;
 }
 textarea.input-lg {
   height: auto;
@@ -1912,7 +1912,7 @@ textarea.input-lg {
 }
 .btn:hover,
 .btn:focus {
-  color: #333333;
+  color: #f5f5f5;
   text-decoration: none;
 }
 .btn:active,
@@ -1933,18 +1933,18 @@ fieldset[disabled] .btn {
   box-shadow: none;
 }
 .btn-default {
-  color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
+  color: #f5f5f5;
+  background-color: #494543;
+  border-color: #f5f5f5;
 }
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
-  color: #333333;
-  background-color: #ebebeb;
-  border-color: #adadad;
+  color: #f5f5f5;
+  background-color: #34312f;
+  border-color: #d6d6d6;
 }
 .btn-default:active,
 .btn-default.active,
@@ -1966,26 +1966,26 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #ffffff;
-  border-color: #cccccc;
+  background-color: #494543;
+  border-color: #f5f5f5;
 }
 .btn-default .badge {
-  color: #ffffff;
+  color: #494543;
   background-color: #fff;
 }
 .btn-primary {
-  color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  color: #d4571e;
+  background-color: #494543;
+  border-color: transparent;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-  color: #ffffff;
-  background-color: #3276b1;
-  border-color: #285e8e;
+  color: #d4571e;
+  background-color: #34312f;
+  border-color: rgba(0, 0, 0, 0);
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -2007,11 +2007,11 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #428bca;
-  border-color: #357ebd;
+  background-color: #494543;
+  border-color: transparent;
 }
 .btn-primary .badge {
-  color: #428bca;
+  color: #494543;
   background-color: #fff;
 }
 .btn-warning {
@@ -2213,7 +2213,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg {
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
@@ -3112,9 +3112,12 @@ input[type="button"].btn-block {
 }
 .btn-group-lg > .btn {
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
+}
+.btn-group-lg > .btn .glyphicon {
+  font-size: 16px;
 }
 .btn-group > .btn + .dropdown-toggle {
   padding-left: 8px;
@@ -3237,17 +3240,17 @@ input[type="button"].btn-block {
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: 49px;
+  height: 46px;
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
 select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn {
-  height: 49px;
-  line-height: 49px;
+  height: 46px;
+  line-height: 46px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -3308,7 +3311,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .input-group-addon.input-lg {
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 6px;
 }
 .input-group-addon input[type="radio"],
@@ -3709,7 +3712,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   padding: 26px 15px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 22px;
 }
 .navbar-brand:hover,
@@ -4150,7 +4153,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination-lg > li > a,
 .pagination-lg > li > span {
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
 }
 .pagination-lg > li:first-child > a,
 .pagination-lg > li:first-child > span {
@@ -5966,13 +5969,11 @@ body {
   font-weight: 300;
   position: relative;
 }
+.btn-lg .glyphicon {
+  font-size: 16px;
+}
 header {
   margin-bottom: 20px;
-}
-#main.container {
-  padding-bottom: 80px;
-  min-height: 96.5%;
-  text-align: center;
 }
 .navbar {
   border-top: 4px solid #d4571e;
@@ -6062,6 +6063,11 @@ header {
   color: #d4571e;
   background-color: transparent;
 }
+#main.container {
+  padding-bottom: 80px;
+  min-height: 96.5%;
+  text-align: center;
+}
 .overview {
   font-size: 21px;
 }
@@ -6133,6 +6139,15 @@ article .toc a {
 article .toc a:hover {
   border-color: #34302d;
 }
+article .section-nav {
+  margin-top: 30px;
+}
+article .section-nav .text-right .btn .glyphicon {
+  margin-left: 8px;
+}
+article .section-nav .text-left .btn .glyphicon {
+  margin-right: 8px;
+}
 .highlight,
 p > pre,
 p > code,
@@ -6172,18 +6187,23 @@ pre code {
 .collapsible-menu button.btn .caret {
   margin-left: 5px;
 }
-.collapsible-menu button.btn.btn-default:hover,
-.collapsible-menu button.btn.open,
-.collapsible-menu button.btn.open:focus {
-  background-color: #f5f5f5;
-  border-color: #d4571e;
-  color: #34302d;
+.collapsible-menu button.btn.btn-nav {
+  color: #cbc4c1;
+  background-color: #494543;
+  border-color: #cbc4c1;
 }
-.collapsible-menu button.btn:focus {
-  background-color: inherit;
-  border-color: inherit;
+.collapsible-menu button.btn.btn-nav:hover,
+.collapsible-menu button.btn.btn-nav.open,
+.collapsible-menu button.btn.btn-nav.open:focus {
+  color: #34302d;
+  background-color: #cbc4c1;
+  border-color: #cbc4c1;
+}
+.collapsible-menu button.btn.btn-nav:focus {
   outline: none;
-  color: inherit;
+  color: #34302d;
+  background-color: #cbc4c1;
+  border-color: #cbc4c1;
 }
 .collapsible-menu button.btn.open {
   font-weight: 700;
@@ -6238,10 +6258,19 @@ pre code {
   margin: 30px;
   border-width: 6px;
 }
-.btn-default {
+.btn {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 0 0 rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 5px;
+}
+.btn.btn-primary {
+  border: none;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
   color: #f5f5f5;
-  background-color: #494543;
-  border-color: #f5f5f5;
+  background-color: #d4571e;
 }
 .btn-default:hover {
   color: #f5f5f5;

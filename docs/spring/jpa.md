@@ -2,6 +2,8 @@
 layout: docs
 title: JPA support
 permalink:  jpa/
+prev: spring/layout
+next: spring/mongo
 ---
 
 <div class="toc"></div>

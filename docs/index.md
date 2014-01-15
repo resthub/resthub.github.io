@@ -2,6 +2,7 @@
 layout: docs
 title: What is RESThub ?
 permalink:  home/
+next: spring/home
 ---
 
 <p class="justified">

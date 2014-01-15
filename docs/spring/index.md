@@ -2,6 +2,8 @@
 layout: docs
 title: RESThub Spring Stack
 permalink:  home/
+prev: home
+next: spring/layout
 ---
 
 <div class="toc"></div>

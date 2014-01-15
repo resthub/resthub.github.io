@@ -2,6 +2,7 @@
 layout: docs
 title: MongoDB support
 permalink:  mongo/
+prev: spring/jpa
 ---
 
 <div class="toc"></div>
