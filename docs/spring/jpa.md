@@ -68,28 +68,31 @@ You should include only the customized ones.
 
 RESThub JPA default properties are:
 
-* dataSource.driverClassName = org.h2.Driver
-* dataSource.url = jdbc\:h2\:mem\:resthub;DB_CLOSE_DELAY=-1;MVCC=TRUE
-* dataSource.username = sa
-* dataSource.password =
-* dataSource.minConnectionsPerPartition = 2
-* dataSource.maxConnectionsPerPartition = 4
-* dataSource.partitionCount = 3
-* dataSource.idleConnectionTestPeriodInSeconds = 60
-* dataSource.statementsCacheSize = 100
-* dataSource.connectionTestStatement = /* ping*/ SELECT 1
-
+```
+dataSource.driverClassName = org.h2.Driver
+dataSource.url = jdbc\:h2\:mem\:resthub;DB_CLOSE_DELAY=-1;MVCC=TRUE
+dataSource.username = sa
+dataSource.password =
+dataSource.minConnectionsPerPartition = 2
+dataSource.maxConnectionsPerPartition = 4
+dataSource.partitionCount = 3
+dataSource.idleConnectionTestPeriodInSeconds = 60
+dataSource.statementsCacheSize = 100
+dataSource.connectionTestStatement = /* ping*/ SELECT 1
+```
 
 RESThub Hibernate default properties are:
 
-* hibernate.dialect = org.hibernate.dialect.H2Dialect
-* hibernate.show_sql = false
-* hibernate.format_sql = true
-* hibernate.hbm2ddl.auto = update
-* hibernate.cache.use_second_level_cache = true
-* hibernate.cache.provider_class = net.sf.ehcache.hibernate.EhCacheRegionFactory
-* hibernate.id.new_generator_mappings = true
-* persistenceUnit.packagesToScan =
+```
+hibernate.dialect = org.hibernate.dialect.H2Dialect
+hibernate.show_sql = false
+hibernate.format_sql = true
+hibernate.hbm2ddl.auto = update
+hibernate.cache.use_second_level_cache = true
+hibernate.cache.provider_class = net.sf.ehcache.hibernate.EhCacheRegionFactory
+hibernate.id.new_generator_mappings = true
+persistenceUnit.packagesToScan =
+```
 
 If you need to do more advanced configuration, just override dataSource and entityManagerFactory beans in
 your applicationContext.xml.
@@ -118,7 +121,7 @@ public void onStartup(ServletContext servletContext) throws ServletException {
 }
 ```
 
-When running the webapp, the database console will be available at http://localhost:8080/console/database/
+When running the webapp, the database console will be available at <http://localhost:8080/console/database/>    
 URL with following parameters:
 
 * JDBC URL: jdbc\:h2\:mem\:resthub

@@ -7,7 +7,7 @@
 @resthub-light-brown-color: #e0dcd9;
 @resthub-white-color: #f5f5f5;
 
-@min-width: 466px;
+@min-width: 306px;
 @min-height: 100%;
 @screen-xxs-max: (@screen-xs - 1px);
 //@screen-sm-min: 568px;
@@ -25,21 +25,39 @@
 @navbar-inverse-link-hover-color: @resthub-brown-color;
 @padding-base-vertical: 0;
 
-//@navbar-padding-vertical: 17px;
-@navbar-height: 74px;
 @navbar-height-xs: 50px;
 @navbar-padding-vertical-xs: ((@navbar-height-xs - @line-height-computed) / 2);
 @navbar-padding-horizontal-xs: 6px;
 @navbar-padding-horizontal-xxs: 5px;
-//@navbar-line-height: 40px;
 
 @grid-float-breakpoint: 0px;
 @font-family-sans-serif: 'Lato', Arial, sans-serif;
 
-@font-size-base: 21px;
-@font-size-small: 16px;
-@aside-font-size: 16px;
+@font-size-xl: 27px;
+@font-size-l: 21px;
+@font-size-base: 16px;
+@font-size-small: 14px;
+@font-size-code: (@font-size-base - 2px);
+@aside-font-size: @font-size-base;
 @menu-font-weight: 900;
+
+@font-size-base-xs: 14px;
+@font-size-code-xs: (@font-size-base-xs - 2px);
+@font-size-h1-xs: floor(@font-size-base-xs * 2.6);
+@font-size-h2-xs: floor(@font-size-base-xs * 2.15);
+@font-size-h3-xs: ceil(@font-size-base-xs * 1.7);
+@font-size-h4-xs: ceil(@font-size-base-xs * 1.25);
+@font-size-h5-xs: @font-size-base-xs;
+@font-size-h6-xs: ceil(@font-size-base-xs * 0.85);
+
+@font-size-base-xxs: 12px;
+@font-size-code-xxs: (@font-size-base-xxs - 2px);
+@font-size-h1-xxs: floor(@font-size-base-xxs * 2.6);
+@font-size-h2-xxs: floor(@font-size-base-xxs * 2.15);
+@font-size-h3-xxs: ceil(@font-size-base-xxs * 1.7);
+@font-size-h4-xxs: ceil(@font-size-base-xxs * 1.25);
+@font-size-h5-xxs: @font-size-base-xxs;
+@font-size-h6-xxs: ceil(@font-size-base-xxs * 0.85);
 
 html, body {
   height: 100%;
@@ -50,7 +68,7 @@ html, body {
 body {
   background: @resthub-intermediate-brown-color;
   color: @resthub-white-color;
-  //font-size: @body-font-size;
+  min-width: @min-width;
   font-weight: 300;
   position: relative;
   padding-top: 80px;
@@ -71,7 +89,7 @@ header {
   border-bottom: none;
   border-left: none;
   border-right: none;
-
+  min-width: @min-width;
   font-size: @font-size-small;
 
   .navbar-brand {
@@ -110,7 +128,7 @@ header {
       background: inherit;
 
       i {
-        font-size: @font-size-large;
+        font-size: @font-size-xl;
       }
 
       &:hover {
@@ -120,7 +138,7 @@ header {
   }
 
   .navbar-contacts, .navbar-search {
-    font-size: @font-size-large;
+    font-size: @font-size-xl;
 
     > li > a {
       padding-left: 8px;
@@ -138,8 +156,6 @@ header {
 
 .search-form {
   width: 100%;
-  //min-width: @min-width;
-  //margin-top: -3px;
   position: fixed;
   z-index: 1000;
 
@@ -149,7 +165,6 @@ header {
   }
 
   .container {
-    //padding-right: 0;
     background-color: @resthub-light-brown-color;
   }
 
@@ -175,96 +190,14 @@ header {
     }
   }
 
-  .fa {
-    font-size: @font-size-large;
-  }
 }
-
-/*.navbar-nav > li > a {
-  //line-height: @navbar-line-height;
-  font-weight: bold;
-  //font-size: 16px;
-  text-transform: uppercase;
-  //padding-bottom: @navbar-padding-vertical;
-  //padding-top: @navbar-padding-vertical;
-}*/
-
-/*.navbar-inverse .navbar-nav > .active > a {
-  color: @resthub-brown-color;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-  color: @resthub-orange-color;
-  font-weight: @menu-font-weight;
-
-  &:hover, &:focus {
-    color: @resthub-brown-color;
-  }
-}*/
-
-/*.navbar-form {
-  // Undo 100% width for pull classes
-  @media (min-width: @grid-float-breakpoint) {
-    padding-top: 11px;
-    padding-bottom: 11px;
-  }
-}*/
-
-/*.navbar-search {
-  width: 50%;
-
-  .form-search {
-    width: 90%;
-
-    .navbar-form {
-      padding-left: 0px;
-    }
-  }
-}*/
-
-/*.navbar-nav i {
-  line-height: 40px;
-}*/
-
-/*.navbar-contacts {
-
-  & > li > a {
-    padding-left: 10px;
-    padding-right: 10px;
-    //font-size: 30px;
-    line-height: initial;
-  }
-}*/
-
-/*.navbar-inverse .navbar-nav.navbar-contacts > li > a {
-  color: @resthub-white-color;
-
-  &:hover {
-    background-color: inherit;
-    color: @resthub-orange-color;
-  }
-}*/
-
-/*.navbar-brand {
-  padding-right: 50px;
-  //padding-top: @navbar-padding-vertical;
-  //padding-bottom: @navbar-padding-vertical;
-  //background-position: 15px @navbar-padding-vertical;
-  background-repeat: no-repeat;
-  width: 40px;
-  height: 74px;
-
-  background-image: url("/assets/img/resthub-logo-small.png");
-
-  &:hover {
-    background-image: url("/assets/img/resthub-logo-small-orange.png");
-  }
-}*/
 
 .overview {
   img {
     max-width: 100%;
   }
+
+  font-size: @font-size-l;
 }
 
 section {
@@ -280,8 +213,10 @@ article {
   box-shadow: 0 3px 10px rgba(0, 0, 0, .1);
   position: relative;
   font-weight: 500;
-  font-size: 16px;
+  //font-size: 16px;
   min-height: 700px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   &.col-md-9 {
     padding: 40px 40px 30px;
@@ -355,12 +290,15 @@ pre, code {
   margin: 0;
   padding: 0;
   font-family: Inconsolata, "Courier New", Courier, "Liberation Mono", monospace;
-  font-size: 14px;
   padding: 0 .5em;
   line-height: 1.6em;
   background-color: transparent;
   border: none;
   color: @resthub-white-color;
+}
+
+pre code {
+  font-size: @font-size-code;
 }
 
 aside {
@@ -440,6 +378,10 @@ footer {
   .navbar .navbar-form input.form-control {
     width: 345px;
   }
+
+  pre code {
+    font-size: 12px;
+  }
 }
 
 @media only screen and (max-width: @screen-sm-max) {
@@ -480,6 +422,21 @@ footer {
   section {
     padding-left: 20px;
     padding-right: 20px;
+
+    article {
+      font-size: @font-size-base-xs;
+
+      h1, .h1 { font-size: @font-size-h1-xs; }
+      h2, .h2 { font-size: @font-size-h2-xs; }
+      h3, .h3 { font-size: @font-size-h3-xs; }
+      h4, .h4 { font-size: @font-size-h4-xs; }
+      h5, .h5 { font-size: @font-size-h5-xs; }
+      h6, .h6 { font-size: @font-size-h6-xs; }
+    }
+  }
+
+  pre code {
+    font-size: @font-size-code-xs;
   }
 
 }
@@ -498,6 +455,10 @@ footer {
         padding-left: 4px;
         padding-right: 4px;
       }
+
+      &.navbar-search {
+        margin-left: 13px;
+      }
     }
 
     .fa {
@@ -507,53 +468,13 @@ footer {
     .container .navbar-brand {
       margin-right: @navbar-padding-horizontal-xxs;
     }
-
   }
-}
-
-/*@media only screen and (max-width: @screen-xs-min) and (orientation: portrait) {
 
   pre code {
-    font-size: 10px;
+    font-size: @font-size-code-xxs;
   }
 
-  footer {
-    font-size: 15px;
-  }
-
-  article {
-    font-size: 14px;
-
-    &.col-md-9 {
-      padding: 10px;
-    }
-
-    ul {
-      padding-left: 30px;
-    }
-
-  }
-
-}*/
-
-/*@media only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (min-device-pixel-ratio: 2),
-only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2),
-only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (min--moz-device-pixel-ratio: 2),
-only screen and (max-width: @screen-xs-max) and (orientation: landscape) and (-o-min-device-pixel-ratio: 2)
-{
-  body {
-    min-width: @screen-md;
-  }
-
-  .visible-xs {
-    .responsive-invisibility();
-  }
-
-  .hidden-xs {
-    .responsive-visibility();
-  }
-}*/
-
+}
 .visible-xxs {
   .responsive-invisibility();
   @media (max-width: @screen-xxs-max) {
