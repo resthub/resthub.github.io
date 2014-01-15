@@ -3567,7 +3567,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 74px;
   margin-bottom: 22px;
   border: 1px solid transparent;
 }
@@ -3708,7 +3708,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 14px 15px;
+  padding: 26px 15px;
   font-size: 20px;
   line-height: 22px;
 }
@@ -3726,8 +3726,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   float: right;
   margin-right: 15px;
   padding: 9px 10px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
@@ -3748,7 +3748,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 7px -15px;
+  margin: 13px -15px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -3786,8 +3786,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 26px;
+    padding-bottom: 26px;
   }
   .navbar-nav.navbar-right:last-child {
     margin-right: -15px;
@@ -3809,8 +3809,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 13px;
-  margin-bottom: 13px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 @media (min-width: 768px) {
   .navbar-form .form-group {
@@ -3872,20 +3872,20 @@ textarea.input-group-sm > .input-group-btn > .btn {
   right: 0;
 }
 .navbar-btn {
-  margin-top: 13px;
-  margin-bottom: 13px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .navbar-btn.btn-sm {
-  margin-top: 8.5px;
-  margin-bottom: 8.5px;
+  margin-top: 20.5px;
+  margin-bottom: 20.5px;
 }
 .navbar-btn.btn-xs {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 26px;
+  margin-bottom: 26px;
 }
 .navbar-text {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 26px;
+  margin-bottom: 26px;
 }
 @media (min-width: 0px) {
   .navbar-text {
@@ -5965,7 +5965,6 @@ body {
   min-width: 306px;
   font-weight: 300;
   position: relative;
-  padding-top: 80px;
 }
 header {
   margin-bottom: 20px;
@@ -6033,7 +6032,6 @@ header {
 }
 .search-form {
   width: 100%;
-  position: fixed;
   z-index: 1000;
 }
 .search-form.hidden {
@@ -6044,21 +6042,18 @@ header {
   background-color: #e0dcd9;
 }
 .search-form form input {
-  padding: 25px 0;
+  padding: 20px 10px;
   padding-right: 75px;
   border: none;
   height: 30px;
   line-height: 29px;
-  width: 100%;
+  width: 80%;
   background-color: transparent;
 }
 .search-form form button {
   border: none;
-  margin-right: 17px;
   margin-top: 10px;
-  position: absolute;
-  right: 0;
-  top: 0;
+  float: right;
   color: #d4571e;
 }
 .overview {
@@ -6164,7 +6159,7 @@ aside {
   padding: 30px;
 }
 aside h4 {
-  font-size: 16px;
+  font-size: 14px;
   text-transform: uppercase;
   color: #f5f5f5;
   font-weight: 900;
@@ -6182,7 +6177,7 @@ aside ul li {
 }
 aside ul li > a {
   color: #f5f5f5;
-  font-size: 16px;
+  font-size: 14px;
 }
 aside ul li.active {
   background-color: #cbc4c1;
@@ -6257,9 +6252,13 @@ footer {
   .navbar .navbar-nav.navbar-search {
     margin-left: 20px;
   }
+  .navbar .fa {
+    font-size: 22px;
+  }
   section {
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 0;
   }
   section article {
     font-size: 14px;
@@ -6293,6 +6292,13 @@ footer {
   }
 }
 @media only screen and (max-width: 479px) {
+  .navbar .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar .container .navbar-brand {
+    margin-right: 5px;
+  }
   .navbar .navbar-nav > li > a {
     padding-left: 5px;
     padding-right: 5px;
@@ -6305,11 +6311,42 @@ footer {
   .navbar .navbar-nav.navbar-search {
     margin-left: 13px;
   }
-  .navbar .fa {
+  .navbar .navbar-nav.navbar-search > li > a,
+  .navbar .navbar-nav.navbar-contacts > li > a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  section {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  section article h1,
+  section article .h1 {
+    font-size: 31px;
+  }
+  section article h2,
+  section article .h2 {
+    font-size: 25px;
+  }
+  section article h3,
+  section article .h3 {
+    font-size: 21px;
+  }
+  section article h4,
+  section article .h4 {
     font-size: 15px;
   }
-  .navbar .container .navbar-brand {
-    margin-right: 5px;
+  section article h5,
+  section article .h5 {
+    font-size: 12px;
+  }
+  section article h6,
+  section article .h6 {
+    font-size: 11px;
+  }
+  section article ul {
+    padding-left: 15px;
+    padding-right: 15px;
   }
   pre code {
     font-size: 10px;

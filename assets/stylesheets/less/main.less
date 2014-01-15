@@ -25,6 +25,7 @@
 @navbar-inverse-link-hover-color: @resthub-brown-color;
 @padding-base-vertical: 0;
 
+@navbar-height: 74px;
 @navbar-height-xs: 50px;
 @navbar-padding-vertical-xs: ((@navbar-height-xs - @line-height-computed) / 2);
 @navbar-padding-horizontal-xs: 6px;
@@ -38,7 +39,7 @@
 @font-size-base: 16px;
 @font-size-small: 14px;
 @font-size-code: (@font-size-base - 2px);
-@aside-font-size: @font-size-base;
+@aside-font-size: @font-size-small;
 @menu-font-weight: 900;
 
 @font-size-base-xs: 14px;
@@ -71,7 +72,6 @@ body {
   min-width: @min-width;
   font-weight: 300;
   position: relative;
-  padding-top: 80px;
 }
 
 header {
@@ -156,7 +156,6 @@ header {
 
 .search-form {
   width: 100%;
-  position: fixed;
   z-index: 1000;
 
   &.hidden {
@@ -170,22 +169,19 @@ header {
 
   form {
     input {
-      padding: 25px 0;
+      padding: 20px 10px;
       padding-right: 75px;
       border: none;
       height: 30px;
       line-height: 29px;
-      width: 100%;
+      width: 80%;
       background-color: transparent;
     }
 
     button {
       border: none;
-      margin-right: 17px;
       margin-top: 10px;
-      position: absolute;
-      right: 0;
-      top: 0;
+      float: right;
       color: @resthub-orange-color;
     }
   }
@@ -417,11 +413,16 @@ footer {
       }
     }
 
+    .fa {
+      font-size: 22px;
+    }
+
   }
 
   section {
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 0;
 
     article {
       font-size: @font-size-base-xs;
@@ -444,6 +445,16 @@ footer {
 @media only screen and (max-width: @screen-xxs-max) {
 
   .navbar {
+
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+
+      .navbar-brand {
+        margin-right: @navbar-padding-horizontal-xxs;
+      }
+    }
+
     .navbar-nav {
       > li > a {
         padding-left: @navbar-padding-horizontal-xxs;
@@ -459,14 +470,33 @@ footer {
       &.navbar-search {
         margin-left: 13px;
       }
+
+      &.navbar-search, &.navbar-contacts {
+        > li > a {
+          padding-top: (@navbar-padding-vertical-xs - 2px);
+          padding-bottom: (@navbar-padding-vertical-xs - 2px);
+        }
+      }
     }
 
-    .fa {
-      font-size: 15px;
-    }
+  }
 
-    .container .navbar-brand {
-      margin-right: @navbar-padding-horizontal-xxs;
+  section {
+    padding-left: 5px;
+    padding-right: 5px;
+
+    article {
+      h1, .h1 { font-size: @font-size-h1-xxs; }
+      h2, .h2 { font-size: @font-size-h2-xxs; }
+      h3, .h3 { font-size: @font-size-h3-xxs; }
+      h4, .h4 { font-size: @font-size-h4-xxs; }
+      h5, .h5 { font-size: @font-size-h5-xxs; }
+      h6, .h6 { font-size: @font-size-h6-xxs; }
+
+      ul {
+        padding-left: (@grid-gutter-width / 2);
+        padding-right: (@grid-gutter-width / 2);
+      }
     }
   }
 
