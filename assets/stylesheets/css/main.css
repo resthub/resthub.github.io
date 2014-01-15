@@ -6076,7 +6076,7 @@ section {
 article {
   background: #cbc4c1;
   color: #34302d;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   font-weight: 500;
@@ -6161,10 +6161,45 @@ pre code {
   overflow-wrap: normal;
   white-space: pre;
 }
-aside {
-  padding: 30px;
+.collapsible-menu {
+  width: 100%;
+  margin-bottom: 20px;
 }
-aside h4 {
+.collapsible-menu button.btn {
+  display: block;
+  height: 40px;
+}
+.collapsible-menu button.btn .caret {
+  margin-left: 5px;
+}
+.collapsible-menu button.btn.btn-default:hover,
+.collapsible-menu button.btn.open,
+.collapsible-menu button.btn.open:focus {
+  background-color: #f5f5f5;
+  border-color: #d4571e;
+  color: #34302d;
+}
+.collapsible-menu button.btn:focus {
+  background-color: inherit;
+  border-color: inherit;
+  outline: none;
+  color: inherit;
+}
+.collapsible-menu button.btn.open {
+  font-weight: 700;
+}
+.collapsible-menu div,
+.collapsible-menu p,
+.collapsible-menu button {
+  width: 100%;
+  margin: 0 auto 5px auto;
+  border: 2px solid #e0dcd9;
+}
+.collapsible-menu .menu {
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.menu h4 {
   font-size: 14px;
   text-transform: uppercase;
   color: #f5f5f5;
@@ -6173,25 +6208,29 @@ aside h4 {
   border-bottom: 2px solid #d4571e;
   padding-bottom: 5px;
 }
-aside ul {
+.menu ul {
   list-style: none;
   padding-left: 0;
   padding-bottom: 10px;
 }
-aside ul li {
+.menu ul li {
   padding-left: 20px;
 }
-aside ul li > a {
+.menu ul li > a {
   color: #f5f5f5;
   font-size: 14px;
 }
-aside ul li.active {
+.menu ul li.active {
   background-color: #cbc4c1;
   border-radius: 10px;
 }
-aside ul li.active > a {
+.menu ul li.active > a {
   color: #494543;
   font-weight: 700;
+}
+.menu.aside {
+  padding-left: 30px;
+  padding-top: 20px;
 }
 .btn-xxl {
   font-size: 25px;

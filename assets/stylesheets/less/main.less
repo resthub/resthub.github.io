@@ -39,7 +39,7 @@
 @font-size-base: 16px;
 @font-size-small: 14px;
 @font-size-code: (@font-size-base - 2px);
-@aside-font-size: @font-size-small;
+@menu-font-size: @font-size-small;
 @menu-font-weight: 900;
 
 @font-size-base-xs: 14px;
@@ -211,7 +211,7 @@ section {
 article {
   background: @resthub-medium-brown-color;
   color: @resthub-brown-color;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, .1);
   position: relative;
   font-weight: 500;
@@ -305,11 +305,54 @@ pre code {
   white-space: pre;
 }
 
-aside {
-  padding: 30px;
+.collapsible-menu {
+  width: 100%;
+
+  button.btn {
+    display: block;
+    height: 40px;
+
+    .caret {
+      margin-left: 5px;
+    }
+
+    &.btn-default:hover, &.open, &.open:focus {
+      background-color: @resthub-white-color;
+      border-color: @resthub-orange-color;
+      color: @resthub-brown-color;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: inherit;
+      border-color: inherit;
+      outline: none;
+      color: inherit;
+    }
+
+    &.open {
+      font-weight: 700;
+    }
+  }
+
+  div, p, button {
+    width: 100%;
+    margin: 0 auto 5px auto;
+    border: 2px solid @resthub-light-brown-color;
+  }
+
+  .menu {
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+
+  margin-bottom: 20px;
+}
+
+.menu {
 
   h4 {
-    font-size: @aside-font-size;
+    font-size: @menu-font-size;
     text-transform: uppercase;
     color: @resthub-white-color;
     font-weight: @menu-font-weight;
@@ -327,7 +370,7 @@ aside {
       padding-left: 20px;
       & > a {
         color: @resthub-white-color;
-        font-size: @aside-font-size;
+        font-size: @menu-font-size;
       }
 
       &.active {
@@ -341,6 +384,12 @@ aside {
       }
     }
   }
+
+  &.aside {
+    padding-left: 30px;
+    padding-top: 20px;
+  }
+
 }
 
 .btn-xxl {

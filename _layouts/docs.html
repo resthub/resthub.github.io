@@ -3,14 +3,24 @@ layout: default
 ---
 
 <section class="row">
+
+    <nav class="collapsible-menu visible-xs">
+        <button type="button" class="btn btn-default toggle-menu">
+            Navigate <span class="caret"></span>
+        </button>
+        <div class="menu hidden">
+            {% include docs_menu.html %}
+        </div>
+    </nav>
+
     <article class="col-xs-12 col-sm-9">
         <h1>{{ page.title }}</h1>
         {{ content | toc_generate }}
     </article>
 
-    <aside class="hidden-xs hidden-xs col-sm-3">
+    <nav class="menu aside hidden-xs hidden-xs col-sm-3">
         {% include docs_menu.html %}
-    </aside>
+    </nav>
 
     <div class="clear"></div>
 </section>
