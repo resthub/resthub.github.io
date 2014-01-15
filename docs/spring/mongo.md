@@ -3,6 +3,7 @@ layout: docs
 title: MongoDB support
 permalink:  mongo/
 prev: spring/jpa
+next: spring/web-common
 ---
 
 <div class="toc"></div>

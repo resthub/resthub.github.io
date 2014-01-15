@@ -1,21 +1,13 @@
 <nav class="section-nav row">
     <div class="col-xs-6 text-right">
-        {% if page.prev != null %}
-        <a href="{{ site.url }}/docs/{{ page.prev }}/" class="btn btn-lg btn-primary prev">
+        <a href="{{ site.url }}/docs/{{ page.prev }}/" class="btn btn-lg btn-primary prev {% if page.prev == null %}disabled{% endif %}">
             <span class="glyphicon glyphicon-chevron-left"></span>Prev
         </a>
-        {% else %}
-        <span class="prev disabled">Back</span>
-        {% endif %}
     </div>
     <div class="col-xs-6 text-left">
-        {% if page.next != null %}
-        <a href="{{ site.url }}/docs/{{ page.next }}/" class="btn btn-lg btn-primary next">
+        <a href="{{ site.url }}/docs/{{ page.next }}/" class="btn btn-lg btn-primary next {% if page.next == null %}disabled{% endif %}">
              Next <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
-        {% else %}
-        <span class="next disabled">Next</span>
-        {% endif %}
     </div>
     <div class="clear"></div>
 </nav>
