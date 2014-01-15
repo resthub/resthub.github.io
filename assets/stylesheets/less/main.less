@@ -419,7 +419,7 @@ footer {
   padding: 10px 0;
   position: relative;
   margin-top: -80px; /* negative value of footer height */
-  height: 110px;
+  height: 130px;
   clear: both;
 
   .credentials {
@@ -427,19 +427,17 @@ footer {
     margin-top: 10px;
   }
 
-  .justified {
-    text-align: center;
-  }
-
   .components {
     margin-bottom: 10px;
-  }
+    text-align: center;
 
-  .component {
-    margin-right: 8px;
+      .component {
+        margin-right: 8px;
+        white-space: nowrap;
 
-    .build-status {
-      width: 10%;
+        .build-status {
+          width: 10%;
+        }
     }
   }
 }
@@ -632,7 +630,7 @@ footer {
 
   footer {
     font-size: @font-size-small-xxs;
-    height: 90px;
+    height: 110px;
 
     .credentials, .engine, .team {
       font-size: @font-size-small-xxs - 2px;
