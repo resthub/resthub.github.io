@@ -6055,6 +6055,7 @@ header {
   margin-top: 10px;
   float: right;
   color: #d4571e;
+  background-color: transparent;
 }
 .overview {
   font-size: 21px;
@@ -6134,26 +6135,26 @@ p > nobr > code,
 li > code,
 h5 > code,
 .note > code {
+  background: none;
+}
+pre {
+  overflow-x: auto;
+  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1), 0 -1px 0 rgba(0, 0, 0, 0.5);
   background: #34302d;
   color: #f5f5f5;
+  padding-top: 0;
+  padding-bottom: .3em;
   border-radius: 5px;
-  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1), 0 -1px 0 rgba(0, 0, 0, 0.5);
-}
-pre,
-code {
-  white-space: pre;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  font-family: Inconsolata, "Courier New", Courier, "Liberation Mono", monospace;
-  padding: 0 .5em;
-  line-height: 1.6em;
-  background-color: transparent;
   border: none;
-  color: #f5f5f5;
+  line-height: 1;
+}
+code {
+  overflow-x: auto;
 }
 pre code {
   font-size: 19px;
+  overflow-wrap: normal;
+  white-space: pre;
 }
 aside {
   padding: 30px;

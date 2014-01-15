@@ -182,6 +182,7 @@ header {
       margin-top: 10px;
       float: right;
       color: @resthub-orange-color;
+      background-color: transparent;
     }
   }
 
@@ -273,27 +274,29 @@ article {
 }
 
 .highlight, p > pre, p > code, p > nobr > code, li > code, h5 > code, .note > code {
-  background: @resthub-brown-color;
-  color: @resthub-white-color;
-  border-radius: 5px;
-  box-shadow: inset 0 1px 10px rgba(0, 0, 0, .3), 0 1px 0 rgba(255, 255, 255, .1),0 -1px 0 rgba(0, 0, 0, .5);
+  background: none;
 }
 
-pre, code {
-  white-space: pre;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  font-family: Inconsolata, "Courier New", Courier, "Liberation Mono", monospace;
-  padding: 0 .5em;
-  line-height: 1.6em;
-  background-color: transparent;
-  border: none;
+pre {
+  overflow-x: auto;
+  box-shadow: inset 0 1px 10px rgba(0, 0, 0, .3), 0 1px 0 rgba(255, 255, 255, .1),0 -1px 0 rgba(0, 0, 0, .5);
+  background: @resthub-brown-color;
   color: @resthub-white-color;
+  padding-top: 0;
+  padding-bottom: .3em;
+  border-radius: 5px;
+  border: none;
+  line-height: 1;
+}
+
+code {
+  overflow-x: auto;
 }
 
 pre code {
   font-size: @font-size-code;
+  overflow-wrap: normal;
+  white-space: pre;
 }
 
 aside {
