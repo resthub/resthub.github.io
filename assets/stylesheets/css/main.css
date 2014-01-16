@@ -6249,7 +6249,7 @@ pre code {
 }
 .menu ul li.active {
   background-color: #cbc4c1;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 .menu ul li.active > a {
   color: #494543;
