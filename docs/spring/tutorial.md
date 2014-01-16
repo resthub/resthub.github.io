@@ -2,6 +2,8 @@
 layout: docs
 title: Spring Stack tutorial
 permalink:  tutorial/
+prev: spring/testing
+next: backbone/home
 ---
 
 <div class="toc"></div>
@@ -1003,3 +1005,316 @@ You can test in your browser (or, better, add a test in `TaskControllerTest`) th
 >     Assertions.assertThat(responseBody).contains("new User");
 > }
 > ```
+
+## Step 5: Validate your beans and embed entities
+
+Finally, we want to add validation constraints to our model. This could be done by using BeanValidation (JSR303 Spec) and its reference
+implementation: Hibernate Validator. see [documentation](http://docs.jboss.org/hibernate/validator/4.1/reference/en-US/html_single/)
+
+**Find:**
+
+1. **Bean Validation and Hibernate Validators documentation**
+
+    > see [reference](http://docs.jboss.org/hibernate/validator/4.0.1/reference/en/html_single/)
+
+2. **JPA / Hibernate embedded entities documentation**
+
+    > see [reference](http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html_single/#mapping-declaration-component)
+    
+**Do:**
+
+1. **Modify User and Task to add validation**
+   * User name and email are mandatory and not empty
+   * Task title is mandatory and not empty
+   * User email should match regexp `.+@.+\\.[a-z]+`.
+
+
+   > ```java
+   > // User
+   > @Entity
+   > public class User {
+   >
+   >     ...
+   >
+   >     @NotNull
+   >     @NotEmpty
+   >     public String getName() {
+   >         return name;
+   >     }
+   >
+   >     public void setName(String name) {
+   >         this.name = name;
+   >     }
+   >
+   >     @NotNull
+   >     @Pattern(regexp = ".+@.+\\.[a-z]+")
+   >     public String getEmail() {
+   >         return email;
+   >     }
+   >
+   >     ...
+   > }
+   > ```
+   >
+   > ```java
+   > // Task
+   > @Entity
+   > public class Task {
+   >
+   >     ...
+   >
+   >     @NotNull
+   >     @NotEmpty
+   >     public String getName() {
+   >         return name;
+   >     }
+   >
+   >     ...
+   > }
+   > ```
+
+2. **If your integration tests (and initializer) fail. Make it pass**
+
+    > ```java
+    > // TaskControllerTest
+    > public class TaskControllerTest extends AbstractWebTest {
+    >
+    >     public TaskControllerTest() {
+    >       super("resthub-web-server,resthub-jpa");
+    >     }
+    >
+    >     @Test
+    >     public void testCreateResource() {
+    >         this.request("api/task").xmlPost(new Task("task1"));
+    >         this.request("api/task").xmlPost(new Task("task2"));
+    >         String responseBody = this.request("api/task").setQueryParameter("page", "no").getJson().getBody();
+    >         Assertions.assertThat(responseBody).isNotEmpty();
+    >         Assertions.assertThat(responseBody).doesNotContain("\"content\":2");
+    >         Assertions.assertThat(responseBody).contains("task1");
+    >         Assertions.assertThat(responseBody).contains("task2");
+    >     }
+    >
+    >     @Test
+    >     public void testAffectTaskToUser() {
+    >         Task task = this.request("api/task").xmlPost(new Task("task1")).resource(Task.class);
+    >         User user = this.request("api/user").xmlPost(new User("user1", "user1@test.org")).resource(User.class);
+    >         String responseBody = this.request("api/task/" + task.getId() + "/user/" + user.getId()).put("").getBody();
+    >         Assertions.assertThat(responseBody).isNotEmpty();
+    >         Assertions.assertThat(responseBody).contains("task1");
+    >         Assertions.assertThat(responseBody).contains("user1");
+    >     }
+    > }
+    > ```
+    >
+    > ```java
+    > // TaskInitializer
+    > @Named("taskInitializer")
+    > public class TaskInitializer {
+    >
+    >     @Inject
+    >     @Named("taskRepository")
+    >     private TaskRepository taskRepository;
+    >
+    >     @Inject
+    >     @Named("userRepository")
+    >     private UserRepository userRepository;
+    >
+    >     @PostInitialize
+    >     @Transactional(readOnly = false)
+    >     public void init() {
+    >         User user1 = new User("testUser1", "user1@test.org");
+    >         user1 = userRepository.save(user1);
+    >         User user2 = userRepository.save(new User("testUser2", "user2@test.org"));
+    >         taskRepository.save(new Task("testTask1", user1));
+    >         taskRepository.save(new Task("testTask2", user1));
+    >         taskRepository.save(new Task("testTask3", user2));
+    >         taskRepository.save(new Task("testTask4"));
+    >     }
+    > }
+    > ```
+
+3. **Add embedded address to users : Modify User model to add an embedded entity address to store user address (city, country)**
+
+    > ```java
+    > // User
+    > @Entity
+    > public class User {
+    >
+    >     ...
+    >
+    >     private Address address;
+    >
+    >     ...
+    >
+    >     @Embedded
+    >     public Address getAddress() {
+    >         return address;
+    >     }
+    >
+    >     public void setAddress(Address address) {
+    >         this.address = address;
+    >     }
+    >
+    >     ...
+    > }
+    > ```
+    >
+    > ```java
+    > // Address
+    > @Embeddable
+    > public class Address implements Serializable {
+    >     private String city;
+    >     private String country;
+    >
+    >     public Address() {
+    >     }
+    >
+    >     public Address(String city, String country) {
+    >         this.city = city;
+    >         this.country = country;
+    >     }
+    >
+    >     @NotNull
+    >     @NotEmpty
+    >     public String getCity() {
+    >         return city;
+    >     }
+    >
+    >     public void setCity(String city) {
+    >         this.city = city;
+    >     }
+    >
+    >     @NotNull
+    >     @NotEmpty
+    >     public String getCountry() {
+    >         return country;
+    >     }
+    >
+    >     public void setCountry(String country) {
+    >         this.country = country;
+    >     }
+    > }
+    > ```
+
+4. **Add a** `UserRepositoryIntegrationTest` **class in** src/test/java/org/resthub/training/repository/integration **and implement
+   a test that try to create a user with an embedded address**. 
+   
+   Check that you can then call a findOne of this user and that the return object contains address object.
+   
+    > ```java
+    > @ActiveProfiles({"resthub-jpa", "test"})
+    > public class UserRepositoryIntegrationTest extends AbstractTest {
+    >
+    >     @Inject
+    >     @Named("userRepository")
+    >     private UserRepository repository;
+    >
+    >     @Test
+    >     public void testCreateValidAddress() {
+    >         User user = new User("userName", "user.email@test.org");
+    >         Address address = new Address();
+    >         address.setCity("city1");
+    >         address.setCountry("country1");
+    >         user.setAddress(address);
+    >
+    >         user = this.repository.save(user);
+    >         Assertions.assertThat(user).isNotNull();
+    >         Assertions.assertThat(user.getId()).isNotNull();
+    >         Assertions.assertThat(user.getAddress()).isNotNull();
+    >         Assertions.assertThat(user.getAddress().getCity()).isEqualTo("city1");
+    >     }
+    > }
+    > ```
+  
+5. **Add nested validation for embedded address. city and country should not be null and non empty**
+
+    > ```java
+    > // User
+    > @Entity
+    > public class User {
+    >
+    >     ...
+    >
+    >     private Address address;
+    >
+    >     ...
+    >
+    >     @Valid
+    >     @Embedded
+    >     public Address getAddress() {
+    >         return address;
+    >     }
+    >
+    >     public void setAddress(Address address) {
+    >         this.address = address;
+    >     }
+    >
+    >     ...
+    > }
+    > ```
+    >
+    > ```java
+    > // Address
+    > @Embeddable
+    > public class Address implements Serializable {
+    >
+    >     ...
+    >
+    >     @NotNull
+    >     @NotEmpty
+    >     public String getCity() {
+    >         return city;
+    >     }
+    >
+    >     ...
+    >
+    >     @NotNull
+    >     @NotEmpty
+    >     public String getCountry() {
+    >         return country;
+    >     }
+    >
+    >     ...
+    > }
+    > ```
+    >
+    > see complete solution for [User](https://github.com/resthub/resthub-spring-training/blob/step5-solution/jpa-webservice/src/main/java/org/resthub/training/model/User.java),
+    > [Address](https://github.com/resthub/resthub-spring-training/blob/step5-solution/jpa-webservice/src/main/java/org/resthub/training/model/Address.java),
+    > and [Task](https://github.com/resthub/resthub-spring-training/blob/step5-solution/jpa-webservice/src/main/java/org/resthub/training/model/Task.java)
+
+6. **Modify** `UserRepositoryIntegrationTest` **to test that a user can be created with a null address but exception is thrown when
+   address is incomplete (e.g. country is null or empty)**
+   
+    > ```java
+    > @ActiveProfiles("test")
+    > public class UserRepositoryIntegrationTest extends AbstractTest {
+    >
+    >     @Inject
+    >     @Named("userRepository")
+    >     private UserRepository repository;
+    >
+    >     @Test
+    >     public void testCreateNullAddress() {
+    >         User user = new User("userName", "user.email@test.org");
+    >
+    >         user = this.repository.save(user);
+    >
+    >         user = this.repository.findOne(user.getId());
+    >         Assertions.assertThat(user).isNotNull();
+    >         Assertions.assertThat(user.getId()).isNotNull();
+    >         Assertions.assertThat(user.getAddress()).isNull();
+    >     }
+    >
+    >     @Test(expectedExceptions = {TransactionSystemException.class})
+    >     public void testCreateInvalidAddress() {
+    >         User user = new User("userName", "user.email@test.org");
+    >         Address address = new Address();
+    >         address.setCity("city1");
+    >         user.setAddress(address);
+    >
+    >         this.repository.save(user);
+    >     }
+    >
+    >     ...
+    > }
+    > ```

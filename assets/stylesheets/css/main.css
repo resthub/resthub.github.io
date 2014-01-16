@@ -6159,7 +6159,8 @@ article blockquote p {
 article blockquote p:first-child {
   margin-top: 0;
 }
-article.tutorial ol blockquote {
+article.tutorial ol blockquote,
+article.tutorial ul blockquote {
   margin-left: -40px;
 }
 article .quickstart img {
@@ -6558,7 +6559,8 @@ footer .components .component .build-status {
     padding-left: 18px;
     padding-right: 18px;
   }
-  section article.tutorial ol blockquote {
+  section article.tutorial ol blockquote,
+  section article.tutorial ul blockquote {
     margin-left: -18px;
     margin-right: -18px;
   }

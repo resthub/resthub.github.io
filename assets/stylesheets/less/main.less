@@ -340,8 +340,12 @@ article {
     }
   }
 
-  &.tutorial ol blockquote {
-    margin-left: -40px;
+  &.tutorial {
+    ol, ul {
+      blockquote {
+        margin-left: -40px;
+      }
+    }
   }
 
   .quickstart {
@@ -792,9 +796,13 @@ footer {
         padding-right: ((@grid-gutter-width / 2) + 3);
       }
 
-      &.tutorial ol blockquote {
-        margin-left: -18px;
-        margin-right: -18px;
+      &.tutorial {
+        ol, ul {
+          blockquote {
+            margin-left: -18px;
+            margin-right: -18px;
+          }
+        }
       }
     }
 
@@ -812,6 +820,7 @@ footer {
       font-size: @font-size-small-xxs - 2px;
     }
   }
+
 }
 
 .make-grid-columns-float(xxs);
