@@ -6488,9 +6488,10 @@ footer .components .component .build-status {
   section article .h6 {
     font-size: 12px;
   }
-  section article ul {
-    padding-left: 15px;
-    padding-right: 15px;
+  section article ul,
+  section article ol {
+    padding-left: 18px;
+    padding-right: 18px;
   }
   pre code {
     font-size: 11px;
