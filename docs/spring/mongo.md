@@ -24,14 +24,14 @@ In order to use it in your project, add the following snippet to your pom.xml:
 ```
 
 In order to import the [default configuration](https://github.com/resthub/resthub-spring-stack/blob/master/resthub-mongodb/src/main/resources/resthubContext.xml>),
-your should activate the resthub-mongodb Spring profile in your WebAppInitializer class:
+your should activate the resthub-mongodb Spring profile in your `WebAppInitializer` class:
 
 ```java
 XmlWebApplicationContext appContext = new XmlWebApplicationContext();
 appContext.getEnvironment().setActiveProfiles("resthub-mongodb", "resthub-web-server");
 ```
 
-You also need to add an applicationContext.xml file in order to scan your repository package.
+You also need to add an `applicationContext.xml` file in order to scan your repository package.
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -47,7 +47,8 @@ You also need to add an applicationContext.xml file in order to scan your reposi
 </beans>
 ```
 
-You can customize them by adding a database.properties resource with one or more following keys customized with your values.
+You can customize them by adding a database.properties resource with one or more following keys customized
+with your values.
 You should include only the customized ones.
 
 RESThub MongoDB default properties are:

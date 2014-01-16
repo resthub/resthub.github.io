@@ -40,7 +40,7 @@ How to run the todo application:
 * Download the [zip file](https://github.com/resthub/todo-backbone-example/zipball/master) and extract it
 * Install [MongoDB](http://www.mongodb.org/downloads), create the data folder (C:\\data\\db or /data/db by default) and run mondgod
 * Run mvn jetty:run in the todo-backbone-example directory
-* Open your browser and browse http://localhost:8080/index.html
+* Open your browser and browse <http://localhost:8080/index.html>
 
 You will find below the typical configuration file for your application.
 
@@ -209,14 +209,14 @@ You can also use Spring profile for your own application Spring configuration.
 
 Profile activation on your webapp is done very early in the application lifecycle, and is done in your Web application
 initializer (Java equivalent of the web.xml) described just before. Just provide the list of profiles to activate in
-the onStartup() method:
+the `onStartup()` method:
 
 ```java
 XmlWebApplicationContext appContext = new XmlWebApplicationContext();
 appContext.getEnvironment().setActiveProfiles("resthub-mongodb", "resthub-web-server");
 ```
 
-In your tests, you should use the @ActiveProfiles annotation to activate the profiles you need:
+In your tests, you should use the `@ActiveProfiles` annotation to activate the profiles you need:
 
 ```java
 @ActiveProfiles("resthub-jpa") // or @ActiveProfiles({"resthub-jpa","resthub-web-server"})
@@ -239,10 +239,10 @@ public class SampleControllerTest extends AbstractWebTest {
 
 RESThub built-in Spring profiles have the same name than their matching module:
 
-* resthub-jpa: enable JPA database support (resthub-jpa dependency needed)
-* resthub-mongodb: enable MongoDB support (resthub-mongodb dependency needed)
-* resthub-web-server: enable default web server configuration (resthub-web-server dependency needed)
-* resthub-client-logging: enable a webservice use to send logs from client to server (resthub-web-server dependency needed)
+* **resthub-jpa**: enable JPA database support (resthub-jpa dependency needed)
+* **resthub-mongodb**: enable MongoDB support (resthub-mongodb dependency needed)
+* **resthub-web-server**: enable default web server configuration (resthub-web-server dependency needed)
+* **resthub-client-logging**: enable a webservice use to send logs from client to server (resthub-web-server dependency needed)
 
 ### Spring based configuration
 
@@ -288,6 +288,8 @@ You'll usually have a src/main/resources/logback.xml file in order to configure 
 </configuration>
 ```
 
+.
+
 ## Beans declaration and injection
 
 You should use JEE6 annotations to declare and inject your beans.
@@ -319,8 +321,6 @@ public void setSampleProperty(...) {
 }
 ```
 
-.
-
 ### CRUD services
 
 RESThub is designed to give you the choice between a 2 layers (Controller -> Repository) or a
@@ -340,11 +340,15 @@ public class SampleServiceImpl extends CrudServiceImpl<Sample, Long, SampleRepos
 
 ## Environment specific properties
 
-There are various ways to configure your environment specific properties in your application: the one described below is the most simple and flexible way we have found.
+There are various ways to configure your environment specific properties in your application: the one
+ described below is the most simple and flexible way we have found.
 
-Maven filtering (search and replace variables) is not recommended because it is done at compile time (not runtime) and makes usually your JAR/WAR specific to an environment. This feature can be useful when defining your target path (${project.build.directory}) in your src/test/applicationContext.xml for testing purpose.
+Maven filtering (search and replace variables) is not recommended because it is done at compile time
+(not runtime) and makes usually your JAR/WAR specific to an environment. This feature can be useful
+when defining your target path (${project.build.directory}) in your `src/test/applicationContext.xml`
+for testing purpose.
 
-Spring properties placeholders + @Value annotation is the best way to do that.
+Spring properties placeholders + `@Value` annotation is the best way to do that.
 
 ```xml
 <context:property-placeholder location="classpath*:mymodule.properties"
@@ -352,7 +356,7 @@ Spring properties placeholders + @Value annotation is the best way to do that.
                              ignore-unresolvable="true" />
 ```
 
-You should now be able to inject dynamic values in your code, where InMemoryRepository is the default:
+You should now be able to inject dynamic values in your code, where `InMemoryRepository` is the default:
 
 ```java
 @Configuration

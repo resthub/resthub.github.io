@@ -6123,6 +6123,9 @@ article .toc {
   padding-bottom: 0;
   border-radius: 5px;
 }
+article .toc ol > li > ol {
+  padding-bottom: 0;
+}
 article .toc i {
   font-weight: 900;
   text-transform: uppercase;
@@ -6173,7 +6176,7 @@ pre {
   line-height: 1;
 }
 code {
-  overflow-x: auto;
+  color: #636c7f;
 }
 pre code {
   font-size: 14px;

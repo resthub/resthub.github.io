@@ -7,6 +7,7 @@
 @resthub-medium-brown-color: #CBC4C1;
 @resthub-light-brown-color: #e0dcd9;
 @resthub-white-color: #f5f5f5;
+@resthub-code-color: #636C7F;
 
 @min-width: 306px;
 @min-height: 100%;
@@ -273,6 +274,10 @@ article {
     padding-bottom: 0;
     border-radius: 5px;
 
+    ol > li > ol {
+      padding-bottom: 0;
+    }
+
     i {
       font-weight: 900;
       text-transform: uppercase;
@@ -329,7 +334,7 @@ pre {
 }
 
 code {
-  overflow-x: auto;
+  color: @resthub-code-color;
 }
 
 pre code {

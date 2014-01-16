@@ -18,12 +18,12 @@ It provides some abstract REST controller classes, and includes the following de
 
 RESThub exception resolver allow to map common exceptions (Spring, JPA) to the right HTTP status codes:
 
-* IllegalArgumentException -> 400
-* ValidationException -> 400
-* NotFoundException, EntityNotFoundException and ObjectNotFoundException -> 404
-* NotImplementedException -> 501
-* EntityExistsException -> 409
-* Any uncatched exception -> 500
+* `IllegalArgumentException` -> 400
+* `ValidationException` -> 400
+* `NotFoundException`, `EntityNotFoundException` and `ObjectNotFoundException` -> 404
+* `NotImplementedException` -> 501
+* `EntityExistsException` -> 409
+* `Any uncatched exception` -> 500
 
 ## Configuration
 
@@ -38,7 +38,7 @@ In order to use it in your project, add the following snippet to your pom.xml:
 ```
 
 In order to import the [default configuration](https://github.com/resthub/resthub-spring-stack/blob/master/resthub-web/resthub-web-server/src/main/resources/resthubContext.xml),
- your should activate the resthub-web-server Spring profile in your WebAppInitializer class:
+ your should activate the resthub-web-server Spring profile in your `WebAppInitializer` class:
 
 ```java
 XmlWebApplicationContext appContext = new XmlWebApplicationContext();
@@ -54,7 +54,7 @@ software design.
 You can  find more details about these generic webservices, including their REST API description,
 on RESThub [Javadoc](http://resthub.org/javadoc/2.1).
 
-**2 layers software design**
+### 2 layers software design
 
 ```java
 @Controller @RequestMapping("/repository-based")
@@ -67,7 +67,7 @@ public class SampleRestController extends RepositoryBasedRestController<Sample, 
 }
 ```
 
-**3 layers software design**
+### 3 layers software design
 
 ```java
 @Controller @RequestMapping("/service-based")
@@ -94,7 +94,7 @@ public class SampleServiceImpl extends CrudServiceImpl<Sample, Long, SampleRepos
 By default, generic controller use the database identifier (table primary key for JPA on MongoDB ID)
 in URLs to identify a resource. You can change this behaviour by overriding controller implementations
 to use the field you want. For example, this is common to use a human readable identifier called reference
-or slug to identify a resource. You can do that with generic repositories only by overriding findById()
+or slug to identify a resource. You can do that with generic repositories only by overriding `findById()`
 controller method:
 
 ```java
@@ -136,9 +136,9 @@ it is possible easily.
 
 Usual use cases for using custom JSON Views are :
 
-* Fix serialization issues in a flexible way (not like @JsonIgnore or @JsonBackReference annotation)
+* Fix serialization issues in a flexible way (not like `@JsonIgnore` or `@JsonBackReference` annotation)
   for children-parent relations
-* Avoid loading too much data when used with JPA lazy loading + OpenSessionInView filter
+* Avoid loading too much data when used with JPA lazy loading + `OpenSessionInView` filter
 * Sometimes avoid to send some information to the client, for example a password field for a
   User class (needed in BO but not in FO for security reasons)
 
@@ -163,7 +163,7 @@ public class Book {
 ```
 
 
-Usage for the JsonView is activated on a per controller method or class basis with the
+Usage for the `@JsonView` is activated on a per controller method or class basis with the
 `@ResponseView` annotation like bellow :
 
 ```java

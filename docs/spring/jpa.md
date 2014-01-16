@@ -37,7 +37,7 @@ XmlWebApplicationContext appContext = new XmlWebApplicationContext();
 appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-web-server");
 ```
 
-Since version 3.1, Spring allows to scan entities in different modules using the same PersitenceUnit,
+Since version 3.1, Spring allows to scan entities in different modules using the same `PersitenceUnit`,
 which is not possible with default JPA behaviour. You have to specify the packages where Spring should
 scan your entities by creating a database.properties file in your resources folder, with the following content:
 
