@@ -6037,6 +6037,11 @@ header {
 .navbar .navbar-form .btn:hover {
   color: #d4571e;
 }
+.navbar .navbar-form .btn.btn-default,
+.navbar .navbar-form .btn.btn-default.disabled {
+  color: #f5f5f5;
+  opacity: 1;
+}
 .search-form {
   width: 100%;
   z-index: 1000;
@@ -6142,6 +6147,10 @@ article .toc a {
 }
 article .toc a:hover {
   border-color: #34302d;
+}
+article .quickstart img {
+  max-width: 480px;
+  width: 75%;
 }
 article .build-status {
   margin-top: -13px;

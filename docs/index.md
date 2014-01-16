@@ -2,7 +2,7 @@
 layout: docs
 title: What is RESThub ?
 permalink:  home/
-next: spring/home
+next: quickstart
 ---
 
 <div class="toc"></div>
@@ -15,6 +15,28 @@ applications for their customers.
 
 That’s why we value developer experience on those libraries and despite the
 *"Not Invented Here"* syndrome above all.
+
+RESTHub has been made with RIA in general and HTML5 in particular in mind. RESThub is based on the
+following principles:
+
+* **REST** Architecture oriented
+* **DRY** (don't repeat yourself)
+* **KISS** (Keep it Simple and Stupid)
+
+The primary objective is to provide a complete tool to develop **REST oriented rich web application with
+a great efficiency and productivity** by packaging a full stack of useful tools to achieve this goal.
+
+One of the most important aspect that [RESThub team](/team) try to constantly keep in mind is that RESTHub
+must absolutely allow **progressive increase of complexity**. In other works, RESThub has been design to
+facilitate the bootstrap of your project and its configuration but it does not rely on restrictive assumptions:
+**No RESTHub functionality will prevent you to finely customize any of the underlying framework for your
+particular needs**.
+
+To achieve this, RESTHub made the choice to rely on the most efficient and popular frameworks in each domain
+because **we don't want to reinvent the wheel**, it is just fine !
+
+This could be a tricky challenge because RESTHub claims **simplify without limiting** but it is a real
+specificity compared to other stacks in both java and javascript worlds.
 
 ## RESTHub components
 

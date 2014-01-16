@@ -2,7 +2,7 @@
 layout: docs
 title: RESThub Spring Stack
 permalink:  home/
-prev: home
+prev: quickstart
 next: spring/layout
 ---
 
