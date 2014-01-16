@@ -6029,6 +6029,7 @@ header {
 .navbar .navbar-form .btn {
   border: none;
   background: inherit;
+  box-shadow: none;
 }
 .navbar .navbar-form .btn i {
   font-size: 27px;
@@ -6141,6 +6142,9 @@ article .toc a:hover {
 }
 article .section-nav {
   margin-top: 30px;
+}
+article .section-nav .btn {
+  text-shadow: 0 -1px 0 #34302d;
 }
 article .section-nav .text-right .btn .glyphicon {
   margin-left: 8px;
@@ -6276,6 +6280,38 @@ pre code {
   color: #f5f5f5;
   background-color: #494543;
   border-color: #d4571e;
+}
+.alert {
+  position: relative;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  padding-left: 60px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border: transparent;
+}
+.alert.alert-warning {
+  background: #d4571e;
+  background: -moz-linear-gradient(top, #d4571e 0%, #a94c21 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d4571e), color-stop(100%, #a94c21));
+  background: -webkit-linear-gradient(top, #d4571e 0%, #a94c21 100%);
+  background: -o-linear-gradient(top, #d4571e 0%, #a94c21 100%);
+  background: -ms-linear-gradient(top, #d4571e 0%, #a94c21 100%);
+  background: linear-gradient(to bottom, #d4571e 0%, #a94c21 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D4571E', endColorstr='#5c4e35', GradientType=0);
+  border-color: #e0dcd9;
+  color: #e0dcd9;
+}
+.alert.alert-warning:before {
+  content: "\f071";
+  color: #f5f5f5;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  font-family: FontAwesome;
 }
 footer {
   background-color: #34302d;

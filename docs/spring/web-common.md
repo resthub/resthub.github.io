@@ -3,6 +3,7 @@ layout: docs
 title: Web common
 permalink:  web-common/
 prev: spring/mongo
+next: spring/web-server
 ---
 
 <div class="toc"></div>
