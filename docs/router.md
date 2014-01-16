@@ -3,7 +3,7 @@ layout: docs
 title: Spring MVC router
 permalink:  router/
 prev: spring/testing
-next: spring/amqp-hessian
+next: amqp-hessian
 ---
 
 <div class="toc"></div>

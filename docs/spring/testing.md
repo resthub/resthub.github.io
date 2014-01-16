@@ -3,7 +3,7 @@ layout: docs
 title: Testing
 permalink:  testing/
 prev: spring/validation
-next: spring/router
+next: router
 ---
 
 <div class="toc"></div>

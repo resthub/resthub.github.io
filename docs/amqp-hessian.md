@@ -2,13 +2,14 @@
 layout: docs
 title: AMQP/Hessian based RPC
 permalink:  amqp-hessian/
-prev: spring/router
+prev: router
 next: backbone/home
 ---
 
 <div class="toc"></div>
 
-Spring AMQP Hessian is a high performance and easy to monitore RPC mechanism based on RabbitMQ client and Hessian.
+Spring AMQP Hessian is a high performance and easy to monitor RPC mechanism based on [RabbitMQ](http://www.rabbitmq.com/) client
+and [Hessian](http://hessian.caucho.com/).
 
 Spring AMQP Hessian is based on [qpid-hessian component](https://github.com/ebourg/qpid-hessian)
 and adapted for spring-amqp.
@@ -90,6 +91,8 @@ try {
     //do stuff
 }
 ```
+
+.
 
 ### Partial serialization
 

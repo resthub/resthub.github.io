@@ -9,6 +9,15 @@
 @resthub-white-color: #f5f5f5;
 @resthub-code-color: #636C7F;
 
+@warning-start-color: @resthub-orange-color;
+@warning-stop-color: @resthub-orange-brown-color;
+@warning-font-color: @resthub-light-brown-color;
+@warning-border-color: @resthub-light-brown-color;
+@info-start-color: #856A4F;
+@info-stop-color: #654321;
+@info-font-color: @resthub-light-brown-color;
+@info-border-color: @resthub-light-brown-color;
+
 @min-width: 306px;
 @min-height: 100%;
 @screen-xxs-max: (@screen-xs - 1px);
@@ -68,9 +77,22 @@
 @btn-primary-bg: @resthub-intermediate-brown-color;
 @btn-primary-border: transparent;
 
-@btn-default-color: @resthub-white-color;
-@btn-default-bg: @resthub-intermediate-brown-color;
-@btn-default-border: @resthub-white-color;
+@btn-default-color: @resthub-orange-color;
+@btn-default-bg: @resthub-light-brown-color;
+@btn-default-border: @resthub-orange-color;
+
+.alert-background(@start-color, @stop-color, @font-color, @border-color) {
+  background: @start-color;
+  background: -moz-linear-gradient(top, @start-color 0%, @stop-color 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @start-color), color-stop(100%, @stop-color));
+  background: -webkit-linear-gradient(top, @start-color 0%, @stop-color 100%);
+  background: -o-linear-gradient(top, @start-color 0%, @stop-color 100%);
+  background: -ms-linear-gradient(top, @start-color 0%, @stop-color 100%);
+  background: linear-gradient(to bottom, @start-color 0%, @stop-color 100%);
+  filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start-color}, endColorstr='@{stop-color}', GradientType=0)";
+  border-color: @border-color;
+  color: @font-color;
+}
 
 html, body {
   height: 100%;
@@ -300,6 +322,10 @@ article {
     }
   }
 
+  .build-status {
+    margin-top: -13px;
+  }
+
   .section-nav {
     margin-top: 30px;
 
@@ -455,13 +481,15 @@ pre code {
       background-color: @resthub-orange-color;
     }
   }
-}
 
-.btn-default {
-  &:hover {
-    color: @resthub-white-color;
-    background-color: @resthub-intermediate-brown-color;
-    border-color: @resthub-orange-color;
+  &.btn-default {
+    border: 3px solid;
+
+    &:hover, &:focus {
+      color: @resthub-white-color;
+      background-color: @resthub-intermediate-brown-color;
+      border-color: @resthub-white-color;
+    }
   }
 }
 
@@ -474,28 +502,38 @@ pre code {
   padding-bottom: 25px;
   border: transparent;
 
-  &.alert-warning {
-    background: @resthub-orange-color;
-    background: -moz-linear-gradient(top, @resthub-orange-color 0%, @resthub-orange-brown-color 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @resthub-orange-color), color-stop(100%, @resthub-orange-brown-color));
-    background: -webkit-linear-gradient(top, @resthub-orange-color 0%, @resthub-orange-brown-color 100%);
-    background: -o-linear-gradient(top, @resthub-orange-color 0%, @resthub-orange-brown-color 100%);
-    background: -ms-linear-gradient(top, @resthub-orange-color 0%, @resthub-orange-brown-color 100%);
-    background: linear-gradient(to bottom, @resthub-orange-color 0%, @resthub-orange-brown-color 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D4571E', endColorstr='#5c4e35', GradientType=0);
-    border-color: @resthub-light-brown-color;
+  a {
+    color: @resthub-brown-color;
+
+    &:hover, &:focus {
+      color: black;
+    }
+  }
+
+  &:before {
     color: @resthub-light-brown-color;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+    font-family: FontAwesome;
+  }
+
+  &.alert-warning {
+    .alert-background(@warning-start-color, @warning-stop-color, @warning-font-color, @warning-border-color);
 
     &:before {
       content: "\f071";
-      color: #f5f5f5;
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      font-size: 32px;
-      font-weight: bold;
-      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-      font-family: FontAwesome;
+    }
+  }
+
+  &.alert-info {
+    .alert-background(@info-start-color, @info-stop-color, @info-font-color, @info-border-color);
+
+    &:before {
+      content: "\f05a";
     }
   }
 }
@@ -706,7 +744,7 @@ footer {
       }
 
       ul, ol {
-        padding-left: ((@grid-gutter-width / 2) + 3) ;
+        padding-left: ((@grid-gutter-width / 2) + 3);
         padding-right: ((@grid-gutter-width / 2) + 3);
       }
     }
@@ -725,6 +763,57 @@ footer {
       font-size: @font-size-small-xxs - 2px;
     }
   }
+}
+
+.make-grid-columns-float(xxs);
+.make-grid(@grid-columns, xxs, width);
+.make-grid(@grid-columns, xxs, pull);
+.make-grid(@grid-columns, xxs, push);
+.make-grid(@grid-columns, xxs, offset);
+
+@media (min-width: @screen-xs-min) {
+  .make-grid-columns-float(xs);
+  .make-grid(@grid-columns, xs, width);
+  .make-grid(@grid-columns, xs, pull);
+  .make-grid(@grid-columns, xs, push);
+  .make-grid(@grid-columns, xs, offset);
+}
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media (min-width: @screen-sm-min) {
+  .make-grid-columns-float(sm);
+  .make-grid(@grid-columns, sm, width);
+  .make-grid(@grid-columns, sm, pull);
+  .make-grid(@grid-columns, sm, push);
+  .make-grid(@grid-columns, sm, offset);
+}
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: @screen-md-min) {
+  .make-grid-columns-float(md);
+  .make-grid(@grid-columns, md, width);
+  .make-grid(@grid-columns, md, pull);
+  .make-grid(@grid-columns, md, push);
+  .make-grid(@grid-columns, md, offset);
+}
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: @screen-lg-min) {
+  .make-grid-columns-float(lg);
+  .make-grid(@grid-columns, lg, width);
+  .make-grid(@grid-columns, lg, pull);
+  .make-grid(@grid-columns, lg, push);
+  .make-grid(@grid-columns, lg, offset);
 }
 
 .visible-xxs {
