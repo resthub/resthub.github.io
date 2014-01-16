@@ -192,7 +192,7 @@ header {
       }
     }
 
-    .btn.btn-default,.btn.btn-default.disabled {
+    .btn.btn-default, .btn.btn-default.disabled {
       color: @resthub-white-color;
       opacity: 1;
     }
@@ -327,6 +327,23 @@ article {
     }
   }
 
+  blockquote {
+    background-color: #eeeeee;
+    border-left-color: @resthub-intermediate-brown-color;
+    p {
+      font-size: 16px;
+      font-weight: 500;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &.tutorial ol blockquote {
+    margin-left: -40px;
+  }
+
   .quickstart {
     img {
       max-width: 480px;
@@ -373,6 +390,7 @@ pre {
 
 code {
   color: @resthub-code-color;
+  background-color: transparent;
 }
 
 pre code {
@@ -676,6 +694,13 @@ footer {
     font-size: @font-size-code-xs;
   }
 
+  .tutorial {
+    img {
+      width: 75%;
+      max-width: 355px;
+    }
+  }
+
 }
 
 @media only screen and (max-width: @screen-xxs-max) {
@@ -758,6 +783,11 @@ footer {
       ul, ol {
         padding-left: ((@grid-gutter-width / 2) + 3);
         padding-right: ((@grid-gutter-width / 2) + 3);
+      }
+
+      &.tutorial ol blockquote {
+        margin-left: -18px;
+        margin-right: -18px;
       }
     }
 

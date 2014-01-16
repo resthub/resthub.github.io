@@ -6148,6 +6148,20 @@ article .toc a {
 article .toc a:hover {
   border-color: #34302d;
 }
+article blockquote {
+  background-color: #eeeeee;
+  border-left-color: #494543;
+}
+article blockquote p {
+  font-size: 16px;
+  font-weight: 500;
+}
+article blockquote p:first-child {
+  margin-top: 0;
+}
+article.tutorial ol blockquote {
+  margin-left: -40px;
+}
 article .quickstart img {
   max-width: 480px;
   width: 75%;
@@ -6189,6 +6203,7 @@ pre {
 }
 code {
   color: #636c7f;
+  background-color: transparent;
 }
 pre code {
   font-size: 14px;
@@ -6464,6 +6479,10 @@ footer .components .component .build-status {
   pre code {
     font-size: 12px;
   }
+  .tutorial img {
+    width: 75%;
+    max-width: 355px;
+  }
 }
 @media only screen and (max-width: 479px) {
   .navbar .container {
@@ -6532,6 +6551,10 @@ footer .components .component .build-status {
   section article ol {
     padding-left: 18px;
     padding-right: 18px;
+  }
+  section article.tutorial ol blockquote {
+    margin-left: -18px;
+    margin-right: -18px;
   }
   pre code {
     font-size: 11px;
