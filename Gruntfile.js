@@ -24,7 +24,8 @@ grunt.initConfig({
     },
 	bootstrap: {
       files: [
-        {expand: true, cwd: 'bower_components/bootstrap/dist/js/', src: ['bootstrap.min.js'], dest: 'assets/javascript/'}
+        {expand: true, cwd: 'bower_components/bootstrap/dist/js/', src: ['bootstrap.min.js'], dest: 'assets/javascript/'},
+        {expand: true, cwd: 'bower_components/bootstrap/dist/fonts/', src: ['*'], dest: 'assets/stylesheets/fonts/'}
       ]
     }
   },

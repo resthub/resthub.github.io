@@ -12,7 +12,7 @@ RESTHub project very quickly.
 Lets suppose that you want to start a new rich web application project with a Java/JPA Backend:
 
 <div class="alert alert-info">
-    <label>Prerequisites</label>
+    <h6>Prerequisites</h6>
     To run this example, you must have installed <a href="http://java.com/en/download/help/download_options.xml">Java 7</a>
     and <a href="http://maven.apache.org/download.cgi">Maven 3</a> on your computer.
 </div>
@@ -41,6 +41,6 @@ You just have to **create your own domain and start coding** ! Enjoy !
 
 You should (unordered):
 
-* Read the [current documentation](spring/home)
-* Follow our dedicated tutorials : [Spring Stack](spring/tutorial) and [Backbone Stack](backbone/tutorial)
+* Read the [current documentation](/docs/spring/home)
+* Follow our dedicated tutorials : [Spring Stack](/docs/spring/tutorial) and [Backbone Stack](/docs/backbone/tutorial)
 * Discover our [TODO List demo application](https://github.com/resthub/todo-backbone-example) (mongoBD)

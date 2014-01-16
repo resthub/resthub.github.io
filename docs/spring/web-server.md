@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Web common
+title: Web server
 permalink:  web-server/
 prev: spring/web-common
 next: spring/web-client
