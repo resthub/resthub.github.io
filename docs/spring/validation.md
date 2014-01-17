@@ -15,7 +15,7 @@ To be able to build, on the client side, a validation behaviour based on server 
 **RESThub provides an API to export, for a given model class, the complete list of its constraints definitions**.
 
 RESThub Spring Stack integrates the [JSR303 specification](http://beanvalidation.org/1.0/spec/) (BeanValidation) 
-and its reference implementation: [Hibernate Validator](http://docs.jboss.org/hibernate/validator/4.3/reference/en-US/html_single/).
+and its reference implementation: [Hibernate Validator {{site.hibernate-validator-version}}](http://docs.jboss.org/hibernate/validator/{{site.hibernate-validator-docs-version}}/reference/en-US/html_single/).
 
 These validations constraints are, in fact, annotations held by a Java Bean Model. e.g :
 
@@ -188,7 +188,7 @@ Supported annotations
 RESThub Validation API is based on [JSR303 specification](http://beanvalidation.org/1.0/spec/) (BeanValidation)
 Validation constraints. **Any standard BeanValidation Constraint is supported** (and exported) by this API.
 
-As [Hibernate Validator](http://docs.jboss.org/hibernate/validator/4.3/reference/en-US/html_single/) is used
+As [Hibernate Validator](http://docs.jboss.org/hibernate/validator/{{site.hibernate-validator-docs-version}}/reference/en-US/html_single/) is used
 as BeanValidation implementation, RESThub Validation also exports and supports specific
 Hibernate Validators constraints which format are JSR303 compliant are also supported. More globally,
 **any extension of JSR303 specification would be supported** if the standard BeanValidation constraint

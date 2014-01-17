@@ -17,11 +17,11 @@ It provides a coherent stack based on:
 
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (at least JDK6, JDK7 recommended)
 * [Tomcat 7](http://tomcat.apache.org/download-70.cgi) (RESThub can also be used for non web applications)
-* Spring 3.2 [reference manual](http://static.springsource.org/spring/docs/3.2.x/spring-framework-reference/html)
-  and [Javadoc](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/))
+* Spring {{site.spring-version}} [reference manual](http://static.springsource.org/spring/docs/{{site.spring-doc-version}}/spring-framework-reference/html)
+  and [Javadoc](http://static.springsource.org/spring/docs/{{site.spring-doc-version}}/javadoc-api/))
 * SQL and NoSQL Persistence with [Spring Data](http://www.springsource.org/spring-data>)
 * Logging with SLF4J ([manual](http://www.slf4j.org/manual.html)) and Logback ([manual](http://logback.qos.ch/manual/index.html))
-* Maven 3.0 ([complete reference](http://www.sonatype.com/books/mvnref-book/reference/public-book.html)) is
+* Maven {{site.maven-version}} ([complete reference](http://www.sonatype.com/books/mvnref-book/reference/public-book.html)) is
   the reference build tool used.
 
 It provides the following modules:
@@ -29,8 +29,8 @@ It provides the following modules:
 * **resthub-archetypes**: project templates (WAR or multi-module layout) to start quickly a new project
 * **resthub-jpa**: support for JPA based persistence based on Spring Data, including embedded H2 database for testing
 * **resthub-mongodb**: support for MongoDB based on Spring Data
-* **resthub-test**: testing stack based on TestNG, Mockito and Fest Assert 2
-* **resthub-web-server**: generic REST webservices support based on Spring MVC 3.2 including exception mapping to HTTP status
+* **resthub-test**: testing stack based on TestNG, Mockito and Fest Assert {{site.fest-assert-short-version}}
+* **resthub-web-server**: generic REST webservices support based on Spring MVC {{site.spring-version}} including exception mapping to HTTP status
   codes
 * **resthub-web-client**: simple to use HTTP client based on AyncHttpClient
 
@@ -54,7 +54,7 @@ In order to use it for your projects, you should add the following element to yo
 
 ## Versions & Changelogs
 
-Spring stack current version is **{{site.spring-stack-version}}**, the whole RESThub {{spring-stack-javadoc-version}} Spring stack [Javadoc](/apidocs/spring/{{spring-stack-javadoc-version}}/) is available.
+Spring stack current version is **{{site.spring-stack-version}}**, the whole RESThub {{site.spring-stack-javadoc-version}} Spring stack [Javadoc](/apidocs/spring/{{site.spring-stack-javadoc-version}}/) is available.
 
 You can find RESThub Spring Stack release changelogs on our [Github repository](https://github.com/resthub/resthub-spring-stack) :
 

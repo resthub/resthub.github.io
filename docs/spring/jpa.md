@@ -10,10 +10,10 @@ next: spring/mongo
 
 JPA support is based on Spring Data JPA and includes by default the H2 in memory database. It includes the following dependencies:
 
-* Spring Data JPA ([reference manual](http://static.springsource.org/spring-data/data-jpa/docs/current/reference/html/)
-  and [Javadoc](http://static.springsource.org/spring-data/data-jpa/docs/current/api/))
-* Hibernate [documentation](http://www.hibernate.org/docs.html)
-* [H2 embedded database](http://www.h2database.com/html/main.html)
+* Spring Data JPA {{site.spring-data-jpa-version}} [reference manual](http://static.springsource.org/spring-data/data-jpa/docs/{{site.spring-data-jpa-docs-version}}/reference/html/)
+  and [Javadoc](http://static.springsource.org/spring-data/data-jpa/docs/{{site.spring-data-jpa-docs-version}}/api/)
+* Hibernate {{site.hibernate-version}} [documentation](http://docs.jboss.org/hibernate/orm/{{site.hibernate-docs-version}}/manual/en-US/html/)
+* H2 embedded database {{site.h2-version}} [documentation](http://www.h2database.com/html/main.html)
 
 Thanks to Spring Data, it is possible to create repositories (also sometimes named DAO) by writing only the interface.
 

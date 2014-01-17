@@ -9,7 +9,7 @@ next: spring/web-server
 <div class="toc"></div>
 
 RESThub Web Common comes with built-in XML and JSON support for serialization based on
-[Jackson 2](http://wiki.fasterxml.com/JacksonHome). RESThub uses
+Jackson {{site.jackson-version}} [documentation](http://wiki.fasterxml.com/JacksonHome). RESThub uses
 [Jackson 2 XML capabilities](https://github.com/FasterXML/jackson-dataformat-xml)
 instead of JAXB since it is more flexible. For example, you don't need to add classes to a context.
 Please read [Jackson annotation guide](http://wiki.fasterxml.com/JacksonAnnotations) for details

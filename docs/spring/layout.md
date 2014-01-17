@@ -345,7 +345,7 @@ There are various ways to configure your environment specific properties in your
 
 Maven filtering (search and replace variables) is not recommended because it is done at compile time
 (not runtime) and makes usually your JAR/WAR specific to an environment. This feature can be useful
-when defining your target path (${project.build.directory}) in your `src/test/applicationContext.xml`
+when defining your target path (`${project.build.directory}`) in your *src/test/applicationContext.xml*
 for testing purpose.
 
 Spring properties placeholders + `@Value` annotation is the best way to do that.

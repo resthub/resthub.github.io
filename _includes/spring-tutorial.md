@@ -54,17 +54,17 @@ Our REST interface will be mainly able to expose services to:
 
 4. **List of Resthub2 underlying frameworks and corresponding documentation**
 
-   > * Maven: [complete reference](http://www.sonatype.com/books/mvnref-book/reference/public-book.html)
-   > * Spring 3.2.6: [reference manual](http://docs.spring.io/spring/docs/3.2.6.RELEASE/spring-framework-reference/htmlsingle/) and [Javadoc](http://docs.spring.io/spring/docs/3.2.6.RELEASE/javadoc-api/)
-   > * Spring Data: [reference](http://projects.spring.io/spring-data)
-   >     * Spring Data JPA: [reference](http://docs.spring.io/spring-data/jpa/docs/1.4.3.RELEASE/reference/html/) and [Javadoc](http://docs.spring.io/spring-data/jpa/docs/1.4.3.RELEASE/api/)
-   >     * Spring Data MongoDB: [reference](http://docs.spring.io/spring-data/data-mongo/docs/1.3.3.RELEASE/reference/html/) and [Javadoc](http://docs.spring.io/spring-data/data-mongo/docs/1.3.3.RELEASE/api/)
-   > * Hibernate ORM and JPA: [reference](http://docs.jboss.org/hibernate/orm/4.3/manual/en-US/html/) and [Javadoc](http://docs.jboss.org/hibernate/orm/4.3/javadocs/)
-   > * Spring MVC: [reference](http://docs.spring.io/spring/docs/3.2.6.RELEASE/spring-framework-reference/htmlsingle/#mvc)
-   > * Jackson 2.3: [reference](http://wiki.fasterxml.com/JacksonDocumentation) and [Javadoc](http://wiki.fasterxml.com/JacksonJavaDocs)
-   > * AsyncHttpClient: [reference](https://github.com/sonatype/async-http-client) and [Javadoc](http://sonatype.github.com/async-http-client/apidocs/reference/packages.html)
-   > * SLF4J: [reference](http://www.slf4j.org/manual.html)
-   > * Logback: [reference](http://logback.qos.ch/manual/index.html)
+   > * Maven {{site.maven-version}}: [complete reference](http://www.sonatype.com/books/mvnref-book/reference/public-book.html)
+   > * Spring {{site.spring-version}}: [reference manual](http://docs.spring.io/spring/docs/{{site.spring-docs-version}}/spring-framework-reference/htmlsingle/) and [Javadoc](http://docs.spring.io/spring/docs/{{site.spring-docs-version}}/javadoc-api/)
+   > * Spring Data {{site.spring-data-version}}: [reference](http://projects.spring.io/spring-data)
+   >     * Spring Data JPA {{site.spring-data-jpa-version}}: [reference](http://docs.spring.io/spring-data/jpa/docs/{{site.spring-data-jpa-docs-version}}/reference/html/) and [Javadoc](http://docs.spring.io/spring-data/jpa/docs/{{site.spring-data-jpa-docs-version}}/api/)
+   >     * Spring Data MongoDB {{site.spring-data-mongodb-version}}: [reference](http://docs.spring.io/spring-data/data-mongo/docs/{{site.spring-data-mongodb-docs-version}}/reference/html/) and [Javadoc](http://docs.spring.io/spring-data/data-mongo/docs/{{site.spring-data-mongodb-docs-version}}/api/)
+   > * Hibernate ORM {{site.hibernate-version}} and JPA {{site.jpa-version}}: [reference](http://docs.jboss.org/hibernate/orm/{{site.hibernate-docs-version}}/manual/en-US/html/) and [Javadoc](http://docs.jboss.org/hibernate/orm/{{site.hibernate-docs-version}}/javadocs/)
+   > * Spring MVC {{site.spring-version}}: [reference](http://docs.spring.io/spring/docs/{{site.spring-docs-version}}/spring-framework-reference/htmlsingle/#mvc)
+   > * Jackson {{site.jackson-version}}: [reference](http://wiki.fasterxml.com/JacksonDocumentation) and [Javadoc](http://wiki.fasterxml.com/JacksonJavaDocs)
+   > * AsyncHttpClient {{site.async-http-client-version}}: [reference](https://github.com/asynchttpclient/async-http-client) and [Javadoc](http://sonatype.github.com/async-http-client/apidocs/reference/packages.html)
+   > * SLF4J {{site.slf4j-version}}: [reference](http://www.slf4j.org/manual.html)
+   > * Logback {{site.logback-version}}: [reference](http://logback.qos.ch/manual/index.html)
 
 **Do:**
 
@@ -234,9 +234,9 @@ Let's try to implement a `findByName` implementation that returns a Task based o
 1. **Modify** `TaskController.java` **to add a new method called** `findByTitle`  **with a name parameter mapped to**
    `/api/task/title/{title}` returning a single task element if exists.
 
-    **Tip:** Consider using `@ResponseBody` annotation (see <http://static.springsource.org/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-ann-responsebody>)
+    **Tip:** Consider using `@ResponseBody` annotation (see [here](http://static.springsource.org/spring/docs/{{site.spring-docs-version}}/spring-framework-reference/html/mvc.html#mvc-ann-responsebody))
 
-    Implement this by adding a new repository method (see [Spring Data JPA documentation](http://static.springsource.org/spring-data/data-jpa/docs/current/api/)).
+    Implement this by adding a new repository method (see [Spring Data JPA documentation](http://static.springsource.org/spring-data/data-jpa/docs/{{site.spring-data-jpa-docs-version}}/api/)).
     Check on your browser that <http://localhost:8080/api/task/title/{title}> with an existing title works.
 
     e.g.
@@ -265,7 +265,7 @@ Let's try to implement a `findByName` implementation that returns a Task based o
     }
     ```
 
-    > see <https://github.com/resthub/resthub-spring-training/tree/step3-solution> for complete solution.
+    > see [here](https://github.com/resthub/resthub-spring-training/tree/step3-solution) for complete solution.
 
 ### Test your controller
 
@@ -297,7 +297,7 @@ We are going to test our new controller `findByTitle` method.
    Verify that the new controller returns a response that is not null, with the right name.
 
    > Our test `TaskControllerTest` should extend resthub `AbstractWebTest`
-   > (see [documentation](/docs/spring/javadoc/org/resthub/test/common/AbstractWebTest.html))
+   > (see [documentation](/apidocs/spring/{{site.spring-stack-javadoc-version}}/org/resthub/test/AbstractWebTest.html))
    >
    > ```java
    > public class TaskControllerTest extends AbstractWebTest {
@@ -317,7 +317,7 @@ We are going to test our new controller `findByTitle` method.
    > }
    > ```
    >
-   > see <https://github.com/resthub/resthub-spring-tutorial/tree/step3-solution> for complete solution.
+   > see [here](https://github.com/resthub/resthub-spring-tutorial/tree/step3-solution) for complete solution.
 
 3. **Run test and check it passes**
 
@@ -348,15 +348,15 @@ We are going to test our new controller `findByTitle` method.
 
 ## Step 4: Users own tasks
 
-**Prerequisites** : you can find some prerequisites and reference implementation of `NotificationService` and `MockConfiguration` at
-<http://github.com/resthub/resthub-spring-training/tree/step4-prerequisites>
+**Prerequisites** : you can find some prerequisites and reference implementation of `NotificationService` and `MockConfiguration`
+[here](http://github.com/resthub/resthub-spring-training/tree/step4-prerequisites)
 
 **Find:**
 
 1. **Hibernate & JPA mapping documentation**
 
-    > see [reference](http://docs.jboss.org/hibernate/orm/4.3/manual/en-US/html_single/) and
-    > [Javadoc](http://docs.jboss.org/hibernate/orm/4.3/javadocs/)
+    > see [reference](http://docs.jboss.org/hibernate/orm/{{site.hibernate-docs-version}}/manual/en-US/html_single/) and
+    > [Javadoc](http://docs.jboss.org/hibernate/orm/{{site.hibernate-docs-version}}/javadocs/)
     
 2. **Jackson annotations documentation**
 
@@ -364,20 +364,20 @@ We are going to test our new controller `findByTitle` method.
     
 3. **Resthub2 Crud Services documentation**
 
-    > see [Crud Services](http://resthub.org/2/spring-stack.html#crud-services) and
-    > [Javadoc](http://jenkins.pullrequest.org/job/resthub-spring-stack-master/javadoc/org/resthub/common/service/CrudService.html)
+    > see [Crud Services](/docs/spring/layout#toc_7) and
+    > [Javadoc](/apidocs/spring/{{site.spring-stack-javadoc-version}}/org/resthub/common/service/CrudService.html)
     
 4. **Resthub2 Different kind of controllers documentation**
 
-    > see [Web server](http://resthub.org/2/spring-stack.html#web-server)
+    > see [Web server](/docs/spring/web-server)
     
 5. **Spring assertions documentation**
 
-    > see [documentation](http://docs.spring.io/spring/docs/3.2.6.RELEASE/javadoc-api/org/springframework/util/Assert.html)
+    > see [documentation](http://docs.spring.io/spring/docs/{{site.spring-docs-version}}/javadoc-api/org/springframework/util/Assert.html)
     
 6. **Spring transactions documentation**
 
-    > see [documentation](http://docs.spring.io/spring/docs/3.2.6.RELEASE/spring-framework-reference/htmlsingle/#transaction)
+    > see [documentation](http://docs.spring.io/spring/docs/{{site.spring-docs-version}}/spring-framework-reference/htmlsingle/#transaction)
 
 **Do:**
 
@@ -575,8 +575,7 @@ We are going to test our new controller `findByTitle` method.
 7. **Declare and implement method** `affectTaskToUser` **in (**`TaskService` / `TaskServiceImpl` **)**
    
    Notification simulation should be performed by implementing a custom `NotificationService` that simply
-   logs the event (you can also get the implementation from our repo in step4-prerequisites : 
-   <https://github.com/resthub/resthub-spring-tutorial/tree/step4-prerequisites>).
+   logs the event (you can also get the implementation from our repo in [step4-prerequisites](https://github.com/resthub/resthub-spring-tutorial/tree/step4-prerequisites).
    It is important to have an independant service (for mocking - see below - purposes)
    and you should not simply log in your new method. 
   
@@ -1001,17 +1000,17 @@ You can test in your browser (or, better, add a test in `TaskControllerTest`) th
 ## Step 5: Validate your beans and embed entities
 
 Finally, we want to add validation constraints to our model. This could be done by using BeanValidation (JSR303 Spec) and its reference
-implementation: Hibernate Validator. see [documentation](http://docs.jboss.org/hibernate/validator/4.1/reference/en-US/html_single/)
+implementation: Hibernate Validator.
 
 **Find:**
 
 1. **Bean Validation and Hibernate Validators documentation**
 
-    > see [reference](http://docs.jboss.org/hibernate/validator/4.0.1/reference/en/html_single/)
+    > see [reference](http://docs.jboss.org/hibernate/validator/{{site.hibernate-validator-docs-version}}/reference/en/html_single/)
 
 2. **JPA / Hibernate embedded entities documentation**
 
-    > see [reference](http://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html_single/#mapping-declaration-component)
+    > see [reference](http://docs.jboss.org/hibernate/validator/{{site.hibernate-validator-docs-version}}/reference/en-US/html_single#mapping-declaration-component)
     
 **Do:**
 

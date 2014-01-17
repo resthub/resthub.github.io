@@ -13,8 +13,8 @@ XML serialization are supported out of the box.
 
 It provides some abstract REST controller classes, and includes the following dependencies:
 
-* Spring MVC 3.2 ([reference manual](http://static.springsource.org/spring/docs/3.1.x/spring-framework-reference/html/mvc.html))
-* Jackson 2 ([documentation](http://wiki.fasterxml.com/JacksonDocumentation))
+* Spring MVC {{site.spring-version}} ([reference manual](http://static.springsource.org/spring/docs/{{site.spring-docs-version}}/spring-framework-reference/html/mvc.html))
+* Jackson {{jackson-version}} ([documentation](http://wiki.fasterxml.com/JacksonDocumentation))
 
 RESThub exception resolver allow to map common exceptions (Spring, JPA) to the right HTTP status codes:
 
@@ -52,7 +52,7 @@ You have the choice to use a 2 layers (Controller -> Repository) or 3 layers (Co
 software design.
 
 You can  find more details about these generic webservices, including their REST API description,
-on RESThub [Javadoc](/apidocs/spring/{{spring-stack-javadoc-version}}).
+on RESThub [Javadoc](/apidocs/spring/{{site.spring-stack-javadoc-version}}).
 
 ### 2 layers software design
 
@@ -193,7 +193,7 @@ you usually want to address some specific needs:
 For that, you often need to decorrelate serialized objects ([DTOs](http://en.wikipedia.org/wiki/Data_transfer_object))
 from your model.
 
-RESThub includes [ModelMapper](http://modelmapper.org/) in its resthub-common module.
+RESThub includes [ModelMapper {{site.model-mapper-version}}](http://modelmapper.org/) in its resthub-common module.
 
 ```java
 ModelMapper modelMapper = new ModelMapper();

@@ -3,17 +3,17 @@ layout: docs
 title: Testing
 permalink:  testing/
 prev: spring/validation
-next: tutorial
+next: spring/tutorial
 ---
 
 <div class="toc"></div>
 
 The following test stack is included in the RESThub test module:
 
-* Test framework with [TestNG](http://testng.org/doc/documentation-main.html).
+* Test framework with [TestNG {{site.testng-version}}](http://testng.org/doc/documentation-main.html).
   If you use Eclipse, don't forget to install the [TestNG plugin](http://testng.org/doc/eclipse.html).
-* Assertion with [Fest Assert 2](https://github.com/alexruiz/fest-assert-2.x/wiki)
-* Mock with [Mockito](http://code.google.com/p/mockito/)
+* Assertion with [Fest Assert {{site.fest-assert-version}}](https://github.com/alexruiz/fest-assert-{{site.fest-assert-short-version}}.x/wiki)
+* Mock with [Mockito {{site.mockito-version}}](http://code.google.com/p/mockito/)
 
 RESThub also provides generic classes in order to make testing easier.
 

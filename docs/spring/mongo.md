@@ -8,8 +8,8 @@ next: spring/web-common
 
 <div class="toc"></div>
 
-MongoDB support is based on Spring Data MongoDB ([reference manual](http://static.springsource.org/spring-data/data-mongodb/docs/current/reference/html/)
-and [Javadoc](http://static.springsource.org/spring-data/data-mongodb/docs/current/api/>)).
+MongoDB support is based on Spring Data MongoDB {{site.spring-data-mongodb-version}} ([reference manual](http://static.springsource.org/spring-data/data-mongodb/docs/{{site.spring-data-mongodb-docs-version}}/reference/html/)
+and [Javadoc](http://static.springsource.org/spring-data/data-mongodb/docs/{{site.spring-data-mongodb-docs-version}}/api/>)).
 
 ## Configuration
 

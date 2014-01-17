@@ -42,7 +42,7 @@ specificity compared to other stacks in both java and javascript worlds.
 
 ### Main Stacks
 
-RESThub 2.0 is mainly made of 2 independent parts:
+RESThub 2 is mainly made of 2 independent parts:
 
 * a **Java/Spring stack** for your stateless REST web services
 * a **Backbone.js stack** for your MVVM JavaScript client
