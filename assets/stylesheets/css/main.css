@@ -6163,6 +6163,28 @@ article.tutorial ol blockquote,
 article.tutorial ul blockquote {
   margin-left: -40px;
 }
+article.tutorial.no-answers blockquote {
+  display: none;
+  visibility: hidden;
+}
+article.tutorial .tutorial-version {
+  margin-top: -33px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+article.tutorial .tutorial-version label {
+  margin-bottom: 0;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+article.tutorial .tutorial-version .btn {
+  border-radius: 3px;
+  widows: 6.5em;
+  font-size: 1em;
+}
+article.tutorial .tutorial-version i {
+  margin-right: 10px;
+}
 article .quickstart img {
   max-width: 480px;
   width: 75%;
@@ -6303,7 +6325,8 @@ pre code {
   border: none;
 }
 .btn.btn-primary:hover,
-.btn.btn-primary:focus {
+.btn.btn-primary:focus,
+.btn.btn-primary.active {
   color: #f5f5f5;
   background-color: #d4571e;
 }

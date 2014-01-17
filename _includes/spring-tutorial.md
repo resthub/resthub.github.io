@@ -1,11 +1,3 @@
----
-layout: docs
-title: Spring Stack tutorial
-permalink:  tutorial/
-prev: spring/testing
-next: backbone/home
----
-
 <div class="toc"></div>
 
 This tutorial will help you to get an overview of resthub-spring-stack and its components.

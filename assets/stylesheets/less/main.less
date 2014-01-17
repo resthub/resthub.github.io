@@ -346,6 +346,33 @@ article {
         margin-left: -40px;
       }
     }
+
+    &.no-answers blockquote {
+      display: none;
+      visibility: hidden;
+    }
+
+    .tutorial-version {
+      margin-top: -33px;
+      margin-bottom: 20px;
+      font-weight: 700;
+
+      label {
+        margin-bottom: 0;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+
+      .btn {
+        border-radius: 3px;
+        widows: 6.5em;
+        font-size: 1em;
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
   }
 
   .quickstart {
@@ -510,7 +537,7 @@ pre code {
 
   &.btn-primary {
     border: none;
-    &:hover, &:focus {
+    &:hover, &:focus, &.active {
       color: @resthub-white-color;
       background-color: @resthub-orange-color;
     }
