@@ -52,7 +52,7 @@ You have the choice to use a 2 layers (Controller -> Repository) or 3 layers (Co
 software design.
 
 You can  find more details about these generic webservices, including their REST API description,
-on RESThub [Javadoc](http://resthub.org/javadoc/2.1).
+on RESThub [Javadoc](/apidocs/spring/{{spring-stack-javadoc-version}}).
 
 ### 2 layers software design
 

@@ -54,7 +54,7 @@ In order to use it for your projects, you should add the following element to yo
 
 ## Versions & Changelogs
 
-Spring stack current version is **{{site.spring-stack-version}}**, the whole RESThub 2.1 Spring stack [Javadoc](http://resthub.org/javadoc/2.1/) is available.
+Spring stack current version is **{{site.spring-stack-version}}**, the whole RESThub {{spring-stack-javadoc-version}} Spring stack [Javadoc](/apidocs/spring/{{spring-stack-javadoc-version}}/) is available.
 
 You can find RESThub Spring Stack release changelogs on our [Github repository](https://github.com/resthub/resthub-spring-stack) :
 

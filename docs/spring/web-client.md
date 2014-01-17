@@ -9,7 +9,7 @@ next: spring/validation
 <div class="toc"></div>
 
 RESThub Web client module aims to give you an easy way to request other REST webservices.
-It is based on AsyncHttpClient and provides a [client API wrapper](http://resthub.org/javadoc/2.0/index.html?org/resthub/web/Client.html)
+It is based on AsyncHttpClient and provides a [client API wrapper](/apidocs/spring/{{spring-stack-javadoc-version}}/index.html?org/resthub/web/Client.html)
 and OAuth2 support.
 
 In order to limit conflicts it has no dependency on Spring, but only on:
