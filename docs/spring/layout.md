@@ -67,7 +67,7 @@ pom.xml example:
     <name>My project</name>
 
     <properties>
-        <resthub.spring.stack.version>2.1.4</resthub.spring.stack.version>
+        <resthub.spring.stack.version>{{site.spring-stack-version}}</resthub.spring.stack.version>
     </properties>
 
     <dependencies>
@@ -143,31 +143,31 @@ RESThub dependencies are available on Maven Central:
 <dependency>
     <groupId>org.resthub</groupId>
     <artifactId>resthub-jpa</artifactId>
-    <version>2.1.4</version>
+    <version>{{site.spring-stack-version}}</version>
 </dependency>
 
 <dependency>
     <groupId>org.resthub</groupId>
     <artifactId>resthub-mongodb</artifactId>
-    <version>2.1.4</version>
+    <version>{{site.spring-stack-version}}</version>
 </dependency>
 
 <dependency>
     <groupId>org.resthub</groupId>
     <artifactId>resthub-web-server</artifactId>
-    <version>2.1.4</version>
+    <version>{{site.spring-stack-version}}</version>
 </dependency>
 
 <dependency>
     <groupId>org.resthub</groupId>
     <artifactId>resthub-web-client</artifactId>
-    <version>2.1.4</version>
+    <version>{{site.spring-stack-version}}</version>
 </dependency>
 
 <dependency>
     <groupId>org.resthub</groupId>
     <artifactId>resthub-test</artifactId>
-    <version>2.1.4</version>
+    <version>{{site.spring-stack-version}}</version>
     <scope>test</scope>
 </dependency>
 ```

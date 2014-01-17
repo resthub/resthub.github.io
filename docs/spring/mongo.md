@@ -19,7 +19,7 @@ In order to use it in your project, add the following snippet to your pom.xml:
 <dependency>
     <groupId>org.resthub</groupId>
     <artifactId>resthub-mongodb</artifactId>
-    <version>2.1.4</version>
+    <version>{{site.spring-stack-version}}</version>
 </dependency>
 ```
 

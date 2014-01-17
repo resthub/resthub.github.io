@@ -4,3 +4,4 @@ redcarpet:
     extensions: [with_toc_data]
 pygments: true
 exclude: [package.json, bower.json, node_modules, bower_components, Gemfile, Gemfile.lock, less, Gruntfile.js]
+spring-stack-version: 2.1.4

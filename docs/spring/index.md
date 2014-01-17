@@ -54,11 +54,11 @@ In order to use it for your projects, you should add the following element to yo
 
 ## Versions & Changelogs
 
-Spring stack current version is **2.1.4**, the whole RESThub 2.1 Spring stack [Javadoc](http://resthub.org/javadoc/2.1/) is available.
+Spring stack current version is **{{site.spring-stack-version}}**, the whole RESThub 2.1 Spring stack [Javadoc](http://resthub.org/javadoc/2.1/) is available.
 
 You can find RESThub Spring Stack release changelogs on our [Github repository](https://github.com/resthub/resthub-spring-stack) :
 
-* 2013-12-20: [RESThub Spring stack 2.1.4](https://github.com/resthub/resthub-spring-stack/blob/master/CHANGELOG.rst#214-version-12-20-2013)
+* 2013-12-20: [RESThub Spring stack {{site.spring-stack-version}}](https://github.com/resthub/resthub-spring-stack/blob/master/CHANGELOG.rst#214-version-12-20-2013)
 * 2013-12-16: [RESThub Spring stack 2.1.3](https://github.com/resthub/resthub-spring-stack/blob/master/CHANGELOG.rst#213-version-12-16-2013)
 * 2013-07-26: [RESThub Spring stack 2.1.2](https://github.com/resthub/resthub-spring-stack/blob/master/CHANGELOG.rst#212-version-07-26-2013)
 * 2013-05-17: [RESThub Spring stack 2.1.1](https://github.com/resthub/resthub-spring-stack/blob/master/CHANGELOG.rst#211-version-05-17-2013)
@@ -86,10 +86,10 @@ To create your project based or RESThub archetypes, just open a command line ter
 to the archetype you chosed:
 
 ```bash
-mvn archetype:generate -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion=2.1.4
-mvn archetype:generate -DarchetypeArtifactId=resthub-mongodb-backbonejs-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion=2.1.4
-mvn archetype:generate -DarchetypeArtifactId=resthub-jpa-backbonejs-multi-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion=2.1.4
-mvn archetype:generate -DarchetypeArtifactId=resthub-mongodb-backbonejs-multi-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion=2.1.4
+mvn archetype:generate -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
+mvn archetype:generate -DarchetypeArtifactId=resthub-mongodb-backbonejs-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
+mvn archetype:generate -DarchetypeArtifactId=resthub-jpa-backbonejs-multi-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
+mvn archetype:generate -DarchetypeArtifactId=resthub-mongodb-backbonejs-multi-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
 ```
 
 After choosing the right archetype and answering a few questions, your project is generated and ready to use.

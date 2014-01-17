@@ -18,7 +18,7 @@ Lets suppose that you want to start a new rich web application project with a Ja
 </div>
 
 ```bash
-~ $ mvn archetype:generate -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion=2.1.4
+~ $ mvn archetype:generate -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
 
 # choose the right archetype and answer a few questions
 
