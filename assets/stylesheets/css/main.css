@@ -6395,6 +6395,9 @@ pre code {
   background: linear-gradient(to bottom, #856a4f 0%, #654321 100%);
   border-color: #e0dcd9;
 }
+.alert.alert-info a {
+  color: #d4571e;
+}
 .alert.alert-info:before {
   content: "\f05a";
 }

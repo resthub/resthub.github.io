@@ -18,32 +18,32 @@ designed to allow you to build a real enterprise grade application, and describe
 
 The Backbone.js 2.1.2 stack includes the following librairies:
 
-* jQuery 1.9.1 ([documentation](http://docs.jquery.com/Main_Page))
-* Backbone.js 1.0 ([documentation](http://documentcloud.github.com/backbone/)) and its [localstorage adapter]
+* jQuery {{site.jquery-version}} ([documentation](http://docs.jquery.com/Main_Page))
+* Backbone.js {{site.backbone-version}} ([documentation](http://documentcloud.github.com/backbone/)) and its [localstorage adapter]
   (http://documentcloud.github.com/backbone/docs/backbone-localstorage.html)
-* Underscore.js 1.4.4 ([documentation](http://documentcloud.github.com/underscore/))
-* Underscore.String 2.3.0 ([documentation](https://github.com/epeli/underscore.string#readme))
-* Require.js 2.1.5 with [i18n](http://requirejs.org/docs/api.html#i18n) and [text](http://requirejs.org/docs/api.html#text) plugins
+* Underscore.js {{site.underscore-version}} ([documentation](http://documentcloud.github.com/underscore/))
+* Underscore.String {{site.underscore-string-version}} ([documentation](https://github.com/epeli/underscore.string#readme))
+* Require.js {{site.requirejs-version}} with [i18n](http://requirejs.org/docs/api.html#i18n) and [text](http://requirejs.org/docs/api.html#text) plugins
   ([documentation](http://requirejs.org/docs/api.html))
-* Handlebars 1.0 ([documentation](http://handlebarsjs.com))
+* Handlebars {{site.handlebars-version}} ([documentation](http://handlebarsjs.com))
 * A console shim + client logging to server mechanism
-* Twitter Bootstrap 2.3 ([documentation](http://getbootstrap.com/2.3.2/)) and its JS plugins
-* Form Validation: [Backbone Validation](http://github.com/thedersen/backbone.validation)
-* Parameters support on view routing: [Backbone Query Parameters](http://github.com/jhudson8/backbone-query-parameters)
-* Datagrid: [Backbone Datagrid](http://loicfrering.github.com/backbone.datagrid/)
-* Paginated lists: [Backbone Paginator](http://addyosmani.github.com/backbone.paginator/)
+* Twitter Bootstrap {{site.bootstrap-version}} ([documentation](http://getbootstrap.com/{{site.bootstrap-version}}/)) and its JS plugins
+* Form Validation: [Backbone Validation {{site.backbone-validation-version}}](http://github.com/thedersen/backbone.validation)
+* Parameters support on view routing: [Backbone Query Parameters {{site.backbone-query-parameters-version}}](http://github.com/jhudson8/backbone-query-parameters)
+* Datagrid: [Backbone Datagrid {{site.backbone-datagrid-version}}](http://loicfrering.github.com/backbone.datagrid/)
+* Paginated lists: [Backbone Paginator {{site.backbone-paginator-version}}](http://addyosmani.github.com/backbone.paginator/)
 * Asynchronous calls: [Async](http://github.com/caolan/async/)
 * Dispatching keyboard shortcuts: [Keymaster](http://gobby/keymasterithub.com/madr)
-* Get and set relations (one-to-one, one-to-many, many-to-one) for Backbone models: [Backbone Associations](http://dhruvaray.github.io/backbone-associations/)
-* Parsing, validating, manipulating, and formatting dates: [Moment](http://momentjs.com/)
+* Get and set relations (one-to-one, one-to-many, many-to-one) for Backbone models: [Backbone Associations {{site.backbone-associations-version}}](http://dhruvaray.github.io/backbone-associations/)
+* Parsing, validating, manipulating, and formatting dates: [Moment {{site.momentjs-version}}](http://momentjs.com/)
 
 Before going deeper in the RESThub Backbone stack, you should read the great documentation
-[Developing Backbone.js Applications](http://addyosmani.github.com/backbone-fundamentals/) by Addy Osmani,
+[Developing Backbone.js Applications](http://addyosmani.github.com/backbone-fundamentals/) by [@addyosmani](https://twitter.com/addyosmani),
 it is a great introduction to pure Backbone.js.
 
 ## Versions & Changelogs
 
-Backbone Stack current version is **2.1.2**.
+Backbone Stack current version is **{{site.backbone-stack-version}}**.
 
 You can find RESThub Backbone Stack release changelogs on our [Github repository](https://github.com/resthub/resthub-backbone-stack) :
 
