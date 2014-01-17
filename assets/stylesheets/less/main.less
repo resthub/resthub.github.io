@@ -9,13 +9,12 @@
 @resthub-white-color: #f5f5f5;
 @resthub-code-color: #636C7F;
 
+@alert-font-color: @resthub-light-brown-color;
 @warning-start-color: @resthub-orange-color;
 @warning-stop-color: @resthub-orange-brown-color;
-@warning-font-color: @resthub-light-brown-color;
 @warning-border-color: @resthub-light-brown-color;
 @info-start-color: #856A4F;
 @info-stop-color: #654321;
-@info-font-color: @resthub-light-brown-color;
 @info-border-color: @resthub-light-brown-color;
 
 @min-width: 306px;
@@ -81,7 +80,7 @@
 @btn-default-bg: @resthub-light-brown-color;
 @btn-default-border: @resthub-orange-color;
 
-.alert-background(@start-color, @stop-color, @font-color, @border-color) {
+.alert-background(@start-color, @stop-color, @border-color) {
   background: @start-color;
   background: -moz-linear-gradient(top, @start-color 0%, @stop-color 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @start-color), color-stop(100%, @stop-color));
@@ -89,9 +88,8 @@
   background: -o-linear-gradient(top, @start-color 0%, @stop-color 100%);
   background: -ms-linear-gradient(top, @start-color 0%, @stop-color 100%);
   background: linear-gradient(to bottom, @start-color 0%, @stop-color 100%);
-  filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start-color}, endColorstr='@{stop-color}', GradientType=0)";
+  //filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start-color}, endColorstr='@{stop-color}', GradientType=0)";
   border-color: @border-color;
-  color: @font-color;
 }
 
 html, body {
@@ -557,11 +555,12 @@ pre code {
 .alert {
   position: relative;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-  font-weight: 700;
+  font-weight: 400;
   padding-left: 60px;
   padding-top: 18px;
   padding-bottom: 18px;
   border: transparent;
+  color: @alert-font-color;
 
   h6 {
     font-size: 20px;
@@ -590,7 +589,7 @@ pre code {
   }
 
   &.alert-warning {
-    .alert-background(@warning-start-color, @warning-stop-color, @warning-font-color, @warning-border-color);
+    .alert-background(@warning-start-color, @warning-stop-color, @warning-border-color);
 
     &:before {
       content: "\f071";
@@ -598,7 +597,7 @@ pre code {
   }
 
   &.alert-info {
-    .alert-background(@info-start-color, @info-stop-color, @info-font-color, @info-border-color);
+    .alert-background(@info-start-color, @info-stop-color, @info-border-color);
 
     &:before {
       content: "\f05a";
@@ -631,6 +630,7 @@ footer {
 
       .build-status {
         width: 10%;
+        max-width: 77px;
       }
     }
   }

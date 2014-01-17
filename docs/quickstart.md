@@ -27,7 +27,7 @@ Lets suppose that you want to start a new rich web application project with a Ja
 # Done !
 ```
 
-You can know navigate to <http://localhost:8080/> and see your bootstraped project in action:
+You can now navigate to <http://localhost:8080/> and see your bootstraped project in action:
 
 <div class="quickstart">
     <p class="text-center">

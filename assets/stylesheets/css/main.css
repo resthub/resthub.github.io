@@ -6342,11 +6342,12 @@ pre code {
 .alert {
   position: relative;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-  font-weight: 700;
+  font-weight: 400;
   padding-left: 60px;
   padding-top: 18px;
   padding-bottom: 18px;
   border: transparent;
+  color: #e0dcd9;
 }
 .alert h6 {
   font-size: 20px;
@@ -6379,9 +6380,7 @@ pre code {
   background: -o-linear-gradient(top, #d4571e 0%, #a94c21 100%);
   background: -ms-linear-gradient(top, #d4571e 0%, #a94c21 100%);
   background: linear-gradient(to bottom, #d4571e 0%, #a94c21 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d4571e, endColorstr='#a94c21', GradientType=0);
   border-color: #e0dcd9;
-  color: #e0dcd9;
 }
 .alert.alert-warning:before {
   content: "\f071";
@@ -6394,9 +6393,7 @@ pre code {
   background: -o-linear-gradient(top, #856a4f 0%, #654321 100%);
   background: -ms-linear-gradient(top, #856a4f 0%, #654321 100%);
   background: linear-gradient(to bottom, #856a4f 0%, #654321 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#856a4f, endColorstr='#654321', GradientType=0);
   border-color: #e0dcd9;
-  color: #e0dcd9;
 }
 .alert.alert-info:before {
   content: "\f05a";
@@ -6426,6 +6423,7 @@ footer .components .component {
 }
 footer .components .component .build-status {
   width: 10%;
+  max-width: 77px;
 }
 @media only screen and (min-width: 1200px) {
   .navbar .navbar-form input.form-control {

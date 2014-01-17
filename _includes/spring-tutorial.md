@@ -33,8 +33,8 @@ Our REST interface will be mainly able to expose services to:
 <div class="alert alert-info">
     <h6>Prerequisites</h6>
     <ul>
-        <li>Git installed: <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a></li>
-        <li>Maven installed: <a href="http://maven.apache.org/download.html">http://maven.apache.org/download.html</a></li>
+        <li>Git installed: <a href="http://git-scm.com/downloads">download</a></li>
+        <li>Maven installed: <a href="http://maven.apache.org/download.html">download</a></li>
     </ul>
 </div>
 
