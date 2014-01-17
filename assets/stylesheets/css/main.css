@@ -6111,8 +6111,17 @@ article h3 {
   margin-top: 30px;
 }
 article h1,
+article .h1,
 article h2,
-article h3 {
+article .h2,
+article h3,
+article .h3,
+article h4,
+article .h4,
+article h5,
+article .h5,
+article h6,
+article .h6 {
   border-bottom: 1px solid;
   padding-bottom: 10px;
 }

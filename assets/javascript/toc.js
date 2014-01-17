@@ -2,7 +2,7 @@
 $(document).ready(function() {
     var no_back_to_top_links = true
 
-    var headers = $('h1, h2, h3, h4, h5, h6').filter(function() {return this.id}), // get all headers with an ID
+    var headers = $('h1, h2, h3').filter(function() {return this.id}), // get all headers with an ID
         output = $('.toc');
     if (!headers.length || headers.length < 2 || !output.length)
         return;
