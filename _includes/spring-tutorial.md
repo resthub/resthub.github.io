@@ -856,7 +856,8 @@ and the logic of a given method.
 
 It is really more efficient to write *real unit tests* by using mocks.
 
-### Unit test with mocks
+
+<h3 id="unit-test-with-mocks" class="clickable-header">Unit test with mocks</h3>
 
 **Do:**
 

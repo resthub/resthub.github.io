@@ -14,6 +14,8 @@ RESThub Backbone stack provides an enhanced Backbone View named `Resthub.View` w
 * Automatic view `dispose` + callbacks `unbind` when a view is removed from DOM
 * View model population from a form
 
+<a name="default-render"></a>
+
 ## Default render() with root and context attributes
 
 Backbone views contain an `$el` attribute representing the element (a div by default) in which the template will be rendered,
@@ -162,8 +164,9 @@ time a `remove()` is done on the `el` itself, **the view will be properly destro
     instead of on() and off(), since it will allow Backbone.js to manage properly event listener cleanup.
 </div>
 
-View model population from a form
----------------------------------
+<a name="view-model-population"></a>
+
+## View model population from a form
 
 [Backbone Validation {{site.backbone-validation-version}}](http://github.com/thedersen/backbone.validation)
 provides some helpers to validate a model against constraints. [Backbone](http://documentcloud.github.com/backbone/) defines
