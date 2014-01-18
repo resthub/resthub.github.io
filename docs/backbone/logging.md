@@ -43,7 +43,7 @@ Log are sent thanks a POST request with the following JSON body:
 ```
 
 RESThub web server provide a builtin implementation of the server-side logging webservice, see the
-[related documentation](/docs/spring/web-server/#toc_7) for more details.
+[related documentation](/docs/spring/web-server/#client-logging) for more details.
   
 ## Message bus
 

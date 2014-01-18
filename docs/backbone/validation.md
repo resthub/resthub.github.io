@@ -14,7 +14,7 @@ to interpret these constraints on the client side.
 
 This feature allows to define once (server side) your validation constraints that will be (if configured)
 automatically mapped on the client side to effective [Backbone Validation](http://github.com/thedersen/backbone.validation)
-(see also [here](/docs/backbone/third-party#toc_0))
+(see also [here](/docs/backbone/third-party#backbone-validation))
 constraints.
 
 Server side declared constraint validations will thus be fully reused and you won't have to 'clone' these
@@ -48,7 +48,7 @@ This function takes the current model as a mandatory parameter. It accepts also 
 ### Activate Backbone Validation in views
 
 RESThub Validation will be effective only if Backbone Validation is correctly configured in view 
-(see [here](/docs/backbone/third-party#toc_0)). For instance:
+(see [here](/docs/backbone/third-party#backbone-validation)). For instance:
 
 ```javascript
 var UserView = Resthub.View.extend({

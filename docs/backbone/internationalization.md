@@ -135,7 +135,7 @@ labels.js
 ```
 
 RESThub also provides a `sprintf` handlebars helper to use directly in your
-templates (cf. [here](/docs/backbone/templating#toc_10)):
+templates (cf. [here](/docs/backbone/templating#sprintf)):
 
 ```html
 {{"{{#ifequals done 1"}}}} {{"{{messages.clearitem"}}}} {{"{{else"}}}} {{"{{sprintf messages.clearitems done"}}}} {{"{{/ifequals"}}}}

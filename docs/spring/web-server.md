@@ -203,6 +203,8 @@ UserDTO userDTO = modelMapper.map(user, UserDTO.class);
 Modelmapper has sensible defaults and can often map objects without additional configuration.
 For specific needs, you can use [property maps](http://modelmapper.org/user-manual/property-mapping/).
 
+<a name="client-logging"></a>
+
 ## Client logging
 
 In order to make JS client application debugging easier, RESThub provides a webservice used to send
