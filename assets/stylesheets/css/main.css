@@ -5965,7 +5965,7 @@ body {
 body {
   background: #494543;
   color: #f5f5f5;
-  min-width: 306px;
+  min-width: 305px;
   font-weight: 300;
   position: relative;
 }
@@ -5980,7 +5980,7 @@ header {
   border-bottom: none;
   border-left: none;
   border-right: none;
-  min-width: 306px;
+  min-width: 305px;
   font-size: 14px;
 }
 .navbar .navbar-brand {
@@ -6363,6 +6363,7 @@ pre code {
   margin-top: 7px;
   font-weight: 700;
   text-decoration: underline;
+  border-bottom: none;
 }
 .alert a {
   color: #34302d;

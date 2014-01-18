@@ -81,7 +81,18 @@ Our REST interface will be mainly able to expose services to:
    > mvn archetype:generate -DarchetypeCatalog=http://nexus.pullrequest.org/content/repositories/releases/
    > ```
    >
-   > * When **archetype** prompt, choose `resthub-jpa-webservice-archetype`. or `resthub-jpa-backbonejs-archetype`
+   > * When **archetype** prompt, choose
+   >
+   >   ```
+   >   resthub-jpa-webservice-archetype
+   >   ```
+   >
+   >   or
+   >
+   >   ```
+   >   resthub-jpa-backbonejs-archetype
+   >   ```
+   >
    > if you want also that a basic resthub-backbone-stack project will be generated. Enter
    > * When **groupId** prompt, choose your `groupId`: `org.resthub.training`. Enter
    > * When **artifactId** prompt, choose your `artifactId`: `jpa-webservice`. Enter
@@ -168,7 +179,18 @@ We are going to create `Contoller`, `Repository` and, obviously `Model` for our 
 
 1. **Replace the generated `Sample` related objects with `Task`**
 
-    > * rename `org.resthub.training.model.Sample` class to `org.resthub.training.model.Task`
+    > * rename
+    >
+    > ```java
+    > org.resthub.training.model.Sample
+    > ```
+    >
+    > to
+    >
+    > ```java
+    > org.resthub.training.model.Task
+    > ```
+    >
     > * replace `name` attribut by `title`
     > * add a `description` attribute and corresponding getter and setter
 
@@ -255,7 +277,8 @@ Let's try to implement a `findByName` implementation that returns a Task based o
     }
     ```
 
-    Check on your browser that <http://localhost:8080/api/task/title/testTask1> works and display a simple list of tasks, without pagination.
+    Check on your browser that [this page](http://localhost:8080/api/task/title/testTask1) works and display a simple list of tasks,
+    without pagination.
 
     ```json
     {
@@ -676,7 +699,12 @@ We will now write an integration test for our new service:
 
 **Do:**
 
-1. **Create a new** `TaskServiceIntegrationTest` **integration test in** `src/test/org/resthub/training/service/integration`
+1. **Create a new** `TaskServiceIntegrationTest` **integration test in**
+
+   ```bash
+   src/test/org/resthub/training/service/integration
+   ```
+
    This test should be **aware of spring context but non transactional** because testing a service should be done in a non
    transactional way. This is indeed the way in which the service will be called (e.g. by controller). The repository
    test should extend `AbstractTransactionalTest` to be run in a transactional context, as done by service.
@@ -849,7 +877,11 @@ It is really more performant and efficient to write *real unit tests* by using m
 
 **Do:**
 
-1. **Create a new** `TaskServiceTest` **class in** `src/test/java/org/resthub/training/service`
+1. **Create a new** `TaskServiceTest` **class in**
+
+   ```bash
+   src/test/java/org/resthub/training/service
+   ```
 
    * Declare and mock `userRepository`, `taskRepository` and `notificationService`. Find a way to inject userRepository and notificationService in
      `TaskServiceImpl`
@@ -1187,8 +1219,12 @@ implementation: Hibernate Validator.
     > }
     > ```
 
-4. **Add a** `UserRepositoryIntegrationTest` **class in** src/test/java/org/resthub/training/repository/integration **and implement
-   a test that try to create a user with an embedded address**. 
+4. **Add a** `UserRepositoryIntegrationTest` **class in**
+
+   ```bash
+   src/test/java/org/resthub/training/repository/integration
+   ```
+   **and implement a test that try to create a user with an embedded address**.
    
    Check that you can then call a findOne of this user and that the return object contains address object.
    

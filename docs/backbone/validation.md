@@ -14,8 +14,7 @@ to interpret these constraints on the client side.
 
 This feature allows to define once (server side) your validation constraints that will be (if configured)
 automatically mapped on the client side to effective [Backbone Validation](http://github.com/thedersen/backbone.validation)
-(see also [here](/docs/backbone/third-party#backbone-validation))
-constraints.
+constraints (see also [here](/docs/backbone/third-party#backbone-validation)).
 
 Server side declared constraint validations will thus be fully reused and you won't have to 'clone' these
 constraints on the client side.
@@ -43,7 +42,7 @@ var UserModel = Backbone.Model.extend({
 ```
 
 This function takes the current model as a mandatory parameter. It accepts also an optional parameter
-`errorCallback` (cf. :ref:`validation-errors`).
+`errorCallback` (cf. [Errors management](#errors)).
 
 ### Activate Backbone Validation in views
 
@@ -91,6 +90,8 @@ var UserView = Resthub.View.extend({
 This code sample is taken from a complete validation sample that you can find 
 [here](https://github.com/bmeurant/resthub-validation-sample). Don't hesitate to checkout this sample to see working samples.
 
+<a name="lifecycle"></a>
+
 ### Lifecycle
 
 Doing this, all validation constraints will be **transparently synchronized from the server during a model instantiation** 
@@ -101,7 +102,7 @@ Resthub Validation optimizes this process by sending the GET request **only on t
 constraints validation synchronization will only be performed on the first instantiation of a given model - deduced 
 Backbone Validation constraints will be **reused accross all instances of this model**.
 
-Note that the synchronization process will be **reset after a locale update** (see :ref:`validation-change-locale`) or
+Note that the synchronization process will be **reset after a locale update** (see [Change locale](#change-locale)) or
 could be **manually forced** (see below).
 
 #### Force synchronization
@@ -114,10 +115,12 @@ Resthub.Validation.forceSynchroForClass("org.resthub.validation.model.User");
 ```
     
 This function must be called with a mandatory parameter *className* corresponding to the declared model 
-className (see :ref:`validation-options`).
+className (see [Parameters & options](#options)).
 
 This operation resets the synchronized information for the given className, this means that **the GET request 
 (and constraint binding) will be sent again on the next model instantiation**.
+
+<a name="options"></a>
 
 #### Parameters & Options
 
@@ -155,7 +158,7 @@ var UserModel = Backbone.Model.extend({
 ##### messages
 
 You can provide an key/value pair object `messages` to any of your model or globally in `Resthub.Validation` namespace
-to specify custom error messages that will replace default messages from server (see :ref:`validation-messages` for details).
+to specify custom error messages that will replace default messages from server (see [Messages and internationalization](#messages) for details).
     
 ```javascript
 var UserModel = Backbone.Model.extend({
@@ -220,13 +223,15 @@ var UserModel = Backbone.Model.extend({
 Once all server validation constraints retrieved from server, RESThub Validation tries to map each constraint to
 a valid Backbone Validation constraint, if supported.
 
+<a name="supported-constraints"></a>
+
 ### Supported constraints
 
 Supported constraints are described below. You will find in this chapter the description of the mapped constraints
 and the way it is mapped to a Backbone Validation constraint.
 
 If the client receive a non supported server validation constraint, it will be ignored unless you provide a specific
-and custom constraint validator (see :ref:`validation-add-constraint`).
+and custom constraint validator (see [Adding custom constraints](#add-constraints)).
 
 #### NotNull
 
@@ -339,39 +344,41 @@ You can **customize URL validator pattern** to match by overriding `Resthub.Vali
 Resthub.Validation.options.URL.pattern = /my pattern/; 
 ```
    
-###### Range
+#### Range
 
-The property must be numeric values or string representation of the numeric value with value between specified range.
-
-available parameters:
-
-* `min`: value the property must be higher or equal to
-* `max`: value the property must be lower or equal to
-
-
-###### Length
-
-The property must be a string with length between min and max included.
-
-available parameters:
-
-* `min`: value the property length must be higher or equal to
-* `max`: value the property length must be lower or equal to
+> The property must be numeric values or string representation of the numeric value with value between specified range.
+>
+> available parameters:
+>
+> * `min`: value the property must be higher or equal to
+> * `max`: value the property must be lower or equal to
 
 
-###### Email
+#### Length
 
-The property must be a valid email (see [Backbone Validation built in email pattern constraint](https://github.com/thedersen/backbone.validation#pattern)).
+> The property must be a string with length between min and max included.
+>
+> available parameters:
+>
+> * `min`: value the property length must be higher or equal to
+> * `max`: value the property length must be lower or equal to
 
-###### CreditCardNumber
 
-The property must be a valid credit card number according [Lunh algorithm](http://en.wikipedia.org/wiki/Luhn_algorithm).
+#### Email
+
+> The property must be a valid email (see [Backbone Validation built in email pattern constraint](https://github.com/thedersen/backbone.validation#pattern)).
+
+#### CreditCardNumber
+
+> The property must be a valid credit card number according [Lunh algorithm](http://en.wikipedia.org/wiki/Luhn_algorithm).
 
 
 ## Customize constraints definition
 
 Model validation constraints can be customized by adding specific client validation, overriding
 constraints synchronized from server or adding custom constraint mapper for a specific `BeanValidation` server constraint.
+
+<a name="add-constraints"</a>
 
 ### Adding client constraints
 
@@ -451,6 +458,8 @@ Resthub.Validation.addValidator('TelephoneNumber', function(constraint, msg) {
     };
 });
 ```
+
+<a name="messages"></a>
     
 ## Messages and internationalization
 
@@ -484,6 +493,8 @@ var UserModel = Backbone.Model.extend({
 });
 ```
 
+<a name="change-locale"></a>
+
 ### Change locale
 
 Wihtout any further configuration, the current browser locale is taken (copied in Resthub.Validation and sent
@@ -498,7 +509,7 @@ the synchronization process to send a new request** to server for next model ini
 constraints** with server localized messages.
 
 **You have to explicitely call this function with your new locale on app local update**. If you don't, no request will
-be sent to server for already synchronized models (because of caching - see :ref:`validation-lifecycle`).
+be sent to server for already synchronized models (because of caching - see [Lifecycle](#lifecycle)).
 
 ### Client error messages customization
 
@@ -512,7 +523,7 @@ This means that you'll provide a dedicated `messages` key-value pairs object:
 * **key**: contains the constraint message key built as follows: `'validation.{ConstraintName}.message'`
   where `ConstraintName` is the name of the contraint, **in camel case and starting by an upper case letter**.
 * **value**: contains the constraint message text that could be parametrized, depending on available
-  parameters of each constraint (see below and :ref:`validation-supported-constraints`).
+  parameters of each constraint (see below and [Supported constraints](#supported-constraints)).
 
 e.g. :
 
@@ -528,13 +539,13 @@ If a messages object is provided, globally or locally (see below), RESThub Valid
 constraint exists in messages and affect this message value to the corresponding built Backbone Validation
 constraint. If the key does not exist, the default message returned by server is returned.
       
-#### Error messages templating
+<h3 id="toc_37" class="clickable-header">Error messages templating</h3>
 
 Client error message value definition can be **defined with custom messages templates** to dynamically include
 constraints parameters values in the resulting message.
 
 You can thus display, in your message, any available parameter of the current constraint
-(see :ref:`validation-supported-constraints`) by using the curly brackets `{...}` syntax :
+(see [Supported constraints](#supported-constraints)) by using the curly brackets `{...}` syntax :
 
 ```javascript
 messages: {
@@ -557,7 +568,7 @@ Resthub.Validation.messages = {
 This allows you to define error messages that will be **global to your entire app and reused on all of your models**.
 These messages will **override server error messages**.
 
-#### Customize locally in Model
+<h4 id="toc_39" class="clickable-header">Customize locally in Model</h4>
 
 You can also provide a **model specific messages object** if have specific needs for a given model:
 
@@ -579,6 +590,8 @@ var UserModel = Backbone.Model.extend({
 ```
 
 These messages will **override server error messages and** `Resthub.Validation` **global messages**.
+
+<a name="errors"></a>
 
 ## Errors management
 
