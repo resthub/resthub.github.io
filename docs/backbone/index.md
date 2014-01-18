@@ -13,10 +13,10 @@ next: backbone/layout
 RESThub Backbone stack provides a client-side full stack and guidelines for building enterprise grade HTML5 applications. 
 It could be used with any server backend: Ruby, PHP, NodeJS, JEE, Spring, Grails ...
 
-In addition to the existing librairies included in the stack, it provides additional functionalities (mainly Backbone.js addons) 
+In addition to the existing libraries included in the stack, it provides additional functionalities (mainly Backbone.js addons)
 designed to allow you to build a real enterprise grade application, and described in this documentation.
 
-The Backbone.js 2.1.2 stack includes the following librairies:
+The Backbone.js 2.1.2 stack includes the following libraries:
 
 * jQuery {{site.jquery-version}} ([documentation](http://docs.jquery.com/Main_Page))
 * Backbone.js {{site.backbone-version}} ([documentation](http://documentcloud.github.com/backbone/)) and its [localstorage adapter]
@@ -36,6 +36,8 @@ The Backbone.js 2.1.2 stack includes the following librairies:
 * Dispatching keyboard shortcuts: [Keymaster](http://gobby/keymasterithub.com/madr)
 * Get and set relations (one-to-one, one-to-many, many-to-one) for Backbone models: [Backbone Associations {{site.backbone-associations-version}}](http://dhruvaray.github.io/backbone-associations/)
 * Parsing, validating, manipulating, and formatting dates: [Moment {{site.momentjs-version}}](http://momentjs.com/)
+
+You can find more details and explanation about these libraries and their usage in resthub [here](/docs/backbone/third-party).
 
 Before going deeper in the RESThub Backbone stack, you should read the great documentation
 [Developing Backbone.js Applications](http://addyosmani.github.com/backbone-fundamentals/) by [@addyosmani](https://twitter.com/addyosmani),

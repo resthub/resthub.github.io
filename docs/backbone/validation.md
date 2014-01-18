@@ -378,7 +378,7 @@ Resthub.Validation.options.URL.pattern = /my pattern/;
 Model validation constraints can be customized by adding specific client validation, overriding
 constraints synchronized from server or adding custom constraint mapper for a specific `BeanValidation` server constraint.
 
-<a name="add-constraints"</a>
+<a name="add-constraints"></a>
 
 ### Adding client constraints
 
