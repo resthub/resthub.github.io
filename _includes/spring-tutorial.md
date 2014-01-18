@@ -8,9 +8,6 @@ If you want to use this tutorial in a training mode,
 **Code**: you can find the code of the sample application on [Github](https://github.com/resthub/resthub-spring-tutorial)
 (Have a look to branches for each step).
 
-Each step of this tutorial is proposed as a git branch. You could checkout a step branch to get
-step instructions and solutions.
-
 ## Problem description
 
 During this tutorial we'll illustrate resthub usage with a sample and simple REST interface to manage
@@ -40,13 +37,13 @@ Our REST interface will be mainly able to expose services to:
 
 **Find:**
 
-1. **Resthub2 quick start guide**
-
-   > see [here](/docs/quickstart)
-
-2. **Resthub2 documentation for Spring stack**
+1. **Resthub2 documentation for Spring stack**
 
    > see [here](/docs/spring/home)
+
+2. **Resthub2 Bootstrap your Spring project**
+
+   > see [here](/docs/quickstart)
 
 3. **Resthub2 javadoc site**
 
@@ -75,25 +72,18 @@ Our REST interface will be mainly able to expose services to:
    >
    > Choose groupId `org.resthub.training`, artifactId `jpa-webservice`, package `org.resthub.training` and version `1.0-SNAPSHOT`.
    >
-   > As described in [Resthub quickstart](/docs/quickstart), create your local project by executing the following in your *training* directory.
+   > As described in [Resthub Spring boostrap](/docs/spring/boostrap), create your local project by executing the following in your *training* directory.
    >
    > ```bash
-   > mvn archetype:generate -DarchetypeCatalog=http://nexus.pullrequest.org/content/repositories/releases/
+   > mvn archetype:generate -Dfilter=org.resthub:resthub
    > ```
    >
    > * When **archetype** prompt, choose
    >
    >   ```
-   >   resthub-jpa-webservice-archetype
-   >   ```
-   >
-   >   or
-   >
-   >   ```
    >   resthub-jpa-backbonejs-archetype
    >   ```
    >
-   > if you want also that a basic resthub-backbone-stack project will be generated. Enter
    > * When **groupId** prompt, choose your `groupId`: `org.resthub.training`. Enter
    > * When **artifactId** prompt, choose your `artifactId`: `jpa-webservice`. Enter
    > * When **version** and **package** prompt, Enter.
@@ -179,18 +169,7 @@ We are going to create `Contoller`, `Repository` and, obviously `Model` for our 
 
 1. **Replace the generated `Sample` related objects with `Task`**
 
-    > * rename
-    >
-    > ```java
-    > org.resthub.training.model.Sample
-    > ```
-    >
-    > to
-    >
-    > ```java
-    > org.resthub.training.model.Task
-    > ```
-    >
+    > * rename `Sample` class to `Task`
     > * replace `name` attribut by `title`
     > * add a `description` attribute and corresponding getter and setter
 
@@ -205,10 +184,14 @@ We are going to create `Contoller`, `Repository` and, obviously `Model` for our 
 3. **Check that your new API works**
 
     > re-run `mvn jetty:run` from your `training/jpa-webservice` directory.
-
-    > Check on your browser that <http://localhost:8080/api/task> works and display XML representation for a sample object with id 1.
+    >
+    > Check on your browser that <http://localhost:8080/api/task> works and display XML representation for a collection of task objects.
 
 **Answer:**
+
+Using an HTTP client (e.g. [Poster](https://addons.mozilla.org/en-US/firefox/addon/poster/) in Firefox or
+[REST Console](https://chrome.google.com/webstore/detail/cokgbflfommojglbmbpenpphppikmonn) in Chrome),
+explore the new API and check:
 
 1. **How is wrapped the list of all existing tasks?**
 
@@ -871,7 +854,7 @@ This integration test is really usefull to validate your the complete chain i.e.
 database (and, thus, your JPA mapping) but, it is not necessary to write integration tests to test only your business
 and the logic of a given method.
 
-It is really more performant and efficient to write *real unit tests* by using mocks.
+It is really more efficient to write *real unit tests* by using mocks.
 
 ### Unit test with mocks
 
@@ -968,11 +951,11 @@ It is really more performant and efficient to write *real unit tests* by using m
     > see complete solution for [TaskServiceTest](https://github.com/resthub/resthub-spring-training/blob/step4-solution/jpa-webservice/src/test/java/org/resthub/training/service/TaskServiceTest.java),
 
     
-Working mainly with unit tests (whithout launching spring context, etc.) is really more efficient to write and run and should be preffered to
+Working mainly with unit tests (without launching spring context, etc.) is really more efficient to write and run and should be preffered to
 systematic complete integration tests. Note that you still have to provide, at least, one integration test in order to verify mappings and complete
 chain.
   
-### Add Controller method
+### Create correponding method in controller to call this new service layer
 
 **Do:**
 
