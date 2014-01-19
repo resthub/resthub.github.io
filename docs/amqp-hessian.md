@@ -3,7 +3,7 @@ layout: docs
 title: AMQP/Hessian based RPC
 permalink:  amqp-hessian/
 prev: router
-next: backbone/home
+next: misc/references
 ---
 
 <div class="toc"></div>

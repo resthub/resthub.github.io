@@ -3,7 +3,7 @@ layout: docs
 title: Backbone Stack tutorial
 permalink:  tutorial-no-answers/
 prev: backbone/guidelines
-next: router/home
+next: router
 answers: no-answers
 ---
 
