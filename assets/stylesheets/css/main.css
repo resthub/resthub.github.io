@@ -6168,6 +6168,20 @@ article blockquote p {
 article blockquote p:first-child {
   margin-top: 0;
 }
+article .talk {
+  max-width: 600px;
+  max-height: 500px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+article .talk.slideshare iframe {
+  width: 600px;
+  height: 500px;
+}
+article .text-center img {
+  max-width: 600px;
+  width: 75%;
+}
 article.tutorial ol blockquote,
 article.tutorial ul blockquote {
   margin-left: -40px;
@@ -6481,6 +6495,10 @@ footer .components .component .build-status {
   .navbar .navbar-form input.form-control {
     width: 250px;
   }
+  article .talk.slideshare iframe {
+    width: 500px;
+    height: 420px;
+  }
 }
 @media only screen and (max-width: 767px) {
   .navbar {
@@ -6542,6 +6560,10 @@ footer .components .component .build-status {
   section article h6,
   section article .h6 {
     font-size: 12px;
+  }
+  section article .talk.slideshare iframe {
+    width: 400px;
+    height: 335px;
   }
   pre code {
     font-size: 12px;
@@ -6618,6 +6640,10 @@ footer .components .component .build-status {
   section article h6,
   section article .h6 {
     font-size: 12px;
+  }
+  section article .talk.slideshare iframe {
+    width: 260px;
+    height: 235px;
   }
   section article ul,
   section article ol {

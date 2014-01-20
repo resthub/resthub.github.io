@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Efficient Java development with RESThub framework</title>
+
+    <link rel="stylesheet" media="print" href="devoxx/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="devoxx/css/screen.css">
+
+    <script type="text/javascript" src="devoxx/js/slides.js"></script>
+    
+</head>
+<body>
+  <div class="presentation">
+    <div class="slides">
+      
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">            
+				<div style="position: absolute; top: 50px; left: 50px;">
+					<img src="devoxx/images/logo.png" width="30%" height="30%"/>
+				</div>
+				<p style="color: #fd8604; font-size: 60px; position: absolute; top: 250px; left: 0px; width: 900px; text-align: center;">
+					Efficient Java development<br /> with RESThub framework
+				</p>
+				
+				<div style="position: absolute; top: 460px; left: 80px; background-color: #fd8604; width: 740px; height: 5px;">
+				</div>
+				
+				
+				<p style="font-size: 34px; position: absolute; top: 450px; left: 290px;">
+					Sébastien Deleuze - Atos Worldline
+				</p>
+				<p class="notes">Hi and welcome to this presentation. My name is Sébastien Deleuze, I am software architect at Atos Worldline (an Atos Origin company),
+				and the founder and lead developer of RESThub. The goal of this presentation is to explain what RESThub is, how it compares
+				to other frameworks and why it could help you build better Java applications.</p>
+          </div>
+          <footer>
+            <aside class="page_number">1</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <!--<div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Speaker’s qualifications</h1></header>
+			<section>
+			
+					<div style="position: absolute; top: 300px; left: 100px;">
+						<img src="devoxx/images/openscales.png" width="70%" height="70%" />
+					</div>
+					<div style="position: absolute; top: 380px; left: 100px;">
+						<img src="devoxx/images/openscales-screenshot.png" />
+					</div>
+					<ul>
+						<li>Software architect at Atos Worldline</li>
+						<li>Founder and lead developer of 2 open source projects</li>
+					</ul>
+					
+					<div style="position: absolute; top: 310px; left: 570px;" >
+						<img src="devoxx/images/logo.png" width="70%" height="70%"/>
+					</div>
+
+				
+			</section>
+			<p class="notes"></p>
+          </div>
+          <footer>
+            <aside class="page_number">2</aside>
+          </footer>
+        </div>
+      </div>-->
+	  
+	  <!--<div class="slide-wrapper">
+        <div class="slide" style="background-image: url('devoxx/images/toolkit.jpg');">
+          <div class="inner">
+            <header><h1 style="color: white; font-size: 60px; width: 800px; text-shadow: rgba(0, 0, 0, 1) 0 4px 7px;">RESThub is a toolkit</h1></header>
+			<p class="notes">RESThub is a toolkit designed for building Java application, with the following concepts in mind.</p>
+          </div>
+          <footer>
+            <aside class="page_number">2</aside>
+          </footer>
+        </div>
+      </div>-->
+	  
+	  <div class="slide-wrapper">
+        <div class="slide" style="background-image: url('devoxx/images/stack.jpg');">
+          <div class="inner">
+            <header><h1 style="color: black;">Full stack framework</h1></header>
+			<p class="notes">Basically, RESThub is a full stack framework. That means it provides all you need to build your applications from
+			database to GUI. RESThub is modular, so each part of the stack could be replaced by your own.</p>
+          </div>
+          <footer>
+            <aside class="page_number">6</aside>
+          </footer>
+        </div>
+      </div>
+	    
+	  <div class="slide-wrapper">
+        <div class="slide" style="background-image: none; background-color: #000000;">
+          <div class="inner">
+            <header><h1 style="color: white;">Efficiency</h1></header>
+			<div style="position: absolute; top: 100px; left: 170px;">
+				<img src="devoxx/images/efficency.jpg"/>
+			</div>
+			<p class="notes">Before speaking about technical details, we are going to have a look at the principles behind the framework.
+			The first one is efficiency. Efficiency for developing, running, debugging and deploying your applications.</p>
+          </div>
+          <footer>
+            <aside class="page_number">3</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide" style="background-image: url('devoxx/images/dry.jpg');">
+          <div class="inner">
+            <header><h1 style="color: white; font-size: 80px; text-shadow: rgba(0, 0, 0, 1) 0 4px 7px;"><span style="color: #fd8604; text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;">D</span>on't <span style="color: #fd8604;">R</span>epeat <span style="color: #fd8604;">Y</span>ourself</h1></header>
+			<section></section>
+          </div>
+		  <p class="notes">The second one is DRY, for Don't Repeat Yourself. Code duplication is a major waste of time and it produces 
+		  a lot of quality and maintainability issues on your project. We provide some helpers to avoid it.</p>
+          <footer>
+            <aside class="page_number">4</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide" style="background-image: none; background-color: #ffffff;">
+          <div class="inner">
+            <header><h1 style="color: black; font-size: 80px;"><span style="color: #BB0000;">K</span>eep <span style="color: #BB0000;">I</span>t <span style="color: #BB0000;">S</span>imple, <span style="color: #BB0000;">S</span>tupid</h1></header>
+			<div style="position: absolute; top: 200px; left: 200px;">
+				<img src="devoxx/images/kiss.jpg"/>
+			</div>
+			<p class="notes">The third one is KISS, for Keep It Simple. That said, most of current nice frameworks like Grails or Play are based
+			on the same principles. So why a new framework and what make RESThub different?
+			</p>
+          </div>
+          <footer>
+            <aside class="page_number">5</aside>
+          </footer>
+        </div>
+      </div>
+      
+      <div class="slide-wrapper">
+        <div class="slide" style="background-image: url('devoxx/images/reinvent.png');">
+          <div class="inner">
+            <header><h1 style="color: white; font-size: 60px; width: 900px;">Not reinventing the wheel !</h1></header>
+			<p class="notes">If we share most of the goals with these frameworks, we have chosen to reuse well known technologies and standards
+			to build, from our point of view, the best framework we could. Only missing features have been developed.</p>
+          </div>
+          <footer>
+            <aside class="page_number">7</aside>
+          </footer>
+        </div>
+      </div>
+	  
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+			<header><h1>What does RESThub provide ?</h1></header>
+		
+            <section>
+				<p class="notes">
+				So let's take a deeper look at RESTHub features. It offers modular sets of functionalities :<br >
+				- A plugin architecture<br />
+				- A generic MIDDLE stack<br />
+				- A generic REST webservice stack<br />
+				- And 2 kinds of View frameworks<br />
+				 - A HTML5/Javascript stack for building RIA<br />
+				 - A Tapestry 5 integration for classical MVC framework server based architecture<br />
+				- Some documentation and tooling
+			</p>
+            	<div style="position: absolute; top: 140px; left: 20px;">
+					<img src="devoxx/images/blocks.png"/>
+				</div>
+            </section>
+          </div>
+          <footer>
+            <aside class="page_number">8</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Software design</h1></header>
+			<section>
+				<br />
+				<p>
+					<ul >
+						<li>Plugin based architecture
+							<ul>
+								<li>Spring + naming convention</li>
+								<li>classpath*: scanning</li>
+								<li>Maven multi modules</li>
+								<li>Runtime configuration<br /> with SpEL</li>
+							</ul>
+						</li>
+						<li>Multilayered software design
+							<ul>
+								<li>Interface - Implementation</li>
+								<li>DAO - Service - View</li>
+							</ul>
+						</li>
+					</ul>
+				</p>
+				<p class="notes">
+					We are now going to detail what technologies are in RESThub, and what new features, identified by the RESThub icon, we have developed. 
+					
+					RESThub provides a plugin system based on Spring 3 used with naming conventions and Maven multi modules. 
+					Spring expression language and properties placeholder allow runtime configuration resolution.
+				</p>
+				<div style="position: absolute; top: 150px; left: 490px;">
+					<img src="devoxx/images/architecture-stack.png" width="90%" height="90%"/>
+				</div>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">9</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide" style="background-image: url('devoxx/images/complexity.jpg');">
+          <div class="inner">
+            <header><h1 style="color: white; font-size: 60px; text-shadow: rgba(0, 0, 0, 1) 0 3px 5px;">Enable progressive complexity</h1></header>
+			<section></section>
+          </div>
+		  <p class="notes">The goal is to allow quick bootstrap of your project, but also scale for big projects that require more complexity.
+		  So we do not try to hide things in a black box, we just provide conventions or default configuration based on well known agile frameworks
+		  like Spring 3, and it works !</p>
+          <footer>
+            <aside class="page_number">12</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <!--<div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>RESThub applicationContext.xml</h1></header>
+			<section>
+				<br /><br /><br />
+				<pre style="font-size: 24px;"><span class="nt">&lt;beans&gt;</span>
+    <span class="nt">&lt;context:annotation-config/&gt;</span>
+    <span class="nt">&lt;context:component-scan</span> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="na">base-package=</span><span class="s">&quot;org.resthub.booking&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;resthub:include-entities</span> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="na">base-package=</span><span class="s">&quot;org.resthub.booking.model&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;resthub:include-jaxb-elements</span> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="na">base-package=</span><span class="s">&quot;org.resthub.booking.model&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</pre>
+				<p class="notes">
+					This is an example of a typical RESThub application applicationContext.xml. As you can see, configuration is mainly based on annotations.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">11</aside>
+          </footer>
+        </div>
+      </div>-->
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>The generic Middle stack</h1></header>
+			<section>
+				<div style="position: absolute; top: 170px; left: 30px;">
+					<img src="devoxx/images/middle-stack.png" width="95%" height="95%"/>
+				</div>
+				<p class="notes">				
+					Hibernate is our choice for JPA2 persistence provider and bean validation implementation.
+					
+					Generic Data Access Objects are based on Hades framework, and we have applied the same concept to create
+					Generic CRUD services and generic unit tests designed to test automatically CRUD operations on you domain model POJOs.
+					
+					The entity scanner allows you to dispatch your JPA entities in different modules and using them in the same persistence
+					unit, which is not possible with Hibernate by default.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">10</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Generic classes code sample</h1></header>
+			<section>
+				<pre style="font-size: 24px;">
+
+<span class="nd">@Named</span><span class="o">(</span><span class="s">&quot;bookingDao&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JpaBookingDao</span> <span class="kd">extends</span> <span class="n">GenericJpaResourceDao</span><span class="o">&lt;</span><span class="n">Booking</span><span class="o">&gt;</span> <br /><span class="kd">implements</span> <span class="n">BookingDao</span> <span class="o">{</span>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br /><span class="o">}</span><br />
+
+<span class="nd">@Named</span><span class="o">(</span><span class="s">&quot;bookingService&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookingServiceImpl</span> <span class="kd">extends</span> <br /><span class="n">GenericResourceServiceImpl</span><span class="o">&lt;</span><span class="n">Booking</span><span class="o">,</span> <span class="n">BookingDao</span><span class="o">&gt;</span> <br /><span class="kd">implements</span> <span class="n">BookingService</span> <span class="o">{</span>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br /><span class="o">}</span><br />
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestBookingDao</span> <span class="kd">extends</span> <br /><span class="n">AbstractResourceDaoTest</span><span class="o">&lt;</span><span class="n">Booking</span><span class="o">,</span> <span class="n">BookingDao</span><span class="o">&gt;</span> <span class="o">{</span>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br /><span class="o">}</span>
+</pre>
+				<p class="notes">
+					On this slide, you can have an overview of the usage of generic classes provided by RESThub, for your Data Access Object,
+					CRUD service and unit test.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">11</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <!--<div class="slide-wrapper">
+        <div class="slide" style="background-image: url('devoxx/images/web.jpg');">
+          <div class="inner">
+            <header><h1 style="color: white; font-size: 80px;">REST</h1></header>
+			<section></section>
+			<p class="notes">We promote RESThul architectures for your web applications. Please note that RESThub, despite its name, can be also used for non web applications too !</p>
+          </div>
+          <footer>
+            <aside class="page_number">7</aside>
+          </footer>
+        </div>
+      </div>-->   
+	  
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>The generic Webservice stack</h1></header>
+			<section>
+				<div style="position: absolute; top: 170px; left: 50px;">
+					<img src="devoxx/images/webservice-stack.png" width="95%" height="95%"/>
+				</div>
+				<p class="notes">
+					The webservice stack is based on Jersey, which is the JAX-RS 1.1 reference implementation. Some generic test classes
+					allow you to easily test your webservices. These classes are based on Jetty embedded server and Jersey client library.
+					
+					WADL descriptions, automatically published by Jersey, are similar to SOAP WSDL descriptions. We have built a jQuery plugin
+					that uses this description to generate a web interface that allows you to test your REST webservices.
+					
+					OAuth 2 is an open standard for authorization, usable for any kind of applications: web, desktop, mobile phone...
+					It allows users to share their private resources, like photos, or videos, stored on one site with another site without having 
+					to hand out their credentials, typically username and password. 
+					
+					RESThub provides a first java implementation of the OAuth 2 protocol.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">13</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Use case 1 : RESThub + MVC framework</h1></header>
+			<section>
+				<div style="position: absolute; top: 100px; left: 60px;">
+					<img src="devoxx/images/use-case-1.png" width="95%" height="95%"/>
+				</div>
+				<p class="notes">
+					Let's now detail the 2 main use cases for RESThub web application development. The first use case is to use
+					RESThub with your favorite MVC framework  (Tapestry 5, Wicket...) In this case, RESThub will help you build your
+					application faster, with a software design close to what you usually do. Session, MVC framework and template
+					processing are obviously on server side.
+				</p>
+			<section>
+          </div>
+          <footer>
+            <aside class="page_number">14</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Use case 2 : RESThub Javascript RIA</h1></header>
+			<section>
+				<div style="position: absolute; top: 120px; left: 40px;">
+					<img src="devoxx/images/use-case-2.png" width="95%" height="95%"/>
+				</div>
+				<p class="notes">
+					The second use case is quite different. Server side becomes stateless. Session, MVC framework and template
+					processing are moved to the client side. This proposed software design is in fact very close to Flex application with a Java backend,
+					but implemented with HTML5 and Javascript instead of Flex.
+				</p>
+			<section>
+          </div>
+          <footer>
+            <aside class="page_number">15</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide" style="background-image: url('devoxx/images/standby.jpg');">
+          <div class="inner">
+            <header><h1 style="color: white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No restart needed !</h1></header>
+			<section>
+				<p class="notes">
+					No restart is needed after a change on the view stack, so productivity is greatly improved.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">16</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Zoom on Javascript RIA stack</h1></header>
+			<section>
+				<div style="position: absolute; top: 170px; left: 35px;">
+					<img src="devoxx/images/javascript-stack.png" width="95%" height="95%"/>
+				</div>
+				<p class="notes">
+					This slide details the Javascript stack used to implement use case 2 software design.
+					
+					It is based on jQuery for DOM selectors and browser compatibility.
+					
+					MVC pattern is implemented on the client side, using widgets from jQuery UI and route management from Sammy.JS framework.
+					Its main purpose is to manage routes in a one page web application "a la" Gmail.
+					
+					Dominoes is an extremely well done script loader that let you define
+					synchronous or asynchronous script loading order.
+					
+					Client side templates are processed by Embedded JS.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">17</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Client side MVC routing</h1></header>
+			<section>
+				<div style="position: absolute; top: 100px; left: 0px;">
+					<img src="devoxx/images/routes.png"/>
+				</div>
+				<p class="notes">
+					The client side MVC is one of the key point of this architecture. It is quite close to Flex GUI built on top of Java remote services.
+					Basically, the application is composed of a few html files, where we define thanks to Sammy different routes. Each route is accesssible
+					thanks to URL fragments #route1, #route2, #route3 in this example. When a route is reached, a Javascript controller takes care of retrieving 
+					data from JAX-RS webservices and process the HTML template. All of this, of course, is component based, so you can build reusable Rich Internet Applications. 
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">18</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Javascript templating</h1></header>
+			<section>
+			<div style="font-size: 20px; font-weight: bold;">Static</div><pre><span class="nt">&lt;table&gt;</span>
+        <span class="k">&lt;%</span> <span class="n">var</span> <span class="n">hotels</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">elements</span> <span class="k">%&gt;</span>
+        <span class="k">&lt;%</span> <span class="k">for</span> <span class="o">(</span><span class="n">index</span> <span class="n">in</span> <span class="n">hotels</span><span class="o">)</span> <span class="o">{</span> <span class="k">%&gt;</span>
+                <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;hotel-item&quot;</span> <span class="na">id=</span><span class="s">&quot;hotel-</span><span class="k">&lt;%=</span> <span class="n">hotels</span><span class="o">[</span><span class="n">index</span><span class="o">].</span><span class="na">id</span> <span class="k">%&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;td&gt;</span><span class="k">&lt;%=</span> <span class="n">hotels</span><span class="o">[</span><span class="n">index</span><span class="o">].</span><span class="na">name</span> <span class="k">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/hotel/</span><span class="k">&lt;%=</span> <span class="n">hotels</span><span class="o">[</span><span class="n">index</span><span class="o">].</span><span class="na">id</span> <span class="k">%&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>View Hotel<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+        <span class="k">&lt;%</span> <span class="o">}</span> <span class="k">%&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre>
+<div style="font-size: 20px; font-weight: bold;">Dynamic</div>
+			<pre><span class="p">{</span></span><span class="s2">&quot;elements&quot;</span><span class="o">:</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;Marriott Courtyard&quot;</span><span class="p">,</span><span class="s2">&quot;address&quot;</span><span class="o">:</span><span class="s2">&quot;Tower Place,Buckhead&quot;</span><span class="p">,</span><span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="s2">&quot;Atlanta&quot;</span><span class="p">,</span><span class="s2">&quot;state&quot;</span><span class="o">:</span><span class="s2">&quot;GA&quot;</span><span class="p">,</span><span class="s2">&quot;zip&quot;</span><span class="o">:</span><span class="s2">&quot;30305&quot;</span><span class="p">,</span><span class="s2">&quot;country&quot;</span><span class="o">:</span><span class="s2">&quot;USA&quot;</span><span class="p">,</span><span class="s2">&quot;stars&quot;</span><span class="o">:</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;price&quot;</span><span class="o">:</span><span class="mf">129.00</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;Doubletree Atlanta-Buckhead&quot;</span><span class="p">,</span><span class="s2">&quot;address&quot;</span><span class="o">:</span><span class="s2">&quot;3342 Peachtree Road NE&quot;</span><span class="p">,</span><span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="s2">&quot;Atlanta&quot;</span><span class="p">,</span><span class="s2">&quot;state&quot;</span><span class="o">:</span><span class="s2">&quot;GA&quot;</span><span class="p">,</span><span class="s2">&quot;zip&quot;</span><span class="o">:</span><span class="s2">&quot;30326&quot;</span><span class="p">,</span><span class="s2">&quot;country&quot;</span><span class="o">:</span><span class="s2">&quot;USA&quot;</span><span class="p">,</span><span class="s2">&quot;stars&quot;</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">&quot;price&quot;</span><span class="o">:</span><span class="mf">84.00</span><span class="p">},</span>
+<span class="p">}</span>
+</pre>
+<div style="font-size: 20px; font-weight: bold;">Result</div><pre><span class="nt">&lt;table&gt;</span>
+	<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;hotel-item&quot;</span> <span class="na">id=</span><span class="s">&quot;hotel-</span>1<span class="s">&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;td&gt;</span>Marriott Courtyard<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/hotel/1</span><span class="s">&quot;</span><span class="nt">&gt;</span>View Hotel<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>
+	<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;hotel-item&quot;</span> <span class="na">id=</span><span class="s">&quot;hotel-</span>2<span class="s">&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;td&gt;</span>Doubletree Atlanta-Buckhead<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/hotel/2</span><span class="s">&quot;</span><span class="nt">&gt;</span>View Hotel<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre>
+				<p class="notes">
+					This first code sample is a JSON object, retrieved for a REST webservice.
+					
+					The second one is a static HTML template with dynamic elements written in Javascript thanks to Embedded JS. 
+					
+					The last one is the HTML code produced by Embedded JS after processing. All this work is done on client side,
+					which has 2 significant advantages :<br />
+					  - It saves your server processing time
+					  - It allows you to heavily cache your files even with per-user customized pages
+					  
+					 With recent browsers, processing time is low even with large chunk of data.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">19</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Example applications</h1></header>
+			<section>
+				<div style="position: absolute; top: 150px; left: 25px;">
+					<img src="devoxx/images/roundtable.jpg" />
+					<div style="text-align: center; font-size: 20px;">Javascript</div>
+				</div>
+				
+				<div style="position: absolute; top: 150px; left: 475px;">
+					<img src="devoxx/images/booking.png" />
+					<br /><br />
+					<div style="text-align: center; font-size: 20px;">Javascript and Tapestry5</div>
+				</div>
+				<p class="notes">
+					In addition to the reference documentation and tutorial, we bundle 2 applications examples based on RESThub,
+					useful for building your own ones :
+					 - Roundtable, a Doodle clone, developed with RESThub HTML5/Javascript stack
+					 - Booking, a well known example application, already implemented with JBoss Seam, Spring Webflow and Play Framework.
+					   We provide 2 implementations: one based on HTML5/Javascript stack, and the other one based on Tapestry 5 integration.
+					It makes both approaches easier to compare.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">20</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Bootstrap</h1></header>
+			<section>
+				<p style="font-size: 30px;">
+					3 Maven archetypes to quickly bootstrap your project :
+					<ul>
+						<li>A Tapestry 5 web application</li>
+						<li>A Javascript/HTML5 web application</li>
+						<li>And a JAR module</li>
+					</ul>
+				</p>
+			</section>
+			<p class="notes">
+					 RESThub also provides 3 Maven archetypes to quickly bootstrap your projects :<br />
+					  - Tapestry 5 web application
+					  - Javascript/HTML5 RIA
+					  - JAR module
+				</p>
+          </div>
+          <footer>
+            <aside class="page_number">21</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner"><header><h1>Status and roadmap ...</h1></header>
+			<section>
+				<p style="font-size: 30px;"><span style="font-weight: bold;">RESThub 1.0</span> has just been released !</p>
+				<p style="font-size: 30px; margin-bottom:0px; padding-bottom:0px"><span style="font-weight: bold;">RESThub 1.1</span> roadmap :<ul>
+						<li>Improve RESThub Javascript stack
+							<ul>
+								<li>Better client side MVC</li>
+								<li>Client side validation based on bean validation</li>
+							</ul>
+						</li>
+						<li>Scaffolding based on Maven 3 Shell</li>
+						<li>CouchDB persistence</li>					
+						<li>Declarative Hyperlinking</li>
+						<li>Support all OAuth 2 profiles</li>
+					</ul>
+				</p>			
+				<p class="notes">
+					Features described in previous slides are all in RESThub 1.0, that has just been released.
+					
+					RESThub 1.1 will improve HTML5/Javascript RIA, add CouchDB integration, provides some scaffolding capabilities
+					based on Maven 3 Shell and will support all OAuth 2 profiles.
+				</p>
+			</section>
+          </div>
+          <footer>
+            <aside class="page_number">22</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+				<header><h1>The end</h1></header>		  
+				<div style="position: absolute; top: 140px; left: 50px;">
+					<img src="devoxx/images/logo.png" width="60%" height="60%"/>
+				</div>
+				<div style="position: absolute; top: 240px; left: 390px;">
+					<img src="devoxx/images/bitbucket.png" width="40%" height="40%"/>
+				</div>
+				</div>
+				<p style="font-size: 40px; position: absolute; top: 200px; left: 500px;">
+					Get it and fork it <a style="color: #fd8604;" href="http://resthub.org">http://resthub.org</a><br />
+					<br /><br />
+					Follow me <a style="color: #fd8604; href="http://twitter.com/sdeleuze">@sdeleuze</a>
+				</p>
+				<p class="notes">
+					You can get RESThub on its website resthub.org. Source code is hosted on Bitbucket forge, like GitHub but with Mercurial source repositories, so feel free to fork the project and improve it.
+I and other RESThub developers present here (Baptiste, Damien and Nicolas) will be available to discuss with you and answer your questions. Thanks for your attention.
+
+				</p>
+          </div>
+          <footer>
+            <aside class="page_number">23</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            <header><h1>Photos credentials</h1></header>
+			<section>
+				<ul>
+					<li><a href="http://www.flickr.com/photos/ejpphoto/2413534372/">Efficiency</a> by Eric
+					<li><a href="http://www.flickr.com/photos/horiavarlan/4264037742/">Stack</a> by Horia Varlan</li>
+					<li><a href="http://www.flickr.com/photos/taniasaiz/4546732837/">KISS</a> by TaniaSaiz</li>
+					<li><a href="http://www.flickr.com/photos/dg_pics/3890338016/">DRY</a> by David Gunter</li>
+					<!--li><a href="http://www.flickr.com/photos/ecstaticist/3570660643/">REST</a> by Evan Leeson</li-->
+					<li><a href="http://www.flickr.com/photos/vrogy/514733529/">Wheel</a> by vrogy</li>
+					<!--li><a href="http://www.flickr.com/photos/zomgitsbrian/4343170624/in/set-72157606090797028/">Toolkit</a> by Brian nairB</li-->
+					<li><a href="http://www.flickr.com/photos/cyclonebill/2905044002/">Complexity</a> by cyclonebill</li>
+					<li><a href="http://www.flickr.com/photos/suratlozowick/4464587302/">Standby</a> by Surat Lozowick</li>
+					
+			</section>
+          </div>
+		  
+          <footer>
+            <aside class="page_number">4</aside>
+          </footer>
+        </div>
+      </div>
+	  
+	  
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>

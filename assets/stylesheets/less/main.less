@@ -338,6 +338,23 @@ article {
     }
   }
 
+  .talk {
+    max-width: 600px;
+    max-height: 500px;
+    margin: auto;
+    margin-bottom: 50px;
+
+    &.slideshare iframe {
+      width: 600px;
+      height: 500px;
+    }
+  }
+
+  .text-center img {
+    max-width: 600px;
+    width: 75%;
+  }
+
   &.tutorial {
     ol, ul {
       blockquote {
@@ -529,7 +546,7 @@ pre code {
     padding-bottom: 10px;
   }
 
-  .post-type{
+  .post-type {
     margin-bottom: 40px;
     padding-top: 5px;
 
@@ -691,6 +708,15 @@ footer {
   .navbar .navbar-form input.form-control {
     width: 250px;
   }
+
+  article {
+    .talk {
+      &.slideshare iframe {
+        width: 500px;
+        height: 420px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: @screen-xs-max) {
@@ -759,6 +785,13 @@ footer {
       }
       h6, .h6 {
         font-size: @font-size-h6-xs;
+      }
+
+      .talk {
+        &.slideshare iframe {
+          width: 400px;
+          height: 335px;
+        }
       }
     }
   }
@@ -860,6 +893,13 @@ footer {
       }
       h6, .h6 {
         font-size: @font-size-h6-xxs;
+      }
+
+      .talk {
+        &.slideshare iframe {
+          width: 260px;
+          height: 235px;
+        }
       }
 
       ul, ol {
