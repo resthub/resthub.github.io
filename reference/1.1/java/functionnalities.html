@@ -1,0 +1,200 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Functionalities &mdash; RESThub v1.1-SNAPSHOT documentation</title>
+    <link rel="stylesheet" href="static/resthub.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1-SNAPSHOT',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RESThub v1.1-SNAPSHOT documentation" href="index.html" />
+    <link rel="next" title="4. Guidelines" href="guidelines.html" />
+    <link rel="prev" title="2. Project structure" href="structure.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="guidelines.html" title="4. Guidelines"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="structure.html" title="2. Project structure"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RESThub v1.1-SNAPSHOT documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="functionalities">
+<h1>3. Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this headline">¶</a></h1>
+<p>This section describes RESThub functionalities that can help you to build your application. You will typically extends them in your class, for example</p>
+<div class="highlight-python"><pre>public class PollServiceTest extends AbstractServiceTest&lt;Poll, Long, PollService&gt; {
+
+}</pre>
+</div>
+<div class="section" id="generic-classes">
+<h2>3.1. Generic classes<a class="headerlink" href="#generic-classes" title="Permalink to this headline">¶</a></h2>
+<p>Provides some generic classes and interfaces for default DAO, service or controller.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Generic test classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">inherit from RESThub test in order to have by default test for your CRUD functionnalities.</span></dt>
+<dd><ul class="first last simple">
+<li>class AbstractTest : base class for your non transactional Spring aware unit tests</li>
+<li>class AbstractTransactionalTest : base class for your transactional unit tests, preconfigure Spring test framework</li>
+<li>class AbstractTransactionAwareTest : base class for your transaction aware unit tests</li>
+<li>class AbstractWebTest : base class for your unit test that need to run and embeded servlet container</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Dao</strong> <span class="classifier-delimiter">:</span> <span class="classifier">GenericDao default CRUD operation</span></dt>
+<dd><ul class="first last simple">
+<li>interface GenericDao&lt;T, ID extends Serializable&gt; : generic DAO interface</li>
+<li>class GenericJpaDao&lt;T, ID extends Serializable&gt; : generic DAO JPA implementation</li>
+<li>class AbstractDaoTest&lt;T, ID extends Serializable, D extends GenericDao&lt;T, ID&gt;&gt; : generic DAO unit test</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Generic CRUD services</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RESThub provides a reusable service classes that implements by default CRUD operations.</span></dt>
+<dd><ul class="first last simple">
+<li>interface GenericService&lt;T, ID extends Serializable&gt; : generic service interface</li>
+<li>class GenericServiceImpl&lt;T, ID extends Serializable, D extends GenericDao&lt;T, ID&gt;&gt; : generic service default implementation</li>
+<li>class AbstractServiceTest&lt;T, ID extends Serializable, D extends GenericService&lt;T, ID&gt;&gt; : generic service unit test</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Generic REST controllers</strong> <span class="classifier-delimiter">:</span> <span class="classifier">default JAX-RS controller with builtin CRUD operations, support XML and JSON format. Based on <a class="reference external" href="https://jersey.dev.java.net/">Jersey</a>.</span></dt>
+<dd><ul class="first last simple">
+<li>class GenericController&lt;T, ID extends Serializable, S extends GenericService&lt;T, ID&gt;&gt; : generic controller</li>
+<li>class AbstractControllerTest&lt;T, ID extends Serializable, S extends GenericService&lt;T, ID&gt;, C extends GenericController&lt;T, ID, S&gt;&gt; : generic controller unit test</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="include-entities">
+<h2>3.2. Include entities<a class="headerlink" href="#include-entities" title="Permalink to this headline">¶</a></h2>
+<p>Allow to scan entities in diffferent modules using the same Persitence Unit, which is not possible with default Spring/Hibernate.
+By default, the ScanningPersistenceUnitManager searches entities with the pattern.
+To indicates differents packages, you&#8217;ll have to override the bean definition in your own Spring configuration file.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;resthub:include-entities</span> <span class="na">base-package=</span><span class="s">&quot;net.myProject.**.model&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Now, entities from the net/myProject/**/model packages will be recognized.</p>
+<p><strong>Beware !</strong> You have to be careful with the loading order of your spring configuration files.
+Reference the RESTHub file first (and don&#8217;t forget the * behind &#8220;classpath&#8221;), and then your files.</p>
+</div>
+<div class="section" id="include-jaxb-elements">
+<h2>3.3. Include JAXB elements<a class="headerlink" href="#include-jaxb-elements" title="Permalink to this headline">¶</a></h2>
+<p>RESThub provides helpers in order to add in JAX-RS context classes returns as generic collection like List&lt;MyObject&gt; because of type erasure issue in Java, Jersey has no way to know your class MyObject and you will get an exception when trying to serialize it.</p>
+<p>In order to make your class recognize by Jersey, add in your applicationContext.xml:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;resthub:include-jaxb-elements</span> <span class="na">base-package=</span><span class="s">&quot;net.myProject.**.model&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bean-management">
+<h2>3.4. Bean management<a class="headerlink" href="#bean-management" title="Permalink to this headline">¶</a></h2>
+<p>You can provide a applicationContext.xml file to configure each module (framework of application) with Spring 3. You should use J2EE6 annotations to declare and inject your beans.</p>
+<p>To declare a bean:</p>
+<div class="highlight-python"><pre>@Named("beanName")
+public class SampleClass {
+
+}</pre>
+</div>
+<p>To inject a bean</p>
+<div class="highlight-python"><pre>@Inject
+@Named("beanName")
+public void setSampleProperty(...) {
+
+}</pre>
+</div>
+<p><strong>Best practice</strong> : Bean injection on setter is better than on protected or private property because it allows subclasses to override this injection.</p>
+</div>
+<div class="section" id="tapestry-5-integration">
+<h2>3.5. Tapestry 5 integration<a class="headerlink" href="#tapestry-5-integration" title="Permalink to this headline">¶</a></h2>
+<p>Todo</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="static/logo.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Functionalities</a><ul>
+<li><a class="reference internal" href="#generic-classes">3.1. Generic classes</a></li>
+<li><a class="reference internal" href="#include-entities">3.2. Include entities</a></li>
+<li><a class="reference internal" href="#include-jaxb-elements">3.3. Include JAXB elements</a></li>
+<li><a class="reference internal" href="#bean-management">3.4. Bean management</a></li>
+<li><a class="reference internal" href="#tapestry-5-integration">3.5. Tapestry 5 integration</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="structure.html" title="previous chapter">2. Project structure</a></li>
+      <li>Next: <a href="guidelines.html" title="next chapter">4. Guidelines</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/functionnalities.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Atos Worldline.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

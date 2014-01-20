@@ -6178,10 +6178,6 @@ article .talk.slideshare iframe {
   width: 600px;
   height: 500px;
 }
-article .text-center img {
-  max-width: 600px;
-  width: 75%;
-}
 article.tutorial ol blockquote,
 article.tutorial ul blockquote {
   margin-left: -40px;
@@ -6498,6 +6494,10 @@ footer .components .component .build-status {
   article .talk.slideshare iframe {
     width: 500px;
     height: 420px;
+  }
+  article .text-center img {
+    max-width: 600px;
+    width: 75%;
   }
 }
 @media only screen and (max-width: 767px) {

@@ -1,0 +1,232 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. OAuth2 based AuthN/AuthZ &mdash; RESThub 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="static/resthub.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RESThub 1.1.3 documentation" href="index.html" />
+    <link rel="next" title="7. Identity manager" href="identity.html" />
+    <link rel="prev" title="5. Testing" href="testing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="identity.html" title="7. Identity manager"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="testing.html" title="5. Testing"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RESThub 1.1.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="oauth2-based-authn-authz">
+<h1>6. OAuth2 based AuthN/AuthZ<a class="headerlink" href="#oauth2-based-authn-authz" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>6.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>RESThub offers both provider and client for the <a class="reference external" href="http://tools.ietf.org/html/draft-ietf-oauth-v2">OAuth2 protocol</a>, and more specifically with its <a class="reference external" href="http://tools.ietf.org/html/draft-ietf-oauth-v2-22#section-4.3">password grant type</a> :</dt>
+<dd><ul class="first last simple">
+<li>A java authorization server layer, that you have to plug ahead your centralized accounting service.</li>
+<li>A java servlet resource server filter, which must be deployed on each service</li>
+<li>A javascript client toolkit, that performs authorization request, stores tokens, enriches further calls with those tokens, and manage security protocol errors. More details are available in <a class="reference external" href="http://resthub.org/1.1/javascript/oauth2.html">RESThub JS reference documentation</a>.</li>
+</ul>
+</dd>
+</dl>
+<p>The workflow is the following :</p>
+<img alt="images/oauth-1.png" src="images/oauth-1.png" />
+<dl class="docutils">
+<dt>In a chronological order:</dt>
+<dd><ul class="first last simple">
+<li>the javascript toolkit will help you perform the authorization request, with your user credentials.</li>
+<li>the autorization server layer will delegate to our accounting service the authentication part.</li>
+<li>once the user authenticated, the authorization server layer will return a time-limited token</li>
+<li>the javascript toolkit will store this token, and add it in the next calls to the REST services.</li>
+<li>on each REST service, the resource server filter will check the token validity, by requesting the central accounting service.</li>
+<li>the autorization server layer will delegate to accounting service the retrieving of the user permissions, related to the incoming token. For further calls, results will be stored in a Memcache distributed cache.</li>
+<li>the resource server filter will enrich a spring security &#8220;Principal&#8221; object with the retrieved permission, allowing you to managed our business security.</li>
+<li>you can access to the authenticated user id, stored in a request header &#8220;user_id&#8221;</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="oauth2-provider">
+<h2>6.2. OAuth2 provider<a class="headerlink" href="#oauth2-provider" title="Permalink to this headline">¶</a></h2>
+<p>RESThub uses <a class="reference external" href="http://static.springsource.org/spring-security/oauth/">Spring Security OAuth2 implementation</a> on the server-side.</p>
+<p>To use it, add this dependency in your pom.xml :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.resthub<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>resthub-oauth2-spring-security<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+<p>And here is a sample configuration to be added in your applicationContext.xml :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;security:authentication-manager&gt;</span>
+        <span class="nt">&lt;security:authentication-provider</span> <span class="na">user-service-ref=</span><span class="s">&quot;myUserDetailsService&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/security:authentication-manager&gt;</span>
+
+<span class="nt">&lt;security:http</span> <span class="na">entry-point-ref=</span><span class="s">&quot;oauth2ProcessingFilterEntryPoint&quot;</span> <span class="na">create-session=</span><span class="s">&quot;never&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;security:access-denied-handler</span> <span class="na">ref=</span><span class="s">&quot;oauth2AccessDeniedHandler&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;security:intercept-url</span> <span class="na">pattern=</span><span class="s">&quot;api/**&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/security:http&gt;</span>
+
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;oauth2AccessDeniedHandler&quot;</span> <span class="na">class=</span><span class="s">&quot;org.springframework.security.web.access.AccessDeniedHandlerImpl&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;tokenServices&quot;</span> <span class="na">class=</span><span class="s">&quot;org.springframework.security.oauth2.provider.token.InMemoryOAuth2ProviderTokenServices&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;oauth2:provider</span> <span class="na">client-details-service-ref=</span><span class="s">&quot;clientDetails&quot;</span> <span class="na">token-services-ref=</span><span class="s">&quot;tokenServices&quot;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;oauth2:verification-code</span> <span class="na">disabled=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/oauth2:provider&gt;</span>
+
+<span class="nt">&lt;oauth2:client-details-service</span> <span class="na">id=</span><span class="s">&quot;clientDetails&quot;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;oauth2:client</span> <span class="na">clientId=</span><span class="s">&quot;myClientID&quot;</span> <span class="na">authorizedGrantTypes=</span><span class="s">&quot;password&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/oauth2:client-details-service&gt;</span>
+</pre></div>
+</div>
+<p>You will also have to add these lines to your web.xml, below the contextConfigLocation context-param block :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>springSecurityFilterChain<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="nt">&lt;/filter-class&gt;</span>
+<span class="nt">&lt;/filter&gt;</span>
+<span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>springSecurityFilterChain<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/filter-mapping&gt;</span>
+<span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>JpaFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter<span class="nt">&lt;/filter-class&gt;</span>
+<span class="nt">&lt;/filter&gt;</span>
+</pre></div>
+</div>
+<p>You can have a look to Booking or Identity manager sample applications to see how it works.</p>
+</div>
+<div class="section" id="oauth2-client">
+<h2>6.3. OAuth2 client<a class="headerlink" href="#oauth2-client" title="Permalink to this headline">¶</a></h2>
+<p>You will certainly have communications between protected resource services.
+If you choose to use tokens between your protected service, as described in the (TODO) server-to-server profile, we offer you some utilities to do that.</p>
+<p>In your &#8220;client&#8221; resource server:</p>
+<ul class="simple">
+<li>Add a maven dependency to org.resthub:resthub-oauth2-client.jar</li>
+<li>In your Dao/Service beans, use the TokenRepository utility class.</li>
+</ul>
+<p>This class stores in memory tokens you may need to access as many protected resource as you want.
+You have to configure it:</p>
+<ul class="simple">
+<li>By indicating some Authorization servers urls : just a list of string passed to setAuthenticationServices() (you can also use Spring injection by declaring a bean in xml)</li>
+<li>By indicating a client id and client secret. Those &#8220;client credentials&#8221; are NOT end-user credentials, and must be known by your authorization services only. TokenRepository will use them to authenticate and obtain token to the desired resource.</li>
+</ul>
+<p><strong>WARNING</strong> - For this first release, client id/secret ARE end-user credential, so you need a &#8220;Technical user&#8221; in your authorization service that will represent your java clients</p>
+<p>You can use in many ways this utility class:</p>
+<ul class="simple">
+<li>Just with enrich(). When enrich() is invoked, an existing token will be used, or if no token are available, a token will be automatically asked.</li>
+<li>With obtain(), add() and enrich(). You manually get your token with obtain(), keep it with add(), and it will be used when enrich() will be invoked.</li>
+<li>With add(), and consult(). Set your token manually with addToken(), and retrieve them furtherly with consult(). You will just use TokenRepository as an in-memory storage space, and you will have to enrich yourself your requests</li>
+</ul>
+<p>Some example?
+Spring bean definition</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;bean</span> <span class="na">name=</span><span class="s">&quot;tokenRepository&quot;</span> <span class="na">class=</span><span class="s">&quot;org.resthub.oauth2.client.TokenRepository&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;clientId&quot;</span> <span class="na">value=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;clientSecret&quot;</span> <span class="na">value=</span><span class="s">&quot;bar&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;authorizationEndPoints&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;list&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>http://XXX.XXX.XXX.XXX:YYY/oauth/authorize<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+<p>Java code:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Inject</span>
+<span class="kd">protected</span> <span class="n">TokenRepository</span> <span class="n">tokenRepository</span><span class="o">;</span>
+
+<span class="c1">// Enrich and trigger a request.</span>
+<span class="n">String</span> <span class="n">resourceName</span> <span class="o">=</span> <span class="s">&quot;/myResource&quot;</span><span class="o">;</span>
+<span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="o">=</span> <span class="n">ClientFactory</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+<span class="n">XXX</span> <span class="n">result</span> <span class="o">=</span> <span class="n">tokenRepository</span><span class="o">.</span><span class="na">enrich</span><span class="o">(</span><span class="n">httpClient</span><span class="o">.</span><span class="na">path</span><span class="o">(</span><span class="n">resourceName</span><span class="o">)).</span><span class="na">get</span><span class="o">(</span><span class="n">XXX</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="static/logo.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6. OAuth2 based AuthN/AuthZ</a><ul>
+<li><a class="reference internal" href="#introduction">6.1. Introduction</a></li>
+<li><a class="reference internal" href="#oauth2-provider">6.2. OAuth2 provider</a></li>
+<li><a class="reference internal" href="#oauth2-client">6.3. OAuth2 client</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="testing.html" title="previous chapter">5. Testing</a></li>
+      <li>Next: <a href="identity.html" title="next chapter">7. Identity manager</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/oauth2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, pullrequest.org.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

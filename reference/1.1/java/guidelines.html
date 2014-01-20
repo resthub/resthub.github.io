@@ -1,0 +1,115 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4. Guidelines &mdash; RESThub v1.1-SNAPSHOT documentation</title>
+    <link rel="stylesheet" href="static/resthub.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1-SNAPSHOT',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RESThub v1.1-SNAPSHOT documentation" href="index.html" />
+    <link rel="next" title="5. OAuth2 based AuthN/AuthZ" href="oauth2.html" />
+    <link rel="prev" title="3. Functionalities" href="functionnalities.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="oauth2.html" title="5. OAuth2 based AuthN/AuthZ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="functionnalities.html" title="3. Functionalities"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RESThub v1.1-SNAPSHOT documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="guidelines">
+<h1>4. Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this headline">¶</a></h1>
+<p>Bellow are RESThub guidelines, there is usually a lot of works or experience behind each line, so read them carefully ;-)</p>
+<ul class="simple">
+<li><strong>TDD</strong> (Test Driven Development) : Develop unit tests and your main classes at the same time. You should be able to have green unit tests before running your application in a Servlet container. To do real TDD with autocomplete you should do it using the following order : Main Interface -&gt; Test class -&gt; Main Implementation</li>
+<li>Software design is mainly <strong>getting the right thing at the right place</strong> : Model layer, DAO layer, Service layer (transactions, security), Controller layer (JAX-RS webservices)</li>
+<li>Develop DAO and Service layer following <strong>Interface / Implementation</strong> principle</li>
+<li><strong>IOC is the patch of agile men</strong> : IOC allow you to build an extensible solution by enable you to change some functionalities even if they are used in some code that you have not written !</li>
+<li>Use a <strong>multi-module</strong> Maven project layout to give more meaning to your project than an aggregation of dependencies</li>
+<li><strong>Pragmatic SOA</strong> : create loosely coupled functional modules but keep using Java features like inheritance, polymorphism, generics and lazy loading</li>
+<li>Use a <strong>Resource base class</strong> for all your model classes, in order to allow the core of you app natively know what is an id, a reference, etc.</li>
+<li>Use Spring <strong>PropertyPlaceHolder</strong> and <strong>&#64;Value</strong> (#{anotherBean.anotherProperty}) (Spring 3) annotations to inject properties in order to get runtime resolution of your properties (unlike compile resolution in Maven filtering). This is especially useful when working with JAR module that will have their properties defined by the WAR where they will run.</li>
+<li>Try to use <strong>JAR instead WAR</strong> modules every time you can. WAR modules, especially in Maven world, are not designed for extension.</li>
+<li>Use <strong>WAR **modules as deployement units and to **manage configuration</strong></li>
+<li><strong>DRY</strong> (Don&#8217;t Repeat Yourself) : extends GenericDAO, GenericCRUDService and GenericCRUDController when building your application</li>
+<li><strong>KISS</strong> (Keep It Simple and Stupid) : complexity is usually a good proof of software design issues</li>
+<li><strong>Implement security in Service layer</strong> thanks to fine grained &#64;Role annotations that Spring Security will compare with current user roles</li>
+<li>Use an <strong>AbstractTest</strong> class that will take care of configuring your context, and extend it in your test classes</li>
+<li><strong>Don&#8217;t impact Service layer with marshalling or webservices</strong> (SOAP, XML-RPC) constraints. This is the job of your controller layer to adapt API for remoting capabilities. It is possible and recommended to break this rules with some annotations (= interfaces, not implementation) like JAXB annotation in your model classes.</li>
+<li><strong>Use RESTful webservices</strong>, and consider output format (XML, JSON ...) as a simple parameter. This mean that you will write one Controller layer annotated to allow it to manage different ouput formats.</li>
+<li><strong>Avoid centralized configuration</strong> and prefer plugin like mechanism. For example, by using JAR modules and classpath*:MyApplicationContext.xml in your application, this will allow dynamic discoveries of your modules.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="static/logo.png" alt="Logo"/>
+</a></p><h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="functionnalities.html" title="previous chapter">3. Functionalities</a></li>
+      <li>Next: <a href="oauth2.html" title="next chapter">5. OAuth2 based AuthN/AuthZ</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/guidelines.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Atos Worldline.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

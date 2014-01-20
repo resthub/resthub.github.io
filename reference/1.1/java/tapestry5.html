@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>8. Tapestry 5 integration &mdash; RESThub 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="static/resthub.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RESThub 1.1.3 documentation" href="index.html" />
+    <link rel="prev" title="7. Identity manager" href="identity.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="identity.html" title="7. Identity manager"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RESThub 1.1.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tapestry-5-integration">
+<h1>8. Tapestry 5 integration<a class="headerlink" href="#tapestry-5-integration" title="Permalink to this headline">¶</a></h1>
+<p>RESThub provides some simple tools to facilitate integration between RESThub and its tools and <a class="reference external" href="http://tapestry.apache.org/index.html">Tapestry5 Framework</a>.
+These tools are packaged into a dedicated <a class="reference external" href="https://github.com/pullrequest/resthub/tree/resthub-1.1/resthub-tapestry5">multi-module</a>.</p>
+<p>This multi-module resthub sub-project contains 4 modules related to Tapestry5+RESThub integration.</p>
+<p>You can find a complete example of usage of these tools in the sample application : <a class="reference external" href="https://github.com/pullrequest/resthub/tree/resthub-1.1/resthub-apps/booking/booking-tapestry5">https://github.com/pullrequest/resthub/tree/resthub-1.1/resthub-apps/booking/booking-tapestry5</a></p>
+<div class="section" id="tapestry-5-components">
+<h2>8.1. Tapestry 5 components<a class="headerlink" href="#tapestry-5-components" title="Permalink to this headline">¶</a></h2>
+<p>This artefact provides some additional and useful Tapestry5 components and mixins (not directly related to resthub).</p>
+<dl class="docutils">
+<dt>For the moment, one unique component  :</dt>
+<dd><ul class="first last simple">
+<li>a <strong>ZoneUpdater</strong> allowing to update dynamically in AJAX a page zone from a form field. See full usage sample here : <a class="reference external" href="https://github.com/pullrequest/resthub/tree/resthub-1.1/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/pages/Search.java">java class</a>  and <a class="reference external" href="https://github.com/pullrequest/resthub/tree/resthub-1.1/resthub-apps/booking/booking-tapestry5/src/main/resources/org/resthub/booking/webapp/t5/pages/Search.tml">tml</a></li>
+</ul>
+</dd>
+</dl>
+<p>This artefact can and should hold some other components if needed.</p>
+<div class="section" id="configuration">
+<h3>8.1.1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>To use it, add to your pom dependencies :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.resthub<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>resthub-tapestry5-components<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tapestry-5-jpa">
+<h2>8.2. Tapestry 5 JPA<a class="headerlink" href="#tapestry-5-jpa" title="Permalink to this headline">¶</a></h2>
+<p>This artefact provides some advanced features related to tapestry5 and jpa integration, one of the core resthub tool. This artefact is based on the <a class="reference external" href="http://tynamo.org/tapestry-jpa+guide">Tynamo
+Tapestry5 JPA integration</a></p>
+<p>It allows, for example, to manage JPA entities objects in page and components parameters while seeing only id in url. This is allowed by the fact that
+the artifact maintains a opened session and wrap calls to serialization and deserialization in order to retrieve an object from its id.
+Sample <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/components/hotel/HotelDisplay.java">here</a></p>
+<p>This artefact provides also a complete integration between JPAEntityManager managed by Tapestry and those defined by Spring, another core tool of resthub.
+This is made possible by a <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-tapestry5/resthub-tapestry5-jpa/src/main/java/org/resthub/tapestry5/jpa/services/ResthubJPAModule.java">dedicated configuration Tapestry 5 Module</a>
+injecting the <cite>entityManagerFactory</cite> bean, considered as already defined by Spring.</p>
+<p>You can provide your own module in your application and complete or override this one in case of specific configurations.</p>
+<div class="section" id="id1">
+<h3>8.2.1. Configuration<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To use it, add to your pom dependencies :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.resthub<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>resthub-tapestry5-jpa<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tapestry-5-spring-security">
+<h2>8.3. Tapestry 5 spring security<a class="headerlink" href="#tapestry-5-spring-security" title="Permalink to this headline">¶</a></h2>
+<p>This artefact provides some advanced features related to tapestry5 and spring security integration. This artefact is based on the <a class="reference external" href="http://www.localhost.nu/java/tapestry-spring-security/conf.html">localhost.nu
+Tapestry5 Spring Security integration</a>.</p>
+<p>It allows to integrate Tapestry5 and Spring authentication and authorization mechanisms and provide some helpers and dedicated services
+in order to manage in Tapestry5 pages :</p>
+<ul>
+<li><p class="first"><strong>login</strong> :</p>
+<p>wrap login methods and allow to perform a programmatic login : samples <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/pages/Signup.java">here</a>
+and <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/components/Layout.java">here</a> (see <cite>Authenticator</cite>)</p>
+</li>
+<li><p class="first"><strong>signin</strong> :</p>
+<p>wrap signin methods and allow to perform a programmatic signin : <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/pages/Signin.java">Sample</a></p>
+</li>
+<li><p class="first"><strong>logout</strong> :</p>
+<p>wrap logout methods and allows to perform a programmatic logout : <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/components/Layout.java">Sample</a></p>
+</li>
+</ul>
+<p>This artifact provides also some security components to use in your tml (see <a class="reference external" href="http://www.localhost.nu/java/tapestry-spring-security/ref/index.html">here</a>).</p>
+<p>This is configured by a dedicated Tapestry5 Spring Security configuration that you have to add to your application (see <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/services/BookingSecurityModule.java">here</a> for a sample).
+This configuration file defines all options fo spring security integration.</p>
+<div class="section" id="id7">
+<h3>8.3.1. Configuration<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>To use it, add to your pom dependencies :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.resthub<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>resthub-tapestry5-spring-security<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>8.4. Tapestry 5 integration<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>This artifact is a simple wrapper to integrate other Resthub Tapestry5 contributions to make things easier.</p>
+<p>It provides a global <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-tapestry5/resthub-tapestry5-integration/src/main/java/org/resthub/tapestry5/services/ResthubModule.java">Tapestry5 configuration module</a>
+to integrate tapestry-jpa and tapestry-components modules.</p>
+<p>This artifact also include the configuration for Tapestry5 and BeanValidation integration : see <a class="reference external" href="https://github.com/pullrequest/resthub/blob/master/resthub-tapestry5/resthub-tapestry5-integration/src/main/java/org/resthub/tapestry5/validation/services/ResthubValidationModule.java">here</a>.</p>
+<p>This inclusion is possible thanks to the <cite>&#64;SubModule</cite> annotation.</p>
+<p>This artifact does not integrate tapestry-spring-security to not force its usage.</p>
+<p>You can configure the integration of this artifact by providing in your application a dedicated Tapestry5 module and/or overriding these modules
+(see <a class="reference external" href="https://github.com/pullrequest/resthub/tree/resthub-1.1/resthub-apps/booking/booking-tapestry5/src/main/java/org/resthub/booking/webapp/t5/services">sample</a>).</p>
+<div class="section" id="id11">
+<h3>8.4.1. Configuration<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>To use it, add to your pom dependencies :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.resthub<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>resthub-tapestry5-integration<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="static/logo.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. Tapestry 5 integration</a><ul>
+<li><a class="reference internal" href="#tapestry-5-components">8.1. Tapestry 5 components</a><ul>
+<li><a class="reference internal" href="#configuration">8.1.1. Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tapestry-5-jpa">8.2. Tapestry 5 JPA</a><ul>
+<li><a class="reference internal" href="#id1">8.2.1. Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tapestry-5-spring-security">8.3. Tapestry 5 spring security</a><ul>
+<li><a class="reference internal" href="#id7">8.3.1. Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">8.4. Tapestry 5 integration</a><ul>
+<li><a class="reference internal" href="#id11">8.4.1. Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="identity.html" title="previous chapter">7. Identity manager</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/tapestry5.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, pullrequest.org.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

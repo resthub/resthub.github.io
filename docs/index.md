@@ -102,3 +102,6 @@ RESTHub provides also two independent complementary tools:
 </div>
 
 
+Looking for RESTHub 1 documentation ? see [here (unmaintained)](/reference/1.1/)
+
+

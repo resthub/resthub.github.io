@@ -1,0 +1,176 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Getting started &mdash; RESThub 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="static/resthub.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RESThub 1.1.3 documentation" href="index.html" />
+    <link rel="next" title="2. Project layout" href="layout.html" />
+    <link rel="prev" title="RESThub 1.1 Documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="layout.html" title="2. Project layout"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="RESThub 1.1 Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RESThub 1.1.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>1. Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>RESThub can be used with any MVC framwork, but is designed to provide the perfect backend for <a class="reference external" href="http://resthub.org/javascript/">RESThub JS</a>, a Javascript framework designed to build lightweight HTML5 applications.</p>
+<p>We also provide a <a class="reference external" href="http://tapestry.apache.org/">Tapestry 5</a> integration for those who prefer server-side MVC frameworks.</p>
+<a class="reference internal image-reference" href="images/blocks.png"><img alt="RESThub functionalities" class="align-center" src="images/blocks.png" style="width: 636.0px; height: 378.0px;" /></a>
+<div class="section" id="requirements">
+<h2>1.1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Before coding, you should download and install the following development tools if needed :</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://java.sun.com/javase/downloads/index.jsp">Java 6</a></li>
+<li><a class="reference external" href="http://maven.apache.org/">Maven 3</a></li>
+<li>A java IDE like <a class="reference external" href="http://www.eclipse.org/">Eclipse</a> or <a class="reference external" href="http://netbeans.org/">Netbeans</a> is recommended</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="project-templates">
+<h2>1.2. Project templates<a class="headerlink" href="#project-templates" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to start is to use RESThub archetypes to create your first RESThub based application. Just open a command line terminal, and type :</p>
+<div class="highlight-bash"><div class="highlight"><pre>mvn archetype:generate -DarchetypeCatalog<span class="o">=</span>http://resthub.org/nexus/content/repositories/releases/
+</pre></div>
+</div>
+<p>You will have to choose between 3 RESThub archetypes :</p>
+<ul class="simple">
+<li><strong>resthub-archetype-js-webapp</strong> : simple HTML5/Javascript web application</li>
+<li><strong>resthub-archetype-tapestry5-webapp</strong> : simple RESThub based Tapestry 5 web application</li>
+<li><strong>resthub-archetype-jar-module</strong> : a JAR module for inclusion in your multi modules project</li>
+</ul>
+<p>You can run your webapps thanks to built-in mvn jetty:run support.</p>
+</div>
+<div class="section" id="documentation">
+<h2>1.3. Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>In addition to this reference documentation, RESThub Javadoc is available <a class="reference external" href="http://resthub.org/javadoc/1.1">here</a>.</p>
+<dl class="docutils">
+<dt>Framework documentation included in RESThub may also be useful :</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.sonatype.com/books/mvnex-book/reference/public-book.html|Mavenbyexample]],[[http://www.sonatype.com/books/mvnref-book/reference/public-book.html">Maven complete reference</a></li>
+<li><a class="reference external" href="http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html|html]],[[http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/pdf/spring-framework-reference.pdf">Spring 3 reference manual</a></li>
+<li><a class="reference external" href="http://static.springsource.org/spring/docs/3.0.x/javadoc-api/">Spring 3 javadoc</a></li>
+<li><a class="reference external" href="http://www.hibernate.org/docs.html">Hibernate documentation</a></li>
+<li><a class="reference external" href="http://hades.synyx.org/static/2.x/site/org.synyx.hades/apidocs/">Hades</a></li>
+<li><a class="reference external" href="http://www.h2database.com/html/main.html">H2 embedded database</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="sample-applications">
+<h2>1.4. Sample applications<a class="headerlink" href="#sample-applications" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Check these sample applications to learn how to design your RESThub based web application :</dt>
+<div class="section" id="debugging-your-web-application">
+<h2>1.5. Debugging your web application<a class="headerlink" href="#debugging-your-web-application" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Run/Debug RESThub in Eclipse :</dt>
+<dd><ul class="first last simple">
+<li>Right click on myproject -&gt; Debug As -&gt; Maven Build ...</li>
+<li>Name : Debug myproject</li>
+<li>Goal : mvn -Denv=local jetty:run</li>
+<li>Click on Apply, then Run</li>
+<li>Browse the following URL : <a class="reference external" href="http://localhost:8080/">http://localhost:8080/</a></li>
+<li>Open the Debug Perspective</li>
+<li>Right click on the Debug window -&gt; Edit source lookup</li>
+<li>Add -&gt; Java project -&gt; Select all -&gt; OK -&gt; OK</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="static/logo.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Getting started</a><ul>
+<li><a class="reference internal" href="#requirements">1.1. Requirements</a></li>
+<li><a class="reference internal" href="#project-templates">1.2. Project templates</a></li>
+<li><a class="reference internal" href="#documentation">1.3. Documentation</a></li>
+<li><a class="reference internal" href="#sample-applications">1.4. Sample applications</a></li>
+<li><a class="reference internal" href="#debugging-your-web-application">1.5. Debugging your web application</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">RESThub 1.1 Documentation</a></li>
+      <li>Next: <a href="layout.html" title="next chapter">2. Project layout</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/gettingstarted.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, pullrequest.org.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

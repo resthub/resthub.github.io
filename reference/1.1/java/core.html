@@ -1,0 +1,364 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Core functionnalities &mdash; RESThub 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="static/resthub.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RESThub 1.1.3 documentation" href="index.html" />
+    <link rel="next" title="4. Web functionalities" href="web.html" />
+    <link rel="prev" title="2. Project layout" href="layout.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="web.html" title="4. Web functionalities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="layout.html" title="2. Project layout"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RESThub 1.1.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="core-functionnalities">
+<h1>3. Core functionnalities<a class="headerlink" href="#core-functionnalities" title="Permalink to this headline">¶</a></h1>
+<p>RESThub core has been designed to give your a coherent technology stack and additional functionalities, thus helping you to build your application faster.</p>
+<p>You should import the following module in your application to be able to use RESThub in your application :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.resthub<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>resthub-core<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+<p>Functionalities available from the core are described below.</p>
+<div class="section" id="application-context">
+<h2>3.1. Application context<a class="headerlink" href="#application-context" title="Permalink to this headline">¶</a></h2>
+<p>Since RESThub application context functionalities extend Spring 3 ones, you should carefully read <a class="reference external" href="http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html">Spring 3 reference manual</a>.</p>
+<div class="section" id="application-context-scanning">
+<h3>3.1.1. Application context scanning<a class="headerlink" href="#application-context-scanning" title="Permalink to this headline">¶</a></h3>
+<p>RESThub default configuration scan all resthubContext.xml and applicationContext.xml files from your classpath. This naming convention and scanning process allows you to build easily a simple plugin-like system, when your functionalities are automatically discovered within the classpath.</p>
+<p>You can provide an applicationContext.xml file by module to configure your application.</p>
+</div>
+<div class="section" id="beans-declaration-and-injection">
+<h3>3.1.2. Beans declaration and injection<a class="headerlink" href="#beans-declaration-and-injection" title="Permalink to this headline">¶</a></h3>
+<p>You should use J2EE6 annotations to declare and inject your beans.</p>
+<p>To declare a bean :</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Named</span><span class="o">(</span><span class="s">&quot;beanName&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleClass</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>To inject a bean :</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Inject</span>
+<span class="nd">@Named</span><span class="o">(</span><span class="s">&quot;beanName&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSampleProperty</span><span class="o">(...)</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>Best practice</strong> : Bean injection on setter is better than on protected or private property because it allows subclasses to override this injection.</p>
+</div>
+<div class="section" id="environment-specific-properties">
+<h3>3.1.3. Environment specific properties<a class="headerlink" href="#environment-specific-properties" title="Permalink to this headline">¶</a></h3>
+<p>There is various way to configure your environment specific properties in your application, the one described bellow is the more simple and flexible one we have found.</p>
+<p>Maven filtering (search and replace variables) is not recommended because it is done at compile time (not runtime) and makes usually your JAR/WAR specific to an environment. This feature can be useful when defining your target path (${project.build.directory}) in your src/test/applicationContext.xml for testing purpose.</p>
+<p>Spring properties placeholders allow you to reference in your application context files some values defined in external properties. This is useful in order to keep your application context generic (located in src/main/resources or src/test/resources), and put all values that depends on the environment (local, dev, staging, production) in external properties. These dynamic properties values are resolved during application startup.</p>
+<p>In order to improve testabilty and extensibility of your modules, you should set default values in case no properties are found in the classpath - if properties are found, then default values are obviously overriden. It is acheived by declaring the following lines in your applicationContext.xml :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;context:property-placeholder</span> <span class="na">location=</span><span class="s">&quot;classpath*:mymodule.properties&quot;</span>
+                              <span class="na">properties-ref=</span><span class="s">&quot;databaseProperties&quot;</span>
+                              <span class="na">ignore-resource-not-found=</span><span class="s">&quot;true&quot;</span>
+                              <span class="na">ignore-unresolvable=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;util:properties</span> <span class="na">id=</span><span class="s">&quot;mymoduleProperties&quot;</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;prop</span> <span class="na">key=</span><span class="s">&quot;param1&quot;</span><span class="nt">&gt;</span>param1Value<span class="nt">&lt;/prop&gt;</span>
+   <span class="nt">&lt;prop</span> <span class="na">key=</span><span class="s">&quot;param2&quot;</span><span class="nt">&gt;</span>param2Value<span class="nt">&lt;/prop&gt;</span>
+<span class="nt">&lt;/util:properties&gt;</span>
+</pre></div>
+</div>
+<p>You should now be able to inject dynamic values in your beans :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;sampleBean&quot;</span> <span class="na">class=</span><span class="s">&quot;org.mycompany.MyBean&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;property1&quot;</span> <span class="na">value=</span><span class="s">&quot;${param1}&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;property2&quot;</span> <span class="na">value=</span><span class="s">&quot;${param2}&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+<p>You can also inject direcly these values in your Java classes thanks to the &#64;Value annotation :</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Value</span><span class="o">(</span><span class="s">&quot;${param1}&quot;</span><span class="o">)</span>
+<span class="kd">protected</span> <span class="n">String</span> <span class="n">property1</span><span class="o">;</span>
+</pre></div>
+</div>
+<p>Or :</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Value</span><span class="o">(</span><span class="s">&quot;${param1}&quot;</span><span class="o">)</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">setProperty1</span><span class="o">(</span><span class="n">String</span> <span class="n">property1</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">this</span><span class="o">.</span><span class="na">property1</span> <span class="o">=</span> <span class="n">property1</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-xsd-validation">
+<h3>3.1.4. Disable XSD validation<a class="headerlink" href="#disable-xsd-validation" title="Permalink to this headline">¶</a></h3>
+<p>By default, Spring 3 validation XML schema is declared in your application context. This validation could prevent you to use properties placeholder decribed previously, because you will put a value like ${paramStatus} in a boolean attribute that can take only true or false value.</p>
+<p>Since there is no way to fix that in vanilla Spring 3, RESThub provides a way to disable application context XSD validations.</p>
+<p>In order to disable validation in your unit tests, annotate your test classes with :</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@ContextConfiguration</span><span class="o">(</span><span class="n">loader</span> <span class="o">=</span> <span class="n">ResthubXmlContextLoader</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>In order to disable validation in your web application, you should declare in the web.xml file (ResthubXmlWebApplicationContex is located in resthub-web-server dependency) :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;context-param&gt;</span>
+   <span class="nt">&lt;param-name&gt;</span>contextClass<span class="nt">&lt;/param-name&gt;</span>
+   <span class="nt">&lt;param-value&gt;</span>org.resthub.web.context.ResthubXmlWebApplicationContext<span class="nt">&lt;/param-value&gt;</span>
+<span class="nt">&lt;/context-param&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="persistence">
+<h2>3.2. Persistence<a class="headerlink" href="#persistence" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-configuration">
+<h3>3.2.1. Default configuration<a class="headerlink" href="#default-configuration" title="Permalink to this headline">¶</a></h3>
+<p>RESThub comes with a preconfigured Spring/Hibernate stack, with a connection to an H2 embedded databse, pooling and cache. Every configured bean could be customized by redefining the bean in your applicationContext.xml files, or more easily by putting a database.properties in your project resources.</p>
+<p>Please find bellow the properties keys and default values of database.properties</p>
+<div class="highlight-python"><pre>dataSource.driverClassName = org.h2.Driver
+dataSource.url = jdbc:h2:mem:resthub;DB_CLOSE_DELAY=-1
+dataSource.maxActive = 50
+dataSource.maxWait = 1000
+dataSource.poolPreparedStatements = true
+dataSource.username = sa
+dataSource.password =
+
+hibernate.show_sql = false
+hibernate.dialect = org.hibernate.dialect.H2Dialect
+hibernate.format_sql = true
+hibernate.hbm2ddl.auto = update
+hibernate.cache.use_second_level_cache = true
+hibernate.cache.provider_class = net.sf.ehcache.hibernate.SingletonEhCacheProvider
+hibernate.id.new_generator_mappings = true</pre>
+</div>
+<p>Please notice that the new Hibernate id generator is used, as <a class="reference external" href="http://docs.jboss.org/hibernate/annotations/3.5/reference/en/html_single/#ann-setup-properties">recommended in Hibernate documentation</a>. It allows much better performance (there&#8217;s no need of a SELECT request before an INSERT request).</p>
+</div>
+<div class="section" id="extend-jpa-properties">
+<h3>3.2.2. Extend JPA properties<a class="headerlink" href="#extend-jpa-properties" title="Permalink to this headline">¶</a></h3>
+<p>RESThub provides some core jpa properties to configure entityManagerFactory in resthubContext.xml (real values are provided thanks to placholders - cf. database.properties configuration) :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;util:map</span> <span class="na">id=</span><span class="s">&quot;resthubCoreJpaProperties&quot;</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;hibernate.dialect&quot;</span> <span class="na">value=</span><span class="s">&quot;${hibernate.dialect}&quot;</span> <span class="nt">/&gt;</span>
+             <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;hibernate.format_sql&quot;</span> <span class="na">value=</span><span class="s">&quot;${hibernate.format_sql}&quot;</span> <span class="nt">/&gt;</span>
+             <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;hibernate.hbm2ddl.auto&quot;</span> <span class="na">value=</span><span class="s">&quot;${hibernate.hbm2ddl.auto}&quot;</span> <span class="nt">/&gt;</span>
+             <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;hibernate.cache.use_second_level_cache&quot;</span> <span class="na">value=</span><span class="s">&quot;${hibernate.cache.use_second_level_cache}&quot;</span> <span class="nt">/&gt;</span>
+             <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;hibernate.cache.provider_class&quot;</span> <span class="na">value=</span><span class="s">&quot;${hibernate.cache.provider_class}&quot;</span> <span class="nt">/&gt;</span>
+             <span class="c">&lt;!-- New ID generator is now recommanded to true for all projects. It provides</span>
+<span class="c">                     betters performances and better generation behaviour than default one. More</span>
+<span class="c">                     details on http://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-id-enhanced --&gt;</span>
+             <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;hibernate.id.new_generator_mappings&quot;</span> <span class="na">value=</span><span class="s">&quot;${hibernate.id.new_generator_mappings}&quot;</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;/util:map&gt;</span>
+</pre></div>
+</div>
+<p>In order to allow to add extended and additional JPA or Hibernate configuration properties in your own project using RESThub, we provide a dedicated extension point thanks to spring maps and its merge capacity.</p>
+<p>Indeed, resthub entityManagerFacory includes an larger map of properties with an external bean reference :</p>
+<div class="highlight-xml"><div class="highlight"><pre>  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;entityManagerFactory&quot;</span>
+          <span class="na">class=</span><span class="s">&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot;</span><span class="nt">&gt;</span>
+
+...
+
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jpaProperties&quot;</span> <span class="na">ref=</span><span class="s">&quot;jpaProperties&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;jpaProperties&quot;</span> <span class="na">parent=</span><span class="s">&quot;resthubCoreJpaProperties&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;sourceMap&quot;</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;map</span> <span class="na">merge=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+<p>By default the map contains only core resthub jpa properties but if you need to add JPA or Hibernate properties, you only have to override the jpaProperties bean with your own configuration.
+Provided properties will be added to resthub core properties.</p>
+<p>Just add in you applicationContext :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;jpaProperties&quot;</span> <span class="na">parent=</span><span class="s">&quot;resthubCoreJpaProperties&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;sourceMap&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;map</span> <span class="na">merge=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;my.key&quot;</span>
+                                <span class="na">value=</span><span class="s">&quot;my.value&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/map&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entity-scan">
+<h3>3.2.3. Entity scan<a class="headerlink" href="#entity-scan" title="Permalink to this headline">¶</a></h3>
+<p>RESThub allows to scan entities in different modules using the same PersitenceUnit, which is not possible with default Spring/Hibernate.</p>
+<p>By default, the ScanningPersistenceUnitManager searches entities with the pattern &#8220;org.resthub.**.model&#8221;.
+To indicates different packages, you&#8217;ll have to override the bean definition in your own Spring configuration file.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;resthub:include-entities</span> <span class="na">base-package=</span><span class="s">&quot;net.myProject.**.model&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Now, entities within the net/myProject/**/model packages will be scanned.</p>
+<p><strong>Beware !</strong> You have to be careful with the loading order of your spring configuration files.
+Reference the RESTHub file first (and don&#8217;t forget the * behind &#8220;classpath&#8221;), and then your files.</p>
+</div>
+<div class="section" id="interface-only-dao">
+<h3>3.2.4. Interface only DAO<a class="headerlink" href="#interface-only-dao" title="Permalink to this headline">¶</a></h3>
+<p>Hades is a really powerful Generic DAO framework, included by default in RESThub, which allows to write your DAO with only an interface (no implmentation needed).</p>
+<p>Hades&#8217; ability to generate DAO from interfaces is not activated by default in RESThub application, but could be with the following line in your applicationContext.xml.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;hades:dao-config</span> <span class="na">base-package=</span><span class="s">&quot;org.mycompany.myproject.dao&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="generic-crud-classes">
+<h2>3.3. Generic CRUD classes<a class="headerlink" href="#generic-crud-classes" title="Permalink to this headline">¶</a></h2>
+<p>RESThub provides some generic classes in order to quickly implement CRUD functionalities :</p>
+<p>Provides some generic classes and interfaces for default DAO, service or controller.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Dao</strong> <span class="classifier-delimiter">:</span> <span class="classifier">GenericDao default CRUD operation</span></dt>
+<dd><ul class="first last simple">
+<li>interface <a class="reference external" href="http://resthub.org/javadoc/1.1/org/resthub/core/dao/GenericDao.html">GenericDao</a>: generic DAO interface</li>
+<li>class <a class="reference external" href="http://resthub.org/javadoc/1.1/org/resthub/core/dao/GenericJpaDao">GenericJpaDao</a>: generic DAO JPA implementation</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Generic CRUD services</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RESThub provides a reusable service classes that implements by default CRUD operations.</span></dt>
+<dd><ul class="first last simple">
+<li>interface <a class="reference external" href="http://resthub.org/javadoc/1.1/org/resthub/core/service/GenericService.html">GenericService</a>: generic service interface</li>
+<li>class <a class="reference external" href="http://resthub.org/javadoc/1.1/org/resthub/core/service/GenericServiceImpl.html">GenericServiceImpl</a>: generic service default implementation</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For example, to define a CRUD interface for Booking class :</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BookingService</span> <span class="kd">extends</span> <span class="n">GenericService</span><span class="o">&lt;</span><span class="n">Booking</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="monitoring">
+<h2>3.4. Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h2>
+<p>RESThub provides some helpers to monitor your application.
+The monitoring service is based on JAMon (<a class="reference external" href="http://jamonapi.sourceforge.net/">http://jamonapi.sourceforge.net/</a>).</p>
+<p>To monitor all methods of a Bean, add annotaion &#64;Monitored upon the service&#8217;s implementation.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Monitored</span>
+<span class="nd">@Named</span><span class="o">(</span><span class="s">&quot;beanName&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleClass</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Note: You can exclude some methods by annotated this methods by &#64;NotMonitored.</p>
+<p>To activate this annotation add this bean post processor declaration into the application context:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">&quot;org.resthub.core.monitoring.MonitoringBeanPostProcessor&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>As soon this processor declared, all methods of the bean are logged in DEBUG output and compute to JAMon metrics.</p>
+<p>JAMon metrics are accessible via the MonitorFactory.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">for</span> <span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">MonitorFactory</span><span class="o">.</span><span class="na">getFactory</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();)</span> <span class="o">{</span>
+   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>See more way to view metrics at JAMon site.</p>
+<p>Another cool feature is that you can monitor SQL orders. To do that edit database.properties
+and change the JDBC Driver by JAMon one:</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="static/logo.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Core functionnalities</a><ul>
+<li><a class="reference internal" href="#application-context">3.1. Application context</a><ul>
+<li><a class="reference internal" href="#application-context-scanning">3.1.1. Application context scanning</a></li>
+<li><a class="reference internal" href="#beans-declaration-and-injection">3.1.2. Beans declaration and injection</a></li>
+<li><a class="reference internal" href="#environment-specific-properties">3.1.3. Environment specific properties</a></li>
+<li><a class="reference internal" href="#disable-xsd-validation">3.1.4. Disable XSD validation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#persistence">3.2. Persistence</a><ul>
+<li><a class="reference internal" href="#default-configuration">3.2.1. Default configuration</a></li>
+<li><a class="reference internal" href="#extend-jpa-properties">3.2.2. Extend JPA properties</a></li>
+<li><a class="reference internal" href="#entity-scan">3.2.3. Entity scan</a></li>
+<li><a class="reference internal" href="#interface-only-dao">3.2.4. Interface only DAO</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generic-crud-classes">3.3. Generic CRUD classes</a></li>
+<li><a class="reference internal" href="#monitoring">3.4. Monitoring</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="layout.html" title="previous chapter">2. Project layout</a></li>
+      <li>Next: <a href="web.html" title="next chapter">4. Web functionalities</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/core.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, pullrequest.org.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

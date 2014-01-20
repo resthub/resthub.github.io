@@ -1,0 +1,166 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9. Internationalization &mdash; RESThub JS 1.1.3 documentation</title>
+    
+    <link rel="stylesheet" href="static/resthub.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="RESThub JS 1.1.3 documentation" href="index.html" />
+    <link rel="next" title="10. OAuth2 support" href="oauth2.html" />
+    <link rel="prev" title="8. Repositories" href="repositories.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="oauth2.html" title="10. OAuth2 support"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="repositories.html" title="8. Repositories"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RESThub JS 1.1.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="internationalization">
+<h1>9. Internationalization<a class="headerlink" href="#internationalization" title="Permalink to this headline">¶</a></h1>
+<p>You should never use directly labels or texts in your source files. All labels should be externalized to prepare your app&#8217;s
+Internationalization.
+Doing such thing is pretty simple with RESThub-js because of requireJS.</p>
+<div class="section" id="i18n-primer">
+<h2>9.1. i18n primer<a class="headerlink" href="#i18n-primer" title="Permalink to this headline">¶</a></h2>
+<p>All is explained in details <a class="reference external" href="http://requirejs.org/docs/api.html#i18n">here</a>.  but the main concepts are :</p>
+<p>1. Have a label file (for example labels.js):</p>
+<div class="highlight-python"><pre>define({
+    // root is mandatory.
+    'root': {
+            'titles': {
+                    'login': 'Connexion'
+            }
+        }
+    });</pre>
+</div>
+<p>2. Put it in a folder (nls is a standardized name for labels folders), or in a locale named subfolder (nls/en-US, nls/fr)...</p>
+<p>You should always keep the same file name, and the file located at the root will be used by default.</p>
+<p>3. Add a dependency in the js file where you&#8217;ll need labels.
+You&#8217;ll absolutely need to give a scoped variable to the result (in this example <tt class="docutils literal"><span class="pre">i18n</span></tt>, but you can choose the one you want).</p>
+<p>Prepending &#8216;i18n!&#8217; before the file path in the dependency indicates RequireJS to get the file related to the current locale.:</p>
+<div class="highlight-python"><pre>define(['i18n!nls/labels'], function(i18n) {</pre>
+</div>
+<p>4. Use your labels:</p>
+<div class="highlight-python"><pre>$('#main').html(i18n.titles.login); // Displays 'Connexion' in the markup with id 'main'</pre>
+</div>
+<p>5. Change the locale in the requireJS configuration <a class="reference external" href="http://requirejs.org/docs/api.html#config">options</a></p>
+</div>
+<div class="section" id="replacement-in-labels">
+<h2>9.2. Replacement in labels<a class="headerlink" href="#replacement-in-labels" title="Permalink to this headline">¶</a></h2>
+<p>You can use the $.sprintf() jquery function to have some replacement in your labels.
+For example, with label:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">i18n</span><span class="o">.</span><span class="n">texts</span><span class="o">.</span><span class="n">welcome</span> <span class="o">=</span> <span class="s">&#39;Welcome </span><span class="si">%s</span><span class="s"> !&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can have replacement this way:</p>
+<div class="highlight-python"><pre>$('#main').html($.sprintf(i18n.texts.welcome, 'Homer')); // Displays 'Welcome Homer !' in the markup with id 'main'</pre>
+</div>
+<p>Just do not forget to include &#8216;lib/jquery/jquery.sprintf&#8217; in your dependencies.</p>
+<p>See <a class="reference external" href="http://plugins.jquery.com/project/psprintf">sprintf Plugin documentation</a>.</p>
+</div>
+<div class="section" id="labels-in-templates">
+<h2>9.3. Labels in templates<a class="headerlink" href="#labels-in-templates" title="Permalink to this headline">¶</a></h2>
+<p>Templates necessarily contain labels.
+The prefered way of passing labels to a template is during its rendering:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">this</span><span class="o">.</span><span class="n">render</span><span class="p">({</span><span class="n">i18n</span><span class="p">:</span><span class="n">i18n</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span><span class="n">this</span><span class="o">.</span><span class="n">user</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>And used in the template:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;home&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>${$.sprintf(i18n.texts.welcome, user.firstName, user.lastName)}<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;passwordChange&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h2&gt;</span>${i18n.labels.editPassword}<span class="nt">&lt;/h2&gt;</span>
+</pre></div>
+</div>
+<p>You&#8217;ll notice that the $.sprintf() method is useable also in templates.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="static/logo.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Internationalization</a><ul>
+<li><a class="reference internal" href="#i18n-primer">9.1. i18n primer</a></li>
+<li><a class="reference internal" href="#replacement-in-labels">9.2. Replacement in labels</a></li>
+<li><a class="reference internal" href="#labels-in-templates">9.3. Labels in templates</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="repositories.html" title="previous chapter">8. Repositories</a></li>
+      <li>Next: <a href="oauth2.html" title="next chapter">10. OAuth2 support</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/internationalization.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, pullrequest.org.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>
