@@ -391,11 +391,7 @@ article {
       text-shadow: 0 -1px 0 @resthub-brown-color;
     }
 
-    .text-right .btn .glyphicon {
-      margin-left: 8px;
-    }
-
-    .text-left .btn .glyphicon {
+    .text-right .btn .glyphicon, .text-left .btn .glyphicon {
       margin-right: 8px;
     }
   }
@@ -522,6 +518,36 @@ pre code {
 
 .news article {
   margin-bottom: 20px;
+
+  h1 {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .post-meta {
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+  }
+
+  .post-type{
+    margin-bottom: 40px;
+    padding-top: 5px;
+
+    .post-category .btn {
+      font-size: @font-size-base;
+      border-radius: 4px;
+      line-height: 1.8;
+    }
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .post-author, .post-date {
+    font-weight: 700;
+  }
 }
 
 .btn-xxl {
@@ -748,6 +774,15 @@ footer {
     }
   }
 
+  .news article .post-type {
+    .post-category, .post-tags {
+      .btn {
+        font-size: (@font-size-small - 1px);
+        padding: 0 8px;
+      }
+    }
+  }
+
 }
 
 @media only screen and (max-width: @screen-xxs-max) {
@@ -842,6 +877,19 @@ footer {
       }
     }
 
+  }
+
+  .news article .post-type {
+    .post-tags {
+      .btn {
+        padding: 0 3px;
+      }
+    }
+
+    .post-category .btn {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
   }
 
   pre code {

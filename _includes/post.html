@@ -5,23 +5,32 @@
                 {{ post.title }}
             </a>
         </h1>
-    <span class="post-category">
-        {% for category in post.categories %}
-        <span class="label">{{ category }}</span>
-        {% endfor %}
-    </span>
-
         <div class="post-meta">
-    <span class="post-date">
-      {{ post.date | date_to_string }}
-    </span>
+            <span class="post-date">
+              {{ post.date | date_to_string }}
+            </span>
+            by
             <a href="https://github.com/{{ post.author }}" class="post-author">
                 <img src="https://github.com/{{ post.author }}.png" class="avatar" alt="{{ post.author }}"/>
                 {{ post.author }}
             </a>
         </div>
+        <div class="post-type">
+            <span class="post-category">
+                {% for category in post.categories %}
+                <a href="/news/releases" class="btn btn-primary">{{ category }}</a>
+                {% endfor %}
+            </span>
+            <span class="post-tags pull-right">
+                {% for tag in post.tags %}
+                <a href="/news/{{ tag }}" class="btn btn-default">{{ tag }}</a>
+                {% endfor %}
+            </span>
+        </div>
+
         <div class="post-content">
             {{ post.content }}
         </div>
+
     </article>
 </div>

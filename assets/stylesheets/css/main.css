@@ -6207,9 +6207,7 @@ article .section-nav {
 article .section-nav .btn {
   text-shadow: 0 -1px 0 #34302d;
 }
-article .section-nav .text-right .btn .glyphicon {
-  margin-left: 8px;
-}
+article .section-nav .text-right .btn .glyphicon,
 article .section-nav .text-left .btn .glyphicon {
   margin-right: 8px;
 }
@@ -6320,6 +6318,31 @@ pre code {
 }
 .news article {
   margin-bottom: 20px;
+}
+.news article h1 {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.news article .post-meta {
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+}
+.news article .post-type {
+  margin-bottom: 40px;
+  padding-top: 5px;
+}
+.news article .post-type .post-category .btn {
+  font-size: 16px;
+  border-radius: 4px;
+  line-height: 1.8;
+}
+.news article .avatar {
+  width: 24px;
+  height: 24px;
+}
+.news article .post-author,
+.news article .post-date {
+  font-weight: 700;
 }
 .btn-xxl {
   font-size: 25px;
@@ -6527,6 +6550,11 @@ footer .components .component .build-status {
     width: 75%;
     max-width: 355px;
   }
+  .news article .post-type .post-category .btn,
+  .news article .post-type .post-tags .btn {
+    font-size: 13px;
+    padding: 0 8px;
+  }
 }
 @media only screen and (max-width: 479px) {
   .navbar .container {
@@ -6600,6 +6628,13 @@ footer .components .component .build-status {
   section article.tutorial ul blockquote {
     margin-left: -18px;
     margin-right: -18px;
+  }
+  .news article .post-type .post-tags .btn {
+    padding: 0 3px;
+  }
+  .news article .post-type .post-category .btn {
+    display: inline-block;
+    margin-bottom: 5px;
   }
   pre code {
     font-size: 11px;
