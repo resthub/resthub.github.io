@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /reference/
+Disallow: /assets/
+
+User-agent: Swiftbot
+Disallow: /apidocs/
