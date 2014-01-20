@@ -7,10 +7,10 @@
 
             <ul class="nav navbar-nav navbar-links">
                 <li class="{% if page.blog %}active{% endif %}">
-                    <a href="/blog">News</a>
+                    <a href="{{ site.url }}/news/">News</a>
                 </li>
                 <li class="{% if page.url contains '/docs/' %}active{% endif %}">
-                    <a href="{{ site.url }}/docs/home/">
+                    <a href="{{ site.url }}/docs/">
                         <span class="visible-xs visible-sm">Docs</span>
                         <span class="hidden-xs hidden-sm">Documentation</span>
                     </a>

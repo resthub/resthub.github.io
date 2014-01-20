@@ -2,7 +2,7 @@
 layout: docs
 title: Project layout
 permalink:  layout/
-prev: spring/home
+prev: spring
 next: spring/jpa
 ---
 

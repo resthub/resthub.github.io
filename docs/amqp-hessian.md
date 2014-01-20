@@ -17,6 +17,8 @@ and adapted for spring-amqp.
 Spring AMQP Hessian is a component helping the creation of Hessian services over AMQP
 using spring-amqp.
 
+Current version is **{{site.amqp-hessian-version}}**.
+
 
 ## Usage
 
@@ -29,7 +31,7 @@ Repository for SNAPSHOT versions : <https://oss.sonatype.org/content/repositorie
 <dependency>
     <groupId>org.resthub</groupId>
     <artifactId>spring-amqp-hessian</artifactId>
-    <version>1.0.3</version>
+    <version>{{site.amqp-hessian-version}}</version>
 </dependency>
 ```
 

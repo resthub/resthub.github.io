@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: What is RESThub ?
-permalink:  home/
+permalink:  /
 next: quickstart
 ---
 
@@ -59,14 +59,14 @@ RESThub 2 is mainly made of 2 independent parts:
 
 <div class="text-center row">
     <p class="col-xxs-12 col-xs-6">
-        <a class="btn btn-default" href="/docs/spring/home">Spring stack <br/> documentation</a>
+        <a class="btn btn-default" href="/docs/spring">Spring stack <br/> documentation</a>
         <br/><br/>
         <iframe src="http://ghbtns.com/github-btn.html?user=resthub&repo=resthub-spring-stack&type=fork&count=true"
           allowtransparency="true" frameborder="0" scrolling="0" width="90" height="19"></iframe>
         <a href="http://travis-ci.org/resthub/resthub-spring-stack"><img class="build-status" alt="Spring Stack Build Status" src="https://secure.travis-ci.org/resthub/resthub-spring-stack.png?branch=master"></a>
     </p>
     <p class="col-xxs-12 col-xs-6">
-        <a class="btn btn-default" href="/docs/backbone/home">Backbone stack <br/> documentation</a>
+        <a class="btn btn-default" href="/docs/backbone">Backbone stack <br/> documentation</a>
         <br/><br/>
         <iframe src="http://ghbtns.com/github-btn.html?user=resthub&repo=resthub-backbone-stack&type=fork&count=true"
           allowtransparency="true" frameborder="0" scrolling="0" width="90" height="19"></iframe>

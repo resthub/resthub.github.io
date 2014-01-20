@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Backbone.js Stack
-permalink:  home/
+permalink:  /
 prev: spring/tutorial
 next: backbone/layout
 ---

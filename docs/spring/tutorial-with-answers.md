@@ -3,7 +3,7 @@ layout: docs
 title: Spring Stack tutorial
 permalink:  tutorial/
 prev: spring/testing
-next: backbone/home
+next: backbone
 answers: with-answers
 ---
 

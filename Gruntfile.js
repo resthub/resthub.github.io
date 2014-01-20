@@ -42,7 +42,7 @@ grunt.initConfig({
       }
     },
 	md: {
-      files: ['partials/*.md', '_includes/**/*.md', 'docs/**/*.md'],
+      files: ['partials/*.md', '_includes/**/*.md', 'docs/**/*.md', 'news/*.md', '_posts/*.md'],
       tasks: ['create-site'],
       options: {
         interrupt: true

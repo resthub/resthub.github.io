@@ -3,7 +3,7 @@ layout: docs
 title: Quickstart
 permalink:  quickstart/
 prev: home
-next: spring/home
+next: spring
 ---
 
 If you want to get immediately to the heart of the matter, you can find here how to bootstrap a new
@@ -41,6 +41,6 @@ You just have to **create your own domain and start coding** ! Enjoy !
 
 You should (unordered):
 
-* Read the [current documentation](/docs/spring/home)
+* Read the [current documentation](/docs/spring)
 * Follow our dedicated tutorials : [Spring Stack](/docs/spring/tutorial) and [Backbone Stack](/docs/backbone/tutorial)
 * Discover our [TODO List demo application](https://github.com/resthub/todo-backbone-example) (mongoBD)

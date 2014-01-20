@@ -1,0 +1,29 @@
+<h4>Type of news</h4>
+<ul>
+    <li class="{% if page.title == 'RESTHub News' %}active{% endif %}">
+        <a href="/news/">All</a>
+    </li>
+    <li class="{% if page.url contains '/releases/' %}active{% endif %}">
+        <a href="/news/releases/">Releases</a>
+    </li>
+    <li class="{% if page.url contains '/spring/' %}active{% endif %}">
+        <a href="/news/spring/">Spring Stack</a>
+    </li>
+    <li class="{% if page.url contains '/backbone/' %}active{% endif %}">
+        <a href="/news/backbone/">Backbone Stack</a>
+    </li>
+    <li class="{% if page.url contains '/router/' %}active{% endif %}">
+        <a href="/news/router/">SpringMVC router</a>
+    </li>
+    <li class="{% if page.url contains '/amqp/' %}active{% endif %}">
+        <a href="/news/amqp/">AMQP/Hessian</a>
+    </li>
+</ul>
+<h4>Recent Releases</h4>
+<ul>
+    {% for post in site.categories.release limit:5 %}
+    <li class="{% if page.title == post.title %}active{% endif %}">
+        <a href="{{ post.url }}">{{ post.version }}</a>
+    </li>
+    {% endfor %}
+</ul>

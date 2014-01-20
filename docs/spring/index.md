@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: RESThub Spring Stack
-permalink:  home/
+permalink:  /
 prev: quickstart
 next: spring/layout
 ---

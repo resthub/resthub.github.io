@@ -2,7 +2,7 @@
 layout: docs
 title: Backbone.js Stack
 permalink:  layout/
-prev: backbone/home
+prev: backbone
 next: backbone/resthub-view
 ---
 

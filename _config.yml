@@ -46,3 +46,6 @@ backbone-datagrid-version: 0.3.2
 backbone-paginator-version: 0.7.0
 backbone-associations-version: 0.5.1
 momentjs-version: 1.7.2
+
+amqp-hessian-version: 1.0.3
+router-version: 1.2.0
