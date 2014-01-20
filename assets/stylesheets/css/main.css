@@ -5969,6 +5969,10 @@ body {
   font-weight: 300;
   position: relative;
 }
+body .st-modal {
+  width: 96%;
+  margin-left: -48%;
+}
 .btn-lg .glyphicon {
   font-size: 16px;
 }
@@ -6037,10 +6041,14 @@ header {
 .navbar .navbar-form .btn:hover {
   color: #d4571e;
 }
-.navbar .navbar-form .btn.btn-default,
-.navbar .navbar-form .btn.btn-default.disabled {
+.navbar .navbar-form .btn.btn-default {
   color: #f5f5f5;
   opacity: 1;
+}
+.navbar .navbar-form .btn.btn-default:hover,
+.navbar .navbar-form .btn.btn-default:focus {
+  background-color: transparent;
+  color: #d4571e;
 }
 .search-form {
   width: 100%;
@@ -6498,6 +6506,9 @@ footer .components .component .build-status {
   article .text-center img {
     max-width: 600px;
     width: 75%;
+  }
+  .menu ul li {
+    padding-left: 10px;
   }
 }
 @media only screen and (max-width: 767px) {

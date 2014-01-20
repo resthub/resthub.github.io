@@ -103,6 +103,11 @@ body {
   min-width: @min-width;
   font-weight: 300;
   position: relative;
+
+  .st-modal {
+    width: 96%;
+    margin-left: -48%;
+  }
 }
 
 .btn-lg {
@@ -190,9 +195,14 @@ header {
       }
     }
 
-    .btn.btn-default, .btn.btn-default.disabled {
+    .btn.btn-default {
       color: @resthub-white-color;
       opacity: 1;
+
+      &:hover, &:focus {
+        background-color: transparent;
+        color: @resthub-orange-color;
+      }
     }
   }
 }
@@ -716,6 +726,10 @@ footer {
       max-width: 600px;
       width: 75%;
     }
+  }
+
+  .menu ul li {
+    padding-left: 10px;
   }
 }
 
