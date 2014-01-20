@@ -3,7 +3,6 @@ layout: docs
 title: Talks
 permalink:  talks/
 prev: amqp-hessian/
-next: misc/resources
 ---
 
 You will find here a list of RESThub talks:
