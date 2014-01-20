@@ -12,3 +12,5 @@ Spring MVC Router adds route mapping capacity to any "Spring MVC based" webapp Ã
 Ruby on Rails. For more details, check its [detailed documentation](http://resthub.github.com/springmvc-router/).
 
 Current version is {{site.router-version}}
+
+You can find Spring MVC Router release changelogs [here](/new/releases)

@@ -47,12 +47,7 @@ it is a great introduction to pure Backbone.js.
 
 Backbone Stack current version is **{{site.backbone-stack-version}}**.
 
-You can find RESThub Backbone Stack release changelogs on our [Github repository](https://github.com/resthub/resthub-backbone-stack) :
-
-* 2013-07-26: [RESThub Backbone.js stack 2.1.2 has been released](https://github.com/resthub/resthub-backbone-stack/blob/master/CHANGELOG.rst>)
-* 2013-05-17: [RESThub Backbone.js stack 2.1.1 has been released](https://github.com/resthub/resthub-backbone-stack/blob/master/CHANGELOG.rst>)
-* 2013-03-26: [RESThub Backbone.js stack 2.1.0 has been released](https://github.com/resthub/resthub-backbone-stack/blob/master/CHANGELOG.rst>)
-* 2012-12-04: [RESThub Backbone.js stack 2.0.0 has been released](http://pullrequest.org/2012/12/04/resthub-2.html)!
+You can find RESThub Backbone Stack release changelogs [here](/new/releases)
 
 ## Bootstrap your project
 

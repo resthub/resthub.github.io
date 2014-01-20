@@ -19,6 +19,8 @@ using spring-amqp.
 
 Current version is **{{site.amqp-hessian-version}}**.
 
+You can find Spring AMQP Hessian release changelogs [here](/new/releases)
+
 
 ## Usage
 

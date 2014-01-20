@@ -10,7 +10,7 @@ next: quickstart
 ## RESTHub principles
 
 RESThub is all about integrating and bundling frameworks with tools, best practices and documentation.
-The [RESThub team](/team) works everyday with those frameworks on high traffic, enterprise-grade
+The [RESThub team](https://github.com/resthub?tab=members) works everyday with those frameworks on high traffic, enterprise-grade
 applications for their customers.
 
 That’s why we value developer experience on those libraries and despite the
@@ -26,7 +26,7 @@ following principles:
 The primary objective is to provide a complete tool to develop **REST oriented rich web application with
 a great efficiency and productivity** by packaging a full stack of useful tools to achieve this goal.
 
-One of the most important aspect that [RESThub team](/team) try to constantly keep in mind is that RESTHub
+One of the most important aspect that [RESThub team](https://github.com/resthub?tab=members) try to constantly keep in mind is that RESTHub
 must absolutely allow **progressive increase of complexity**. In other works, RESThub has been design to
 facilitate the bootstrap of your project and its configuration but it does not rely on restrictive assumptions:
 **No RESTHub functionality will prevent you to finely customize any of the underlying framework for your
@@ -44,8 +44,8 @@ specificity compared to other stacks in both java and javascript worlds.
 
 RESThub 2 is mainly made of 2 independent parts:
 
-* a **Java/Spring stack** for your stateless REST web services
-* a **Backbone.js stack** for your MVVM JavaScript client
+* a **Java/Spring stack {{ site.spring-stack-version }}** for your stateless REST web services
+* a **Backbone.js stack {{ site.backbone-stack-version }}** for your MVVM JavaScript client
 
 <div class="alert alert-info">
     These stacks are design to optimally work together but they are independent and you can use the
@@ -78,8 +78,8 @@ RESThub 2 is mainly made of 2 independent parts:
 
 RESTHub provides also two independent complementary tools:
 
-* a **Spring MVC router** to add route mapping capacity to any "[Spring MVC](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) based" webapp
-* an **AMQP/Hessian based RPC**, a high performance and easy to monitor RPC mechanism based on [RabbitMQ](http://www.rabbitmq.com/)
+* a **Spring MVC router {{ site.router-version }}** to add route mapping capacity to any "[Spring MVC](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) based" webapp
+* an **AMQP/Hessian based RPC {{ site.amqp-hessian-version }}**, a high performance and easy to monitor RPC mechanism based on [RabbitMQ](http://www.rabbitmq.com/)
   client and [Hessian](http://hessian.caucho.com/)
 
 #### Discover these tools:
