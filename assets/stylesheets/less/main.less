@@ -78,7 +78,7 @@
 
 @btn-default-color: @resthub-orange-color;
 @btn-default-bg: @resthub-light-brown-color;
-@btn-default-border: @resthub-orange-color;
+@btn-default-border: @resthub-light-brown-color;
 
 .alert-background(@start-color, @stop-color, @border-color) {
   background: @start-color;
@@ -661,10 +661,11 @@ pre code {
 
   &.btn-default {
     border: 3px solid;
+    font-weight: 900;
+    border-color: @resthub-light-brown-color;
 
     &:hover, &:focus {
-      color: @resthub-white-color;
-      background-color: @resthub-intermediate-brown-color;
+      background-color: @resthub-white-color;
       border-color: @resthub-white-color;
     }
   }
@@ -1018,7 +1019,7 @@ footer {
   .news article .post-type {
     .post-tags {
       .btn {
-        padding: 0 3px;
+        padding: 0 3px 0 2px;
       }
     }
 

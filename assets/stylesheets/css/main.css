@@ -1941,7 +1941,7 @@ fieldset[disabled] .btn {
 .btn-default {
   color: #d4571e;
   background-color: #e0dcd9;
-  border-color: #d4571e;
+  border-color: #e0dcd9;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -1950,7 +1950,7 @@ fieldset[disabled] .btn {
 .open .dropdown-toggle.btn-default {
   color: #d4571e;
   background-color: #cec7c3;
-  border-color: #9e4116;
+  border-color: #c5bdb7;
 }
 .btn-default:active,
 .btn-default.active,
@@ -1973,7 +1973,7 @@ fieldset[disabled] .btn-default:active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
   background-color: #e0dcd9;
-  border-color: #d4571e;
+  border-color: #e0dcd9;
 }
 .btn-default .badge {
   color: #e0dcd9;
@@ -6445,11 +6445,12 @@ pre code {
 }
 .btn.btn-default {
   border: 3px solid;
+  font-weight: 900;
+  border-color: #e0dcd9;
 }
 .btn.btn-default:hover,
 .btn.btn-default:focus {
-  color: #f5f5f5;
-  background-color: #494543;
+  background-color: #f5f5f5;
   border-color: #f5f5f5;
 }
 .alert {
@@ -6739,7 +6740,7 @@ footer .components .component .build-status {
     margin-right: -18px;
   }
   .news article .post-type .post-tags .btn {
-    padding: 0 3px;
+    padding: 0 3px 0 2px;
   }
   .news article .post-type .post-category .btn {
     display: inline-block;
