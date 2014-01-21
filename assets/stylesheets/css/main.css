@@ -6104,7 +6104,7 @@ header {
 }
 .overview .rationale {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 .overview .rationale h1 {
   color: #d4571e;
@@ -6122,7 +6122,7 @@ header {
 }
 .overview .get-started {
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 .overview .get-started a {
   color: #f5f5f5;
