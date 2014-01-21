@@ -1,2 +1,11 @@
-**RESThub** is a stack based on **Spring** and **Backbone.js** designed to build **HTML5** applications easily and efficiently.
-It provides tooling, libraries and documentation in order to build modular web applications with **client side state**, **stateless server** and REST webservices or Websocket communication between both.
+```bash
+~ $ mvn archetype:generate -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
+
+# choose archetype & answer some questions
+
+~ $ cd /new/project
+
+~/new/project $ mvn jetty:run
+
+# Done !
+```

@@ -4,17 +4,87 @@ title: RESThub, your Spring + Backbone.js stack
 home: true
 ---
 <div class="overview">
-    <p class="text-center visible-md visible-lg">
-        <img src="/assets/img/spring-backbone-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
-    </p>
-    <p class="text-center visible-sm">
-        <img src="/assets/img/spring-backbone-sm-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
-    </p>
-    <p class="text-center visible-xs">
-        <img src="/assets/img/spring-backbone-xs-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
-    </p>
+    <div class="row text-center">
+        <p class="col-lg-12 text-center visible-md visible-lg">
+            <img src="/assets/img/spring-backbone-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
+        </p>
 
-    {% capture index %}{% include index.md %}{% endcapture %}
-    {{ index | markdownify }}
+        <p class="col-sm-12 text-center visible-sm">
+            <img src="/assets/img/spring-backbone-sm-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
+        </p>
+
+        <p class="col-xxs-12 text-center visible-xs">
+            <img src="/assets/img/spring-backbone-xs-transparent-color-white.png" alt="Resthub: Spring + Backbone"/>
+        </p>
+    </div>
+
+    <div class="abstract row text-center">
+        <p class="col-xxs-12">
+            <strong>RESThub</strong> is a stack based on <strong>Spring</strong> and <strong>Backbone.js</strong>
+            designed to build <strong>HTML5</strong> applications easily and efficiently.
+            It provides tooling, libraries and documentation in order to build modular
+            web applications with <strong>client side state</strong>, <strong>stateless server</strong> and
+            REST webservices or Websocket communication between both.
+        </p>
+    </div>
+
+    <div class="rationale row text-left">
+        <div class="col-xxs-12 col-sm-4">
+            <h1>Stateless</h1>
+
+            <p>
+                Statefull is not natural, RESTHub was built with <strong>HTML5 in mind</strong> and is
+                strongly related to REST and HTTP stateless principles to maximize
+                <strong>scalability and <a href="/docs/spring/testing">testability</a></strong> on server side. State is
+                managed client side
+                with <strong>HTML5 capabilities</strong>.
+            </p>
+        </div>
+
+        <div class="col-xxs-12 col-sm-4">
+            <h1>Progressive</h1>
+
+            <p>
+                Designed to allow <strong>progressive complexity</strong>. <strong><a
+                    href="/docs/quickstart">Bootstrap</a></strong>
+                is made easy with tooling but we do not introduce any limitation to underlying frameworks.
+                RESTHub is not a "blogging framework" but <strong>designed for real life</strong>,
+                <strong>efficiency</strong> and
+                <strong>productivity</strong>.
+            </p>
+        </div>
+
+        <div class="col-xxs-12 col-sm-4">
+            <h1>Standards based</h1>
+
+            <p>
+                We <strong>do not want to reinvent the wheel</strong>. RESTHub is <strong>pragmatically</strong> built
+                uppon
+                strong <strong>approved or <i>de facto</i> standards</strong> on both <strong><a href="/docs/spring">server
+                side</a></strong>
+                and <strong><a href="/docs/backbone">client side</a></strong>. You do not have to learn a new language
+                or paradigm, you already
+                know it. <strong>It is just easier</strong>.
+            </p>
+        </div>
+    </div>
+
+    <div class="get-started row">
+        <div class="col-xxs-12 text-left">
+            <a class="visible-lg visible-md" href="/docs/"><i class="fa fa-play-circle-o"></i> Get started with RESTHub documentation</a>
+            <a class="visible-sm" href="/docs/"><i class="fa fa-play-circle-o"></i> RESTHub documentation</a>
+            <a class="visible-xxs visible-xs" href="/docs/"><i class="fa fa-play-circle-o"></i> documentation</a>
+        </div>
+    </div>
+
+    <div class="quickstart row">
+        <div class="col-xxs-12 col-sm-3 text-left">
+            <h1>Start in seconds</h1>
+        </div>
+        <div class="col-xxs-12 col-sm-9 text-left">
+        {% capture index %}{% include index.md %}{% endcapture %}
+        {{ index | markdownify }}
+        </div>
+    </div>
 
 </div>

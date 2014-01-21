@@ -22,7 +22,9 @@ Lets suppose that you want to start a new rich web application project with a Ja
 
 # choose the right archetype and answer a few questions
 
-~ $ /new/project mvn jetty:run
+~ $ cd /new/project
+
+~/new/project $ mvn jetty:run
 
 # Done !
 ```

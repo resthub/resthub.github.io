@@ -244,13 +244,75 @@ header {
 
 #main.container {
   padding-bottom: 80px;
-  min-height: 96.5%;
-  text-align: center;
+  min-height: 93.5%;
 }
 
 .overview {
   img {
-    max-width: 100%;
+    max-width: 90%;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  h1 {
+    font-size: 29px;
+    font-weight: 700;
+  }
+
+  .abstract {
+    margin-top: 20px;
+  }
+
+  .rationale {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    h1 {
+      color: @resthub-orange-color;
+    }
+
+    p {
+      font-size: 19px;
+    }
+  }
+
+  .highlight {
+    max-width: 680px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    pre code {
+      overflow-wrap: break-word;
+    }
+  }
+
+  .get-started {
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    a {
+      color: @resthub-white-color;
+      font-weight: 700;
+      font-size: 40px;
+      i {
+        color: #d4571e;
+      }
+    }
+  }
+
+  .quickstart {
+    background-color: #A94C21;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    h1 {
+      margin-top: 80px;
+    }
+  }
+
+  .btn.btn-default {
+    width: 250px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   font-size: @font-size-xl;
@@ -731,6 +793,12 @@ footer {
   .menu ul li {
     padding-left: 10px;
   }
+
+  .overview .quickstart {
+    h1 {
+      margin-top: 72px;
+    }
+  }
 }
 
 @media only screen and (max-width: @screen-xs-max) {
@@ -827,6 +895,13 @@ footer {
         font-size: (@font-size-small - 1px);
         padding: 0 8px;
       }
+    }
+  }
+
+  .overview .quickstart {
+    border-radius: 0;
+    h1 {
+      margin-top: 25px;
     }
   }
 
@@ -959,6 +1034,12 @@ footer {
     }
   }
 
+  .overview .get-started {
+    a {
+      font-size: 34px;
+    }
+  }
+
 }
 
 .make-grid-columns-float(xxs);
@@ -966,6 +1047,29 @@ footer {
 .make-grid(@grid-columns, xxs, pull);
 .make-grid(@grid-columns, xxs, push);
 .make-grid(@grid-columns, xxs, offset);
+
+.make-grid-columns() {
+  // Common styles for all sizes of grid columns, widths 1-12
+  .col(@index) when (@index = 1) { // initial
+    @item: ~".col-xxs-@{index}, .col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col(@index + 1, @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+    @item: ~".col-xxs-@{index}, .col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col(@index + 1, ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      // Inner gutter via padding
+      padding-left:  (@grid-gutter-width / 2);
+      padding-right: (@grid-gutter-width / 2);
+    }
+  }
+  .col(1); // kickstart it
+}
 
 @media (min-width: @screen-xs-min) {
   .make-grid-columns-float(xs);

@@ -723,6 +723,12 @@ pre code {
   padding-left: 15px;
   padding-right: 15px;
 }
+.col-xxs-1, .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xxs-2, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xxs-3, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xxs-4, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xxs-5, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xxs-6, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xxs-7, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xxs-8, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xxs-9, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xxs-10, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xxs-11, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xxs-12, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
@@ -6079,14 +6085,65 @@ header {
 }
 #main.container {
   padding-bottom: 80px;
-  min-height: 96.5%;
-  text-align: center;
+  min-height: 93.5%;
 }
 .overview {
   font-size: 21px;
 }
 .overview img {
-  max-width: 100%;
+  max-width: 90%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.overview h1 {
+  font-size: 29px;
+  font-weight: 700;
+}
+.overview .abstract {
+  margin-top: 20px;
+}
+.overview .rationale {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.overview .rationale h1 {
+  color: #d4571e;
+}
+.overview .rationale p {
+  font-size: 19px;
+}
+.overview .highlight {
+  max-width: 680px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.overview .highlight pre code {
+  overflow-wrap: break-word;
+}
+.overview .get-started {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.overview .get-started a {
+  color: #f5f5f5;
+  font-weight: 700;
+  font-size: 40px;
+}
+.overview .get-started a i {
+  color: #d4571e;
+}
+.overview .quickstart {
+  background-color: #A94C21;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
+.overview .quickstart h1 {
+  margin-top: 80px;
+}
+.overview .btn.btn-default {
+  width: 250px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 section {
   margin-top: 30px;
@@ -6510,6 +6567,9 @@ footer .components .component .build-status {
   .menu ul li {
     padding-left: 10px;
   }
+  .overview .quickstart h1 {
+    margin-top: 72px;
+  }
 }
 @media only screen and (max-width: 767px) {
   .navbar {
@@ -6587,6 +6647,12 @@ footer .components .component .build-status {
   .news article .post-type .post-tags .btn {
     font-size: 13px;
     padding: 0 8px;
+  }
+  .overview .quickstart {
+    border-radius: 0;
+  }
+  .overview .quickstart h1 {
+    margin-top: 25px;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -6684,6 +6750,9 @@ footer .components .component .build-status {
   footer .engine,
   footer .team {
     font-size: 10px;
+  }
+  .overview .get-started a {
+    font-size: 34px;
   }
 }
 .col-xxs-1, .col-xxs-2, .col-xxs-3, .col-xxs-4, .col-xxs-5, .col-xxs-6, .col-xxs-7, .col-xxs-8, .col-xxs-9, .col-xxs-10, .col-xxs-11, .col-xxs-12 {
