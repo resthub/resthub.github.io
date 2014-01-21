@@ -420,6 +420,10 @@ article {
       width: 600px;
       height: 500px;
     }
+
+    &.text-center img {
+      width: 600px;
+    }
   }
 
   &.tutorial {
@@ -778,15 +782,17 @@ footer {
 
   article {
     .talk {
-      &.slideshare iframe {
+      &.slideshare iframe, &.text-center img {
         width: 500px;
         height: 420px;
       }
     }
 
-    .text-center img {
-      max-width: 600px;
-      width: 75%;
+    .overview {
+      .text-center img {
+        max-width: 600px;
+        width: 75%;
+      }
     }
   }
 
@@ -870,10 +876,11 @@ footer {
       }
 
       .talk {
-        &.slideshare iframe {
+        &.slideshare iframe, &.text-center img {
           width: 400px;
           height: 335px;
         }
+
       }
     }
   }
@@ -985,7 +992,7 @@ footer {
       }
 
       .talk {
-        &.slideshare iframe {
+        &.slideshare iframe, &.text-center img {
           width: 260px;
           height: 235px;
         }

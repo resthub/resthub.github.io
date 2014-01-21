@@ -27,7 +27,7 @@ You will find here a list of RESThub talks:
 
 **November 17, 2010** - **[Devoxx 2010 quickie](http://www.devoxx.com/display/Devoxx2K10/Efficient+Java+development+with+RESThub+framework)**
 
-<p class="text-center">
+<p class="talk text-center">
     <a href="/docs/misc/talks/resthub"><img src="/assets/img/devoxx.png" alt="Devoxx quickie"/></a>
 </p>
 

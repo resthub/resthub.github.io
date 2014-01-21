@@ -6243,6 +6243,9 @@ article .talk.slideshare iframe {
   width: 600px;
   height: 500px;
 }
+article .talk.text-center img {
+  width: 600px;
+}
 article.tutorial ol blockquote,
 article.tutorial ul blockquote {
   margin-left: -40px;
@@ -6556,11 +6559,12 @@ footer .components .component .build-status {
   .navbar .navbar-form input.form-control {
     width: 250px;
   }
-  article .talk.slideshare iframe {
+  article .talk.slideshare iframe,
+  article .talk.text-center img {
     width: 500px;
     height: 420px;
   }
-  article .text-center img {
+  article .overview .text-center img {
     max-width: 600px;
     width: 75%;
   }
@@ -6632,7 +6636,8 @@ footer .components .component .build-status {
   section article .h6 {
     font-size: 12px;
   }
-  section article .talk.slideshare iframe {
+  section article .talk.slideshare iframe,
+  section article .talk.text-center img {
     width: 400px;
     height: 335px;
   }
@@ -6718,7 +6723,8 @@ footer .components .component .build-status {
   section article .h6 {
     font-size: 12px;
   }
-  section article .talk.slideshare iframe {
+  section article .talk.slideshare iframe,
+  section article .talk.text-center img {
     width: 260px;
     height: 235px;
   }
