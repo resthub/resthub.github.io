@@ -96,7 +96,48 @@ hibernate.id.new_generator_mappings = true
 persistenceUnit.packagesToScan =
 ```
 
-If you need to do more advanced configuration, just override dataSource and entityManagerFactory beans in
+## Extend JPA properties
+
+RESThub provides an extension point if you need to add new jpa properties that are not already defined in
+RESTHub core jpa properties (see above). This hook is based on spring maps and its merge capacity.
+
+Indeed, resthub entityManagerFactory includes an larger map of properties with an external bean reference :
+
+```xml
+<bean id="entityManagerFactory"
+    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+
+    ...
+
+    <property name="jpaProperties" ref="jpaProperties" />
+</bean>
+
+...
+
+<bean id="jpaProperties" parent="resthubCoreJpaProperties">
+    <property name="sourceMap">
+        <map merge="true"/>
+    </property>
+</bean>
+```
+
+By default the map contains only core resthub jpa properties but if you need to add JPA or Hibernate properties,
+you only have to override the `jpaProperties` bean with your own configuration. Provided properties will be merged
+with resthub core properties.
+
+Simply add in you applicationContext :
+
+```xml
+<bean id="jpaProperties" parent="resthubCoreJpaProperties">
+    <property name="sourceMap">
+        <map merge="true">
+            <entry key="my.key" value="my.value" />
+        </map>
+    </property>
+</bean>
+```
+
+If this extension point is not sufficient, simply override `dataSource` and `entityManagerFactory` beans in
 your applicationContext.xml.
 
 ## Usage
