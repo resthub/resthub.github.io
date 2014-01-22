@@ -18,7 +18,7 @@ Lets suppose that you want to start a new rich web application project with a Ja
 </div>
 
 ```bash
-~ $ mvn archetype:generate -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
+~ $ mvn archetype:generate -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
 
 # choose the right archetype and answer a few questions
 
@@ -26,7 +26,7 @@ Lets suppose that you want to start a new rich web application project with a Ja
 
 ~/new/project $ mvn jetty:run
 
-# Done !
+# Done ! See http://localhost:8080
 ```
 
 You can now navigate to <http://localhost:8080/> and see your bootstraped project in action:

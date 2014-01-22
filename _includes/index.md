@@ -1,5 +1,5 @@
 ```bash
-~ $ mvn archetype:generate -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
+~ $ mvn archetype:generate -DarchetypeGroupId=org.resthub -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeVersion={{site.spring-stack-version}}
 
 # choose archetype & answer some questions
 
@@ -7,5 +7,5 @@
 
 ~/new/project $ mvn jetty:run
 
-# Done !
+# Done ! See http://localhost:8080
 ```
