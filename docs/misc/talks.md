@@ -2,7 +2,7 @@
 layout: docs
 title: Talks
 permalink:  talks/
-prev: amqp-hessian/
+prev: amqp-hessian
 ---
 
 You will find here a list of RESThub talks:
@@ -28,7 +28,7 @@ You will find here a list of RESThub talks:
 **November 17, 2010** - **[Devoxx 2010 quickie](http://www.devoxx.com/display/Devoxx2K10/Efficient+Java+development+with+RESThub+framework)**
 
 <p class="talk text-center">
-    <a href="/docs/misc/talks/resthub"><img src="/assets/img/devoxx.png" alt="Devoxx quickie"/></a>
+    <a href="/docs/misc/talks/devoxx" target="_blank"><img src="/assets/img/devoxx.png" alt="Devoxx quickie"/></a>
 </p>
 
 See [here](/docs/misc/talks/devoxx)
