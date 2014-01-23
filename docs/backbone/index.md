@@ -55,8 +55,9 @@ There are 2 ways to use it in your project:
 
 * If you are starting a new RESThub Spring + Backbone stack project, the better way to use it is to use one of the Backbone.js webappp
   Maven Archetypes described [here](/docs/spring/bootstrap)
-* You can simply download [latest RESThub Backbone.js stack](https://github.com/resthub/resthub-backbone-stack/archive/master.zip),
-  and extract it at the root of your webapp
+* You can simply download latest RESTHub Backbone.js stack, and extract it at the root of your webapp:
+  * [current development version](https://github.com/resthub/resthub-backbone-stack/archive/master.zip)
+  * [latest RESThub Backbone.js stack release](https://github.com/resthub/resthub-backbone-stack/archive/resthub-backbone-stack-{{site.backbone-stack-version}}.zip)
 
 The [Todo RESThub example](https://github.com/resthub/todo-backbone-example) project is the reference example project using this stack.
 
