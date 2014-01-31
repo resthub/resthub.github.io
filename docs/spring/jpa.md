@@ -99,7 +99,7 @@ persistenceUnit.packagesToScan =
 ## Extend JPA properties
 
 RESThub provides an extension point if you need to add new jpa properties that are not already defined in
-RESTHub core jpa properties (see above). This hook is based on spring maps and its merge capacity.
+RESThub core jpa properties (see above). This hook is based on spring maps and its merge capacity.
 
 Indeed, resthub entityManagerFactory includes an larger map of properties with an external bean reference :
 

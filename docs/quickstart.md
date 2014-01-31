@@ -7,7 +7,7 @@ next: spring
 ---
 
 If you want to get immediately to the heart of the matter, you can find here how to bootstrap a new
-RESTHub project very quickly.
+RESThub project very quickly.
 
 Lets suppose that you want to start a new rich web application project with a Java/JPA Backend:
 
@@ -33,7 +33,7 @@ You can now navigate to <http://localhost:8080/> and see your bootstraped projec
 
 <div class="quickstart">
     <p class="text-center">
-        <img src="/assets/img/quickstart.png" alt="RESTHub Quickstart result"/>
+        <img src="/assets/img/quickstart.png" alt="RESThub Quickstart result"/>
     </p>
 </div>
 

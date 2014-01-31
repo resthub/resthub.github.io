@@ -8,7 +8,7 @@ version: Backbone stack 2.1.2
 published: true
 ---
 
-RESTHub Backbone stack released with a major dependency update:
+RESThub Backbone stack released with a major dependency update:
 
 For complexity reasons and some design limitations (related, in particular, to
 Relational model cache management), we decided to switch (see [here](https://twitter.com/sdeleuze/status/347078498755686401)) to
