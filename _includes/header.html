@@ -6,7 +6,7 @@
             </div>
 
             <ul class="nav navbar-nav navbar-links">
-                <li class="{% if page.blog %}active{% endif %}">
+                <li class="{% if page.url contains '/news/' %}active{% endif %}">
                     <a href="{{ site.url }}/news/">News</a>
                 </li>
                 <li class="{% if page.url contains '/docs/' %}active{% endif %}">
