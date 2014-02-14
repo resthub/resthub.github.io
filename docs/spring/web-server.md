@@ -242,3 +242,63 @@ public class ResthubExceptionHandler extends ResponseEntityExceptionHandler {
     }
 }
 ```
+
+## CORS Filter
+
+RESThub includes an external [CORS](https://developer.mozilla.org/en/docs/HTTP/Access_control_CORS) filter to
+allow communication between front and back on different domains. CORS Filter is provided by a third party library:
+<http://software.dzhuvinov.com/cors-filter.html>, you can find exhaustive configuration options
+[here](http://software.dzhuvinov.com/cors-filter-configuration.html) but we provide below some minimalistic configuration
+samples.
+
+Configuration below defines a filter on your webapp allowing any request from domain `http://example.com` for any HTTP method in
+`OPTIONS, GET, POST, PUT, DELETE, HEAD` and allow headers `Accept` and `Content-Type`.
+
+* **in a WebappInitializer (recommended)**
+
+```java
+public class WebAppInitializer implements WebApplicationInitializer {
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        ...
+
+        FilterRegistration corsFilter = servletContext.addFilter("cors", CORSFilter.class);
+        corsFilter.addMappingForUrlPatterns(null, false, "/*");
+        corsFilter.setInitParameter("cors.allowOrigin", "http://example.com");
+        corsFilter.setInitParameter("cors.supportedMethods", "OPTIONS, GET, POST, PUT, DELETE, HEAD");
+        corsFilter.setInitParameter("cors.supportedHeaders", "Accept, Content-Type");
+
+        ...
+    }
+}
+```
+
+* **in a web.xml**
+
+```xml
+
+...
+
+<filter>
+    <filter-name>CORSFilter</filter-name>
+    <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+
+    <init-param>
+            <param-name>cors.allowOrigin</param-name>
+            <param-value>http://example.com</param-value>
+            <param-name>cors.supportedMethods</param-name>
+            <param-value>OPTIONS, GET, POST, PUT, DELETE, HEAD</param-value>
+            <param-name>cors.supportedHeaders</param-name>
+            <param-value>Accept, Content-Type</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>CORSFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+...
+
+```
