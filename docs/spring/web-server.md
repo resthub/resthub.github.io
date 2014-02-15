@@ -193,7 +193,25 @@ you usually want to address some specific needs:
 For that, you often need to decorrelate serialized objects ([DTOs](http://en.wikipedia.org/wiki/Data_transfer_object))
 from your model.
 
-RESThub includes [ModelMapper {{site.model-mapper-version}}](http://modelmapper.org/) in its resthub-common module.
+RESThub suggests [ModelMapper {{site.model-mapper-version}}](http://modelmapper.org/) as an optional dependency in resthub-common module.
+
+You can include it in your project pom.xml:
+
+```xml
+<dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>{{site.model-mapper-version}}</version>
+</dependency>
+
+<dependency>
+    <groupId>org.modelmapper.extensions</groupId>
+    <artifactId>modelmapper-spring</artifactId>
+    <version>{{site.model-mapper-version}}</version>
+</dependency>
+```
+
+and then use it in your project:
 
 ```java
 ModelMapper modelMapper = new ModelMapper();
