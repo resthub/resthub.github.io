@@ -6,7 +6,7 @@ pygments: true
 exclude: [package.json, bower.json, node_modules, bower_components, Gemfile, Gemfile.lock, less, Gruntfile.js]
 permalink: /news/:year/:month/:day/:title/
 
-spring-stack-version: 2.1.5-SNAPSHOT
+spring-stack-version: 2.1.5
 spring-stack-javadoc-version: 2.1
 spring-version: 3.2.7
 spring-docs-version: 3.2.x
