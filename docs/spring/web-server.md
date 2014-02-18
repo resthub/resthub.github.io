@@ -182,6 +182,8 @@ public @ResponseBody Book getDetail(@PathVariable("id") Integer id) {
 The first method `getSummary()` will only serialize id and author properties, and `getDetail()`
 will serialize all properties. It also work on collection (`List<Book>` for example).
 
+<a name="modelmapper"></a>
+
 ## Model and DTOs with ModelMapper
 
 The previous `SluggableSampleController` example shows one thing: when your application starts to grow,
