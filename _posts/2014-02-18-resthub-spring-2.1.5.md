@@ -8,7 +8,7 @@ version: Spring stack 2.1.5
 published: true
 ---
 
-RESThub Spring stack 2.1.5 released with ultimate dependencies updates, bug fixes and some new features before moving to
+RESThub Spring stack 2.1.5 released with last dependency updates, bug fixes and some new features before moving to
 resthub-spring-stack 2.2.x including spring 4 support.
 
 ## New features
