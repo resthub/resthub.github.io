@@ -25,7 +25,7 @@ resthub-spring-stack 2.2.x including spring 4 support.
 
 * [Remove unnecessary downcasting from Iterable to List in CrudService](https://github.com/resthub/resthub-spring-stack/issues/228)
 * [ModelMapper as optional dependency](https://github.com/resthub/resthub-spring-stack/issues/230) : Be aware that this change could
-  potentially break your build. You now have to explicitly include modelmapper as described [here](docs/spring/web-server/#modelmapper)
+  potentially break your build. You now have to explicitly include modelmapper as described [here](/docs/spring/web-server/#modelmapper)
 
 ## Dependency updates
 
