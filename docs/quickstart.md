@@ -18,9 +18,11 @@ Lets suppose that you want to start a new rich web application project with a Ja
 </div>
 
 ```bash
-~ $ mvn archetype:generate -DarchetypeGroupId=org.resthub -DarchetypeVersion={{site.spring-stack-version}}
+~ $ mvn archetype:generate -Dfilter=org.resthub:
 
-# choose the right archetype and answer a few questions
+# choose the right archetype
+# choose {{site.spring-stack-version}} version
+# answer a few questions
 
 ~ $ cd /new/project
 
