@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Spring stack 2.1.5 released
+title: Spring stack 2.1.6 released
 author: bmeurant
 categories: [release]
 tags: [spring]
-version: Spring stack 2.1.5
+version: Spring stack 2.1.6
 published: true
 ---
 
-RESThub Spring stack 2.1.5 released with last dependency updates, bug fixes and some new features before moving to
+RESThub Spring stack 2.1.6 released with last dependency updates, bug fixes and some new features before moving to
 resthub-spring-stack 2.2.x including spring 4 support.
 
 ## New features
@@ -24,8 +24,8 @@ resthub-spring-stack 2.2.x including spring 4 support.
 ## Changes
 
 * [Remove unnecessary downcasting from Iterable to List in CrudService](https://github.com/resthub/resthub-spring-stack/issues/228)
-* [ModelMapper as optional dependency](https://github.com/resthub/resthub-spring-stack/issues/230) : Be aware that this change could
-  potentially break your build. You now have to explicitly include modelmapper as described [here](/docs/spring/web-server/#modelmapper)
+* [ModelMapper as optional dependency](https://github.com/resthub/resthub-spring-stack/issues/230) : Be aware that **this change could
+  potentially break your build**. You now have to explicitly include modelmapper as described [here](/docs/spring/web-server/#modelmapper)
 
 ## Dependency updates
 
