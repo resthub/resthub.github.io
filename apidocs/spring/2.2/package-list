@@ -1,0 +1,17 @@
+org.resthub.common.exception
+org.resthub.common.model
+org.resthub.common.service
+org.resthub.common.util
+org.resthub.common.view
+org.resthub.jpa
+org.resthub.jpa.pool
+org.resthub.test
+org.resthub.web
+org.resthub.web.controller
+org.resthub.web.converter
+org.resthub.web.exception
+org.resthub.web.log
+org.resthub.web.oauth2
+org.resthub.web.support
+org.resthub.web.validation
+org.resthub.web.view
