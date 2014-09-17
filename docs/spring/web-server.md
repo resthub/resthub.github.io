@@ -129,10 +129,6 @@ With sluggable behaviour we have URL lke `GET /sample/niceref`.
 ## Custom JSON Views
 
 Spring MVC provides out-of-the-box support for returning your domain model in JSON, using Jackson under the covers.
-However, often you may find that you want to return different views of the data, depending on the method that is
-invoked.  Thanks to RESThub support for custom JSON views (based on
-[Marty Pitt implementation](http://martypitt.wordpress.com/2012/11/05/custom-json-views-with-spring-mvc-and-jackson/)),
-it is possible easily.
 
 Usual use cases for using custom JSON Views are :
 
@@ -163,12 +159,12 @@ public class Book {
 ```
 
 
-Usage for the `@JsonView` is activated on a per controller method or class basis with the
-`@ResponseView` annotation like bellow :
+Usage for the `@JsonView` is activated on a per controller method or class basis with the Jackson
+`@JsonView` annotation like bellow :
 
 ```java
 @RequestMapping("{id}/summary")
-@ResponseView(Book.SummaryView.class)
+@JsonView(Book.SummaryView.class)
 public @ResponseBody Book getSummary(@PathVariable("id") Integer id) {
     return data.get(id - 1);
 }
