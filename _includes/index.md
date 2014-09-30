@@ -1,6 +1,7 @@
 ```bash
 ~ $ mvn archetype:generate -DarchetypeGroupId=org.resthub \
-    -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeVersion={{site.spring-stack-version}}
+    -DarchetypeArtifactId=resthub-jpa-backbonejs-archetype -DarchetypeVersion={{site.spring-stack-version}} \
+    -DarchetypeRepository=remote
 
 # choose archetype & answer some questions
 
