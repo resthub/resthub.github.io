@@ -13,7 +13,7 @@ XML serialization are supported out of the box.
 
 It provides some abstract REST controller classes, and includes the following dependencies:
 
-* Spring MVC {{site.spring-version}} ([reference manual](http://static.springsource.org/spring/docs/{{site.spring-docs-version}}/spring-framework-reference/html/mvc.html))
+* Spring MVC {{site.spring-version}} ([reference manual](http://docs.spring.io/spring-framework/docs/{{site.spring-docs-version}}/spring-framework-reference/html/mvc.html))
 * Jackson {{jackson-version}} ([documentation](http://wiki.fasterxml.com/JacksonDocumentation))
 
 RESThub exception resolver allow to map common exceptions (Spring, JPA) to the right HTTP status codes:

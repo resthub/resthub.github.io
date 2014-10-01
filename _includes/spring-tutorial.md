@@ -239,9 +239,9 @@ Let's try to implement a `findByName` implementation that returns a Task based o
 1. **Modify** `TaskController.java` **to add a new method called** `findByTitle`  **with a name parameter mapped to**
    `/api/task/title/{title}` returning a single task element if exists.
 
-    **Tip:** Consider using `@ResponseBody` annotation (see [here](http://static.springsource.org/spring/docs/{{site.spring-docs-version}}/spring-framework-reference/html/mvc.html#mvc-ann-responsebody))
+    **Tip:** Consider using `@ResponseBody` annotation (see [here](http://docs.spring.io/spring-framework/docs/{{site.spring-docs-version}}/spring-framework-reference/html/mvc.html#mvc-ann-responsebody))
 
-    Implement this by adding a new repository method (see [Spring Data JPA documentation](http://static.springsource.org/spring-data/data-jpa/docs/{{site.spring-data-jpa-docs-version}}/api/)).
+    Implement this by adding a new repository method (see [Spring Data JPA documentation](http://docs.spring.io/spring-data/jpa/docs/{{site.spring-data-jpa-docs-version}}/api/)).
     Check on your browser that <http://localhost:8080/api/task/title/{title}> with an existing title works.
 
     e.g.

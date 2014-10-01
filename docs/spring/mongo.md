@@ -9,7 +9,7 @@ next: spring/web-common
 <div class="toc"></div>
 
 MongoDB support is based on Spring Data MongoDB {{site.spring-data-mongodb-version}} ([reference manual](http://static.springsource.org/spring-data/data-mongodb/docs/{{site.spring-data-mongodb-docs-version}}/reference/html/)
-and [Javadoc](http://static.springsource.org/spring-data/data-mongodb/docs/{{site.spring-data-mongodb-docs-version}}/api/>)).
+and [Javadoc](http://docs.spring.io/spring-data/data-mongodb/docs/{{site.spring-data-mongodb-docs-version}}/api/)).
 
 ## Configuration
 
