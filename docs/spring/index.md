@@ -17,8 +17,8 @@ It provides a coherent stack based on:
 
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (at least JDK6, JDK7 recommended)
 * [Tomcat 7](http://tomcat.apache.org/download-70.cgi) (RESThub can also be used for non web applications)
-* Spring {{site.spring-version}} [reference manual](http://docs.spring.io/spring-framework/docs/{{site.spring-doc-version}}/spring-framework-reference/html)
-  and [Javadoc](http://docs.spring.io/spring-framework/docs/{{site.spring-doc-version}}/javadoc-api/))
+* Spring {{site.spring-version}} [reference manual](http://docs.spring.io/spring-framework/docs/{{site.spring-docs-version}}/spring-framework-reference/html)
+  and [Javadoc](http://docs.spring.io/spring-framework/docs/{{site.spring-docs-version}}/javadoc-api/))
 * SQL and NoSQL Persistence with [Spring Data](http://projects.spring.io/spring-data/)
 * Logging with SLF4J ([manual](http://www.slf4j.org/manual.html)) and Logback ([manual](http://logback.qos.ch/manual/index.html))
 * Maven {{site.maven-version}} ([complete reference](http://www.sonatype.com/books/mvnref-book/reference/public-book.html)) is

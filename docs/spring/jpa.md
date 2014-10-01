@@ -34,19 +34,8 @@ your should activate the resthub-jpa Spring profile in your WebAppInitializer cl
 
 ```java
 XmlWebApplicationContext appContext = new XmlWebApplicationContext();
-appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-web-server");
+appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-pool-bonecp", "resthub-web-server");
 ```
-
-Since version 3.1, Spring allows to scan entities in different modules using the same `PersitenceUnit`,
-which is not possible with default JPA behaviour. You have to specify the packages where Spring should
-scan your entities by creating a database.properties file in your resources folder, with the following content:
-
-```
-persistenceUnit.packagesToScan = com.myproject.model
-```
-
-Now, entities within the com.myproject.model packages will be scanned, no need for persistence.xml JPA file.
-
 
 You also need to add an applicationContext.xml file in order to scan your repository package.
 
@@ -64,23 +53,17 @@ You also need to add an applicationContext.xml file in order to scan your reposi
 </beans>
 ```
 
-You can customize the default configuration by adding a database.properties resource with one or more of
-the following keys customized with your values (see [BoneCP documentation for details](http://jolbox.com/)).
-You should include only the customized ones.
+Two files allow to configure persistence related properties:
 
-RESThub JPA default properties are:
+* persistence.properties: holds jpa and hibernate configuration and options and is connection pool agnostic
+* datasource.properties: holds specific configuration options for the active connection pool ([See here](#pools))
+
+Since version 3.1, Spring allows to scan entities in different modules using the same `PersitenceUnit`,
+which is not possible with default JPA behaviour. You have to specify the packages where Spring should
+scan your entities by creating a database.properties file in your resources folder, with the following content:
 
 ```
-dataSource.driverClassName = org.h2.Driver
-dataSource.url = jdbc\:h2\:mem\:resthub;DB_CLOSE_DELAY=-1;MVCC=TRUE
-dataSource.username = sa
-dataSource.password =
-dataSource.minConnectionsPerPartition = 2
-dataSource.maxConnectionsPerPartition = 4
-dataSource.partitionCount = 3
-dataSource.idleConnectionTestPeriodInSeconds = 60
-dataSource.statementsCacheSize = 100
-dataSource.connectionTestStatement = /* ping*/ SELECT 1
+persistenceUnit.packagesToScan = com.myproject.model
 ```
 
 RESThub Hibernate default properties are:
@@ -96,12 +79,115 @@ hibernate.id.new_generator_mappings = true
 persistenceUnit.packagesToScan =
 ```
 
+Now, entities within the com.myproject.model packages will be scanned, no need for persistence.xml JPA file.
+
+
+<a name="pools"></a>
+
+## Connection pools
+
+Since 2.2.0 version, RESThub supports both [boneCP {{site.bonecp-version}}](http://jolbox.com/) and [hikariCP {{site.hikaricp-version}}](http://brettwooldridge.github.io/HikariCP/) connection pools.
+
+RESThub considers for now BoneCP as **default connection pool**. It means two things:
+
+* RESThub JPA embed boneCP dependency by default and hikariCP (java6 compatible version) dependency as an optional one:
+
+```xml
+<dependency>
+    <groupId>com.jolbox</groupId>
+    <artifactId>bonecp-spring</artifactId>
+    <version>${bonecp.spring.version}</version>
+    <exclusions>
+        <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<dependency>
+    <groupId>com.zaxxer</groupId>
+    <artifactId>HikariCP-java6</artifactId>
+    <version>${hikaricp.version}</version>
+    <optional>true</optional>
+</dependency>
+```
+
+* RESThub archetypes activate boneCP spring profile in generated WebAppInitializer class: 
+
+```java
+appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-pool-bonecp", "resthub-web-server");
+```
+
+In order to **switch to hikariCP** you must: 
+
+* add hikariCP dependency (without version) in your pom.xml and exclude boneCP dependency:
+
+```xml
+<dependency>
+    <groupId>org.resthub</groupId>
+    <artifactId>resthub-jpa</artifactId>
+    <version>${resthub.spring.stack.version}</version>
+    <exclusions>
+        <exclusion>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp-spring</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<dependency>
+    <groupId>com.zaxxer</groupId>
+    <artifactId>HikariCP-java6</artifactId>
+</dependency>
+```
+
+* activate hikariCP spring profile instead of boneCP profile in WebAppInitializer class: 
+
+```java
+appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-pool-hikaricp", "resthub-web-server");
+```
+
+the file `database.properties` allows to customize the default configuration for the choosen connection pool with one or more of
+the available keys customized with your values (see [BoneCP](http://jolbox.com/) and [HikariCP](http://brettwooldridge.github.io/HikariCP/) documentations for details about available options).
+You should include only the customized ones.
+
+RESThub JPA default properties for BoneCP are:
+
+```
+driverClass = org.h2.Driver
+minConnectionsPerPartition = 2
+maxConnectionsPerPartition = 4
+partitionCount = 3
+idleConnectionTestPeriodInMinutes = 1
+statementsCacheSize = 100
+connectionTestStatement = /* ping*/ SELECT 1
+jdbcUrl = jdbc:h2:mem:resthub;DB_CLOSE_DELAY=-1;MVCC=TRUE
+username = sa
+password = 
+poolName = ResthubDBPool
+disableJMX = true
+```
+
+RESThub JPA default properties for HikariCP are:
+
+```
+dataSourceClassName = org.h2.jdbcx.JdbcDataSource
+connectionTestQuery = /* ping*/ SELECT 1
+maximumPoolSize = 12
+poolName = ResthubDBPool
+registerMbeans = false
+dataSource.user = sa
+dataSource.password = 
+dataSource.url = jdbc:h2:mem:resthub
+```
+
 ## Extend JPA properties
 
 RESThub provides an extension point if you need to add new jpa properties that are not already defined in
 RESThub core jpa properties (see above). This hook is based on spring maps and its merge capacity.
 
-Indeed, resthub entityManagerFactory includes an larger map of properties with an external bean reference :
+Indeed, RESThub entityManagerFactory includes an larger map of properties with an external bean reference :
 
 ```xml
 <bean id="entityManagerFactory"
