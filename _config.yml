@@ -9,12 +9,12 @@ relative_permalinks: true
 
 spring-stack-version: 2.2.0
 spring-stack-javadoc-version: 2.2
-spring-version: 4.1.0
+spring-version: 4.1.1
 spring-docs-version: 4.1.x
 spring-data-version: 1.9.0
 spring-data-docs-version: 1.9.x
-spring-data-jpa-version: 1.6.4
-spring-data-jpa-docs-version: 1.6.x
+spring-data-jpa-version: 1.7.0
+spring-data-jpa-docs-version: 1.7.x
 hibernate-version: 4.3.6
 hibernate-docs-version: 4.3
 bonecp-version: 0.8.0
