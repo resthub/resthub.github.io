@@ -17,6 +17,8 @@ JPA support is based on Spring Data JPA and includes by default the H2 in memory
 
 Thanks to Spring Data, it is possible to create repositories (also sometimes named DAO) by writing only the interface.
 
+<a name="configuration"></a>
+
 ## Configuration
 
 In order to use it in your project, add the following snippet to your pom.xml:
