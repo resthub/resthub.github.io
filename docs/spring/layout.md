@@ -95,7 +95,7 @@ pom.xml example:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.1</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <source>1.7</source>
@@ -113,7 +113,7 @@ pom.xml example:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.4</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -121,16 +121,7 @@ pom.xml example:
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.13.v20130916</version>
-                <configuration>
-                    <!-- We use non NIO connector in order to avoid read only static files under windows -->
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.bio.SocketConnector">
-                            <port>8080</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                </configuration>
+                <version>9.2.2.v20140723</version>
             </plugin>
         </plugins>
     </build>
@@ -177,7 +168,7 @@ RESThub dependencies are available on Maven Central:
 Web application initializer replaces the old web.xml file used with Servlet 2.5 or older webapps.
 It has the same goal, but since it is Java based, it is safer (compilation check, autocomplete).
 
-WebAppInitializer.java example:
+WebAppInitializer.java example with JPA support:
 
 ```java
 public class WebAppInitializer implements WebApplicationInitializer {
@@ -185,7 +176,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         XmlWebApplicationContext appContext = new XmlWebApplicationContext();
-        appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-web-server");
+        appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-pool-bonecp", "resthub-web-server");
         String[] locations = { "classpath*:resthubContext.xml", "classpath*:applicationContext.xml" };
         appContext.setConfigLocations(locations);
 
@@ -219,7 +210,7 @@ appContext.getEnvironment().setActiveProfiles("resthub-mongodb", "resthub-web-se
 In your tests, you should use the `@ActiveProfiles` annotation to activate the profiles you need:
 
 ```java
-@ActiveProfiles("resthub-jpa") // or @ActiveProfiles({"resthub-jpa","resthub-web-server"})
+@ActiveProfiles("resthub-jpa") // or @ActiveProfiles({"resthub-jpa", "resthub-pool-bonecp", "resthub-web-server"})
 public class SampleTest extends AbstractTransactionalTest {
 
 }

@@ -89,7 +89,7 @@ public class SampleRestControllerTest extends AbstractWebTest {
 
     public SampleRestControllerTest() {
         // Call AbstractWebTest(String profiles) constructor
-        super("resthub-web-server,resthub-jpa");
+        super("resthub-web-server,resthub-jpa,resthub-pool-bonecp");
     }
 
     // Cleanup after each test
@@ -130,7 +130,7 @@ To use this phase, add the following snippet to your pom.xml:
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-failsafe-plugin</artifactId>
-    <version>2.15</version>
+    <version>2.16</version>
     <executions>
         <execution>
             <goals>

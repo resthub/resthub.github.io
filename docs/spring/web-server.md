@@ -180,6 +180,7 @@ will serialize all properties. It also work on collection (`List<Book>` for exam
 
 ## Register Jackson Modules
 Jackson allows to register modules to enhance its capabilities (e.g. JodaTime module). Resthub provides a simple mean to register modules to the Jackson object mapper in the spring context:
+
 ```xml
     <bean id="jacksonModules" parent="resthubJacksonModules">
         <property name="sourceList">
@@ -189,6 +190,7 @@ Jackson allows to register modules to enhance its capabilities (e.g. JodaTime mo
         </property>
     </bean>
 ```
+
 Note that `parent="resthubJacksonModules"` is mandatory
 
 <a name="modelmapper"></a>
