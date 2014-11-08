@@ -8,6 +8,8 @@ next: backbone/logging
 
 <div class="toc"></div>
 
+{% raw %}
+
 You should never use directly labels or texts in your source files. All labels should be externalized in order to prepare your 
 application for internationalization. Doing such thing is pretty simple with RESThub Backbone.js stack thanks
 to [requireJS i18n plugin](http://requirejs.org/docs/api.html#i18n).
@@ -81,7 +83,7 @@ In your html template:
 
 ```html
 <div class="title">
-    <h1>{{"{{labels.titles.login"}}}}</h1>
+    <h1>{{labels.titles.login}}</h1>
 </div>
 ```
 
@@ -138,5 +140,7 @@ RESThub also provides a `sprintf` handlebars helper to use directly in your
 templates (cf. [here](/docs/backbone/templating#sprintf)):
 
 ```html
-{{"{{#ifequals done 1"}}}} {{"{{messages.clearitem"}}}} {{"{{else"}}}} {{"{{sprintf messages.clearitems done"}}}} {{"{{/ifequals"}}}}
+{{#ifequals done 1}} {{messages.clearitem}} {{else}} {{sprintf messages.clearitems done}} {{/ifequals}}
 ```
+
+{% endraw %}

@@ -8,6 +8,8 @@ next: backbone/pushstate
 
 <div class="toc"></div>
 
+{% raw %}
+
 ## Handlebars
 
 Client-side templating capabilities are based by default on [Handlebars](http://handlebarsjs.com).
@@ -15,14 +17,14 @@ Client-side templating capabilities are based by default on [Handlebars](http://
 Templates are HTML fragments, without the `<html>`, `<header>` or `<body>` tag:
 
 ```html
-<div class="todo {{"{{#if done"}}}}done{{"{{/if"}}}}">
+<div class="todo {{#if done}}done{{/if}}">
     <div class="display">
-        <input class="check" type="checkbox" {{"{{#if done"}}}}checked="checked"{{"{{/if"}}}}/>
-        <div class="todo-content">{{"{{content"}}}}</div>
+        <input class="check" type="checkbox" {{#if done}}checked="checked"{{/if}}/>
+        <div class="todo-content">{{content}}</div>
         <span class="todo-destroy"></span>
     </div>
     <div class="edit">
-        <input class="todo-input" type="text" value="{{"{{content"}}}}" />
+        <input class="todo-input" type="text" value="{{content}}" />
     </div>
 </div>
 ```
@@ -70,7 +72,7 @@ or `[]` (a "falsy" value), `''` is returned, otherwise `returnVal` argument is r
 e.g:
 
 ```html
-<div class='{{"{{ifinline done "done""}}}}'>Issue number 1</div>
+<div class='{{ifinline done "done"}}'>Issue number 1</div>
 ```
 
 with the following context:
@@ -95,7 +97,7 @@ or `[]` (a "falsy" value), `returnVal` is returned, otherwise `''` argument is r
 e.g:
 
 ```html
-<div class='{{"{{unlessinline done "todo""}}}}'>Issue number 1</div>
+<div class='{{unlessinline done "todo"}}'>Issue number 1</div>
 ```
 
 with the following context:
@@ -119,7 +121,7 @@ If the two values are strictly equals (`===`) return the returnValue argument, `
 e.g:
 
 ```html
-<div class='{{"{{ifequalsinline type "details" "active""}}}}'>Details</div>
+<div class='{{ifequalsinline type "details" "active"}}'>Details</div>
 ```
 
 with the following context:
@@ -143,7 +145,7 @@ If the two values are not strictly equals (`!==`) return the returnValue  argume
 e.g:
 
 ```html
-<div class='{{"{{unlessequalsinline type "details" "active""}}}}'>Edit</div>
+<div class='{{unlessequalsinline type "details" "active"}}'>Edit</div>
 ```
 
 with the following context:
@@ -167,9 +169,9 @@ If only the two values are strictly equals (`===`) display the block
 e.g:
 
 ```html
-{{"{{#ifequals type "details""}}}}
+{{#ifequals type "details"}}
     <span>This is details page</span>
-{{"{{/ifequals"}}}}
+{{/ifequals}}
 ```
 
 with the following context:
@@ -193,9 +195,9 @@ If only the two values are not strictly equals (`!==`) display the block
 e.g:
 
 ```html
-{{"{{#unlessequals type "details""}}}}
+{{#unlessequals type "details"}}
     <span>This is not details page</span>
-{{"{{/unlessequals"}}}}
+{{/unlessequals}}
 ```
 
 with the following context:
@@ -221,9 +223,9 @@ e.g:
 
 ```html
 <ul>
-    {{"{{#for 1 5"}}}}
-        <li><a href='?page={{"{{this"}}}}'>{{"{{this"}}}}</a></li>
-    {{"{{/for"}}}}
+    {{#for 1 5}}
+        <li><a href='?page={{this}}'>{{this}}</a></li>
+    {{/for}}
 </ul>
 ```
 
@@ -250,7 +252,7 @@ A detailed documentation is available [here](http://www.diveintojavascript.com/p
 e.g:
 
 ```html
-<span>{{"{{sprintf 'This is a %s' 'test'"}}}}</span>
+<span>{{sprintf 'This is a %s' 'test'}}</span>
 ```
 
 will produce:
@@ -270,11 +272,11 @@ If (n % m) equals 0 then the block is rendered, and if not, the else block is re
 e.g:
 
 ```html
-{{"{{#modulo index 2"}}}}
-    <span>{{"{{index"}}}} is even</span>
-{{"{{else"}}}}
-    <span>{{"{{index"}}}} is odd</span>
-{{"{{/modulo"}}}}
+{{#modulo index 2}}
+    <span>{{index}} is even</span>
+{{else}}
+    <span>{{index}} is odd</span>
+{{/modulo}}
 ```
 
 with the following context:
@@ -307,7 +309,7 @@ Full documentation about date format can be found [here](http://momentjs.com/doc
 e.g:
 
 ```html
-<span>{{"{{formatDate myDate pattern"}}}}</span>
+<span>{{formatDate myDate pattern}}</span>
 ```
 
 with the following context:
@@ -325,7 +327,7 @@ will produce:
 and:
 
 ```html
-<span>{{"{{formatDate myDate outputPattern inputPattern"}}}}</span>
+<span>{{formatDate myDate outputPattern inputPattern}}</span>
 ```
 
 with the following context:
@@ -339,3 +341,5 @@ will produce:
 ```html
 <span>11:32, 02-17-2012</span>
 ```
+
+{% endraw %}

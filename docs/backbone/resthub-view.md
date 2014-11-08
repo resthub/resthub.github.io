@@ -8,6 +8,8 @@ next: backbone/templating
 
 <div class="toc"></div>
 
+{% raw %}
+
 RESThub Backbone stack provides an enhanced Backbone View named `Resthub.View` with the following behaviour:
 
 * Default `render()` with root and context attributes
@@ -56,16 +58,16 @@ A sample template with automatic collection provisioning:
 
 ```html
 <ul>
-    {{"{{#each collection"}}}}
-    <li>{{"{{this.firstname'}}}} {{"{{this.name"}}}}</li>
-    {{"{{/each"}}}}
+    {{#each collection}}
+    <li>{{this.firstname}} {{this.name}}</li>
+    {{/each}}
 </ul>
 ```
 
 Or with automatic model and labels provisioning:
 
 ```html
-<p>{{"{{labels.user.identity"}}}}: {{"{{model.firstname"}}}} {{"{{model.name"}}}}</li>
+<p>{{labels.user.identity}}: {{model.firstname}} {{model.name}}</li>
 ```
 
 After instantiation, `this.$root` contains a cached jQuery element and `this.root` the DOM element.
@@ -237,3 +239,5 @@ As said before, this approach could appear naive but will probably fit your need
 you are free not to use this helper, to extend this method, globally or locally with your own logic or to use a third
 party lib to bind model and form (see [Backbone.ModelBinder](http://github.com/theironcook/Backbone.ModelBinder)
 or [Rivets.js](http://rivetsjs.com/) for instance).
+
+{% endraw %}

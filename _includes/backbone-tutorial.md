@@ -1,5 +1,7 @@
 <div class="toc"></div>
 
+{% raw %}
+
 This tutorial will help you to get an overview of resthub-backbone-stack.
 
 If you want to use this tutorial in a training mode, [a version without answers is also available](/docs/backbone/tutorial-no-answers).
@@ -218,8 +220,8 @@ Let's render our task in DOM with a template engine: Handlebars
 
     > ```html
     > <div class="task">
-    >   <h1>{{"{{title"}}}}</h1>
-    >   <p>{{"{{description"}}}}</p>
+    >   <h1>{{title}}</h1>
+    >   <p>{{description}}</p>
     > </div>
     > ```
 
@@ -324,9 +326,9 @@ Let's render our task in DOM with a template engine: Handlebars
    > ```html
    > // template
    > <ul class="task-list">
-   >   {{"{{#each this"}}}}
-   >     <li class="task">{{"{{title"}}}}</li>
-   >   {{"{{/each"}}}}
+   >   {{#each this}}
+   >     <li class="task">{{title}}</li>
+   >   {{/each}}
    > </ul>
    > ```
 
@@ -703,10 +705,10 @@ Let's render our task in DOM with a template engine: Handlebars
 
     > ```html
     > <div class="control-group">
-    >   <input class="title" type="text" placeholder="Title" value="{{"{{model.title"}}}}" />
+    >   <input class="title" type="text" placeholder="Title" value="{{model.title}}" />
     > </div>
     > <div class="control-group">
-    >   <textarea class="description" rows="3" placeholder="Description">{{"{{model.description"}}}}</textarea>
+    >   <textarea class="description" rows="3" placeholder="Description">{{model.description}}</textarea>
     > </div>
     > <input type="submit" class="btn btn-success" value="Save" />
 
@@ -940,7 +942,7 @@ Let's render our task in DOM with a template engine: Handlebars
 
     > ```html
     > <div class="control-group">
-    >   <input class="title" type="text" placeholder="Title" value="{{"{{model.title"}}}}" />
+    >   <input class="title" type="text" placeholder="Title" value="{{model.title}}" />
     >   <span class="help-inline"></span>
     > </div>
     > ```
@@ -999,11 +1001,11 @@ Let's render our task in DOM with a template engine: Handlebars
 
     > ```html
     > <div class="control-group">
-    >   <input class="title" type="text" name="title" placeholder="Title" value="{{"{{model.title"}}}}" />
+    >   <input class="title" type="text" name="title" placeholder="Title" value="{{model.title}}" />
     >   <span class="help-inline"></span>
     > </div>
     > <div class="control-group">
-    >   <textarea class="description" rows="3" name="description" placeholder="Description">{{"{{model.description"}}}}</textarea>
+    >   <textarea class="description" rows="3" name="description" placeholder="Description">{{model.description}}</textarea>
     > </div>
     > ```
 
@@ -1079,3 +1081,5 @@ Let's render our task in DOM with a template engine: Handlebars
 
 * Validate that retrieve, delete, create and update actions work as expected with this whole new jpa-webservice
   backend
+
+{% endraw %}

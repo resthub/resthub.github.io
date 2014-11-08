@@ -8,6 +8,8 @@ next: backbone/tutorial
 
 <div class="toc"></div>
 
+{% raw %}
+
 ## Collection View
 
 If you need to render a simple list of elements, just make a single view with an each loop in the template:
@@ -15,9 +17,9 @@ If you need to render a simple list of elements, just make a single view with an
 ```html
 <h1>My TodoList</h1>
 <ul>
-    {{"{{#each this"}}}}
-        <li>{{"{{title"}}}}</li>
-    {{"{{/each"}}}}
+    {{#each this}}
+        <li>{{title}}</li>
+    {{/each}}
 </ul>
 ```
 
@@ -164,3 +166,5 @@ require.config({
 
 In order to avoid bugs (like no change displayed after an update) due to Internet Explorer aggressive caching strategy,
 Ajax request cache is disable at jQuery level when using IE.
+
+{% endraw %}

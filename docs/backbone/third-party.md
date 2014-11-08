@@ -10,6 +10,8 @@ next: backbone/guidelines
 
 <a name="backbone-validation"></a>
 
+{% raw %}
+
 ## Backbone Validation
 
 [Backbone](http://documentcloud.github.com/backbone/) does not provide natively **any tool for form or validation management**. 
@@ -71,24 +73,24 @@ define(['underscore', 'backbone'], function (_, Backbone) {
 **HTML5 Form:**
 
 ```html
-{{"{{#with participant"}}}}
+{{#with participant}}
     <form class="form-horizontal">
         <fieldset>
             <div class="row">
                 <div class="span8">
                     <div class="control-group">
-                        {{"{{#if id"}}}}
+                        {{#if id}}
                             <label for="participantId" class="control-label">Id:</label>
                             <div class="controls">
-                                <input id="participantId" name="id" type="text" value="{{"{{id"}}}}" disabled/>
+                                <input id="participantId" name="id" type="text" value="{{id}}" disabled/>
                             </div>
-                        {{"{{/if"}}}}
+                        {{/if}}
                     </div>
 
                     <div class="control-group">
                         <label for="firstname" class="control-label">First name:</label>
                         <div class="controls">
-                            <input type="text" id="firstname" name="firstname" required="true" value="{{"{{firstname"}}}}" tabindex="1" autofocus="autofocus"/>
+                            <input type="text" id="firstname" name="firstname" required="true" value="{{firstname}}" tabindex="1" autofocus="autofocus"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -96,7 +98,7 @@ define(['underscore', 'backbone'], function (_, Backbone) {
                     <div class="control-group">
                         <label for="lastname" class="control-label">Last name:</label>
                         <div class="controls">
-                            <input type="text" id="lastname" name="lastname" required="true" value="{{"{{lastname"}}}}" tabindex="2"/>
+                            <input type="text" id="lastname" name="lastname" required="true" value="{{lastname}}" tabindex="2"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -104,14 +106,14 @@ define(['underscore', 'backbone'], function (_, Backbone) {
                     <div class="control-group">
                         <label for="email" class="control-label">email address:</label>
                         <div class="controls">
-                            <input type="email" id="email" name="email" value="{{"{{email"}}}}" tabindex="3"/>
+                            <input type="email" id="email" name="email" value="{{email}}" tabindex="3"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
                 </div>
         </fieldset>
     </form>
-{{"{{/with"}}}}
+{{/with}}
 ```
 
 **View: initialization and usage:**
@@ -525,3 +527,5 @@ Moment.js features:
 * Parse and format date with custom pattern and internationalization
 * Date manipulation (add, substract)
 * Durations (eg: 2 hours)
+
+{% endraw %}
