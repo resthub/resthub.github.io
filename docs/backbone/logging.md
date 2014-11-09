@@ -63,6 +63,7 @@ events:{
     "!global1":"globalFired",
     "!globalParams":"globalFiredParams"
 },
+```
 
 Please note that it is mandatory to prefix your global events with `!` to differentiate them from DOM events.
 Under the cover, `listenTo()` and `stopListening()` are used so events cleanup will be done automatically by the view.
