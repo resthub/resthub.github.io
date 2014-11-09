@@ -1208,34 +1208,35 @@ implementation: Hibernate Validator.
    ```bash
    src/test/java/org/resthub/training/repository/integration
    ```
+
    **and implement a test that try to create a user with an embedded address**.
    
    Check that you can then call a findOne of this user and that the return object contains address object.
    
-    > ```java
-    > @ActiveProfiles({"resthub-jpa", "test"})
-    > public class UserRepositoryIntegrationTest extends AbstractTest {
-    >
-    >     @Inject
-    >     @Named("userRepository")
-    >     private UserRepository repository;
-    >
-    >     @Test
-    >     public void testCreateValidAddress() {
-    >         User user = new User("userName", "user.email@test.org");
-    >         Address address = new Address();
-    >         address.setCity("city1");
-    >         address.setCountry("country1");
-    >         user.setAddress(address);
-    >
-    >         user = this.repository.save(user);
-    >         Assertions.assertThat(user).isNotNull();
-    >         Assertions.assertThat(user.getId()).isNotNull();
-    >         Assertions.assertThat(user.getAddress()).isNotNull();
-    >         Assertions.assertThat(user.getAddress().getCity()).isEqualTo("city1");
-    >     }
-    > }
-    > ```
+> ```java
+> @ActiveProfiles({"resthub-jpa", "test"})
+> public class UserRepositoryIntegrationTest extends AbstractTest {
+>
+>     @Inject
+>     @Named("userRepository")
+>     private UserRepository repository;
+>
+>     @Test
+>     public void testCreateValidAddress() {
+>         User user = new User("userName", "user.email@test.org");
+>         Address address = new Address();
+>         address.setCity("city1");
+>         address.setCountry("country1");
+>         user.setAddress(address);
+>
+>         user = this.repository.save(user);
+>         Assertions.assertThat(user).isNotNull();
+>         Assertions.assertThat(user.getId()).isNotNull();
+>         Assertions.assertThat(user.getAddress()).isNotNull();
+>         Assertions.assertThat(user.getAddress().getCity()).isEqualTo("city1");
+>     }
+> }
+> ```
   
 5. **Add nested validation for embedded address. city and country should not be null and non empty**
 

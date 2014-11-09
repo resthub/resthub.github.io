@@ -894,7 +894,7 @@ Let's render our task in DOM with a template engine: Handlebars
 
 2. **Resthub documentation for populateModel**
 
-    see [here](/docs/backbone/resthub-view#view-model-population)
+    > see [here](/docs/backbone/resthub-view#view-model-population)
 
 ### Do:
 
