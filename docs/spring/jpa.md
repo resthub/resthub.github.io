@@ -39,7 +39,7 @@ appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-web-server
 
 Since version 3.1, Spring allows to scan entities in different modules using the same `PersitenceUnit`,
 which is not possible with default JPA behaviour. You have to specify the packages where Spring should
-scan your entities by creating a database.properties file in your resources folder, with the following content:
+scan your entities by creating a persistence.properties file in your resources folder, with the following content:
 
 ```
 persistenceUnit.packagesToScan = com.myproject.model
@@ -64,7 +64,7 @@ You also need to add an applicationContext.xml file in order to scan your reposi
 </beans>
 ```
 
-You can customize the default configuration by adding a database.properties resource with one or more of
+You can customize the default configuration by adding a datasource.properties resource with one or more of
 the following keys customized with your values (see [BoneCP documentation for details](http://jolbox.com/)).
 You should include only the customized ones.
 
