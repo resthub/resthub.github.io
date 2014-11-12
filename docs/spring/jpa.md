@@ -62,7 +62,7 @@ Two files allow to configure persistence related properties:
 
 Since version 3.1, Spring allows to scan entities in different modules using the same `PersitenceUnit`,
 which is not possible with default JPA behaviour. You have to specify the packages where Spring should
-scan your entities by creating a database.properties file in your resources folder, with the following content:
+scan your entities by creating a persistence.properties file in your resources folder, with the following content:
 
 ```
 persistenceUnit.packagesToScan = com.myproject.model
@@ -150,7 +150,7 @@ In order to **switch to hikariCP** you must:
 appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-pool-hikaricp", "resthub-web-server");
 ```
 
-the file `database.properties` allows to customize the default configuration for the choosen connection pool with one or more of
+the file `datasource.properties` allows to customize the default configuration for the choosen connection pool with one or more of
 the available keys customized with your values (see [BoneCP](http://jolbox.com/) and [HikariCP](http://brettwooldridge.github.io/HikariCP/) documentations for details about available options).
 You should include only the customized ones.
 
