@@ -902,10 +902,6 @@ It is really more efficient to write *real unit tests* by using mocks.
     >     this.taskService.setNotificationService(this.notificationService);
     > }
     >
-    > @Inject
-    > @Named("notificationService")
-    > private NotificationService mockedNotificationService;
-    >
     > ...
     >
     > }
