@@ -57,7 +57,7 @@ for (MyEntity entity : list) {
 * `AbstractTest` or `AbstractTransactionalTest`:
 
 ```java
-@ActiveProfiles("resthub-jpa")
+@ActiveProfiles({"resthub-jpa", "resthub-pool-hikaricp"})
 public class SampleRepositoryTest extends AbstractTransactionalTest {
 
     private SampleRepository repository;
