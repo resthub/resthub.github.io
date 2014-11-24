@@ -124,7 +124,8 @@ Let's take a look at the generated project. Its structure is:
 |   |    |                       | --* WebAppInitializer.java
 |   |    | --* resources
 |   |          | --* applicationContext.xml
-|   |          | --* database.properties
+|   |          | --* datasource.properties
+|   |          | --* persistence.properties
 |   |          | --* logback.xml
 |   |--* test
 |        | --* java
@@ -146,6 +147,7 @@ archetype generation. This package contains the following sub packages and files
   ```
 
   This generic `RepositoryBasedRestController` provides basic CRUD functionalities: see Resthub2 documentation for details.
+
 * **model**: This package contains all you domain models.
 * **repository**: This package contains your repositories, i.e. classes that provide methods to manipulate, persist and retrieve your objects from your JPA
   manager (and so your database). In the generated sample, the archetype provided you a SampleRepository that simply extend Spring-Data `JpaRepository`.
@@ -155,7 +157,7 @@ archetype generation. This package contains the following sub packages and files
 * **initializers**: Initializers are special classes executed at application startup to setup your webapp. `WebappInitializer` load your spring application contexts,
   setup filters, etc. (all actions that you previously configured in your web.xml). The archetype provided you a `SampleInitializer` to setup sepcific domain model
   initializations such as data creation.
-* `src/main/resources` contains all non java source files and, in particular, your spring application context, your database configuration file and you logging configuration.
+* `src/main/resources` contains all non java source files and, in particular, your spring application context, your datasource and your persistence configuration files and you logging configuration.
 * `src/test/` contains, obviously, all you test related files and has the same structure as src/main (i.e. *java* and *resources*).
 
 ## Step 2: Customize Model
@@ -309,7 +311,7 @@ We are going to test our new controller `findByTitle` method.
    > public class TaskControllerTest extends AbstractWebTest {
    >     public TaskControllerTest() {
    >         // Activate resthub-web-server and resthub-jpa Spring profiles
-   >         super("resthub-web-server,resthub-jpa");
+   >         super("resthub-web-server,resthub-jpa,resthub-pool-bonecp");
    >     }
    >
    >     @Test
@@ -697,7 +699,7 @@ We will now write an integration test for our new service:
     * Refresh the task by calling `service.findById` and check the retrieved task contains the affected user
     
     > ```java
-    > @ActiveProfiles("resthub-jpa")
+    > @ActiveProfiles({"resthub-jpa", "resthub-pool-bonecp"})
     > public class TaskServiceIntegrationTest extends AbstractTest {
     >
     >     @Inject
@@ -792,8 +794,8 @@ be able to send a mail in tests, etc.). So **we need to mock**.
 
     > ```java
     > @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = MocksConfiguration.class)
-    > @ActiveProfiles({"test", "resthub-jpa"})
-    > public class TaskServiceIntegrationTest extends AbstractTest {
+    > @ActiveProfiles({"resthub-jpa", "resthub-pool-bonecp", "test"})
+    > public class TaskServiceIntegrationTest extends AbstractTestNGSpringContextTests {
     >   ...
     > }
     > ```
@@ -803,8 +805,8 @@ be able to send a mail in tests, etc.). So **we need to mock**.
 
     > ```java
     > @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = MocksConfiguration.class)
-    > @ActiveProfiles({"test", "resthub-jpa"})
-    > public class TaskServiceIntegrationTest extends AbstractTest {
+    > @ActiveProfiles({"resthub-jpa", "resthub-pool-bonecp", "test"})
+    > public class TaskServiceIntegrationTest extends AbstractTestNGSpringContextTests {
     >
     >   @Inject
     >   @Named("taskService")
@@ -952,7 +954,7 @@ Working mainly with unit tests (without launching spring context, etc.) is reall
 systematic complete integration tests. Note that you still have to provide, at least, one integration test in order to verify mappings and complete
 chain.
   
-### Create correponding method in controller to call this new service layer
+### Create corresponding method in controller to call this new service layer
 
 **Do:**
 
@@ -1083,7 +1085,7 @@ implementation: Hibernate Validator.
     > public class TaskControllerTest extends AbstractWebTest {
     >
     >     public TaskControllerTest() {
-    >       super("resthub-web-server,resthub-jpa");
+    >       super("resthub-web-server,resthub-jpa,resthub-pool-bonecp");
     >     }
     >
     >     @Test
@@ -1210,7 +1212,7 @@ implementation: Hibernate Validator.
    Check that you can then call a findOne of this user and that the return object contains address object.
    
 > ```java
-> @ActiveProfiles({"resthub-jpa", "test"})
+> @ActiveProfiles({"resthub-jpa", "resthub-pool-bonecp", "test"})
 > public class UserRepositoryIntegrationTest extends AbstractTest {
 >
 >     @Inject
