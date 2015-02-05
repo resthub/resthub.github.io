@@ -47,7 +47,7 @@ it is a great introduction to pure Backbone.js.
 
 Backbone Stack current version is **{{site.backbone-stack-version}}**.
 
-You can find RESThub Backbone Stack release changelogs [here](/new/releases)
+You can find RESThub Backbone Stack release changelogs [here](/news/releases)
 
 ## Bootstrap your project
 

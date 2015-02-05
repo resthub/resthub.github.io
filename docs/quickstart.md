@@ -2,7 +2,7 @@
 layout: docs
 title: Quickstart
 permalink:  quickstart/
-prev: home
+prev: docs/
 next: spring
 ---
 
