@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Spring MVC router
-permalink:  router/
+permalink:  /docs/router/
 prev: spring/testing
 next: amqp-hessian
 ---

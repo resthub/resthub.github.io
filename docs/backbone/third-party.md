@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Third party libraries
-permalink:  third-party/
+permalink:  /docs/backbone/third-party/
 prev: backbone/validation
 next: backbone/guidelines
 ---

@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Project layout
-permalink:  layout/
+permalink:  /docs/spring/layout/
 prev: spring
 next: spring/jpa
 ---

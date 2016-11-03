@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Resthub.View
-permalink:  resthub-view/
+permalink:  /docs/backbone/resthub-view/
 prev: backbone/layout
 next: backbone/templating
 ---

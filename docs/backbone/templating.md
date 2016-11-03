@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Templating
-permalink:  templating/
+permalink:  /docs/backbone/templating/
 prev: backbone/resthub-view
 next: backbone/pushstate
 ---

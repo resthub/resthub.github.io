@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Logging
-permalink:  logging/
+permalink:  /docs/backbone/logging/
 prev: backbone/internationalization
 next: backbone/validation
 ---

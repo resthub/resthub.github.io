@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Web server
-permalink:  web-server/
+permalink:  /docs/spring/web-server/
 prev: spring/web-common
 next: spring/web-client
 ---

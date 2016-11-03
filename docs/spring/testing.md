@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Testing
-permalink:  testing/
+permalink:  /docs/spring/testing/
 prev: spring/validation
 next: spring/tutorial
 ---

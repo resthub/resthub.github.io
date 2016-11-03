@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Guidelines
-permalink:  guidelines/
+permalink:  /docs/backbone/guidelines/
 prev: backbone/third-party
 next: backbone/tutorial
 ---

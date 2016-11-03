@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Validation
-permalink:  validation/
+permalink:  /docs/backbone/validation/
 prev: backbone/logging
 next: backbone/third-party
 ---

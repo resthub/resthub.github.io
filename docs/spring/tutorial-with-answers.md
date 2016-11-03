@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Spring Stack tutorial
-permalink:  tutorial/
+permalink:  /docs/spring/tutorial/
 prev: spring/testing
 next: backbone
 answers: with-answers

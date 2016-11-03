@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Backbone effective pushState extension
-permalink:  pushstate/
+permalink:  /docs/backbone/pushstate/
 prev: backbone/templating
 next: backbone/internationalization
 ---

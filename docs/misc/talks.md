@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Talks
-permalink:  talks/
+permalink:  /docs/misc/talks/
 prev: amqp-hessian
 ---
 

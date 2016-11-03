@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Validation API
-permalink:  validation/
+permalink:  /docs/spring/validation/
 prev: spring/web-client
 next: spring/testing
 ---

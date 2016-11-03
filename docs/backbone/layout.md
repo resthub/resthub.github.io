@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Backbone.js Stack
-permalink:  layout/
+permalink:  /docs/backbone/layout/
 prev: backbone
 next: backbone/resthub-view
 ---

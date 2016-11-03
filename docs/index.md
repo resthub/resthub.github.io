@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: What is RESThub ?
-permalink:  /
+permalink:  /docs/
 next: quickstart
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Web common
-permalink:  web-common/
+permalink:  /docs/spring/web-common/
 prev: spring/mongo
 next: spring/web-server
 ---

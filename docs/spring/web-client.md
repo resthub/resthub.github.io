@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Web client
-permalink:  web-client/
+permalink:  /docs/spring/web-client/
 prev: spring/web-server
 next: spring/validation
 ---

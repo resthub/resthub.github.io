@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: MongoDB support
-permalink:  mongo/
+permalink:  /docs/spring/mongo/
 prev: spring/jpa
 next: spring/web-common
 ---

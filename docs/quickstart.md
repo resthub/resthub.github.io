@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Quickstart
-permalink:  quickstart/
+permalink:  /docs/quickstart/
 prev: docs/
 next: spring
 ---

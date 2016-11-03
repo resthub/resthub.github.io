@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Backbone Stack tutorial
-permalink:  tutorial-no-answers/
+permalink:  /docs/backbone/tutorial-no-answers/
 prev: backbone/guidelines
 next: router
 answers: no-answers

@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: JPA support
-permalink:  jpa/
+permalink:  /docs/spring/jpa/
 prev: spring/layout
 next: spring/mongo
 ---

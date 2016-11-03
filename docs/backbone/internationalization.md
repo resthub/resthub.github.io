@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Internationalization
-permalink:  internationalization/
+permalink:  /docs/backbone/internationalization/
 prev: backbone/pushstate
 next: backbone/logging
 ---
