@@ -1,1 +1,1 @@
-RESThub official documentation <http://resthub.org/>
+RESThub official documentation <http://resthub.github.io/>
